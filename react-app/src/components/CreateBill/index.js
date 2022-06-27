@@ -63,7 +63,6 @@ function CreateBill() {
                 {/* <ul>
                     {errors.map((error, idx) => <li key={idx}>{error}</li>)}
                 </ul> */}
-                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
                 <h1>Add a BILL</h1>
                 <div>
                     <label>Label

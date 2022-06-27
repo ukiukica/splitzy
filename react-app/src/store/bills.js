@@ -16,6 +16,7 @@ export const addBill = (payload) => async(dispatch) => {
 
     const newBill = await response.json()
 
+    console.log("RESPONSE ->", response)
     console.log("NEWBILL ->", newBill)
 
     if (newBill) {
