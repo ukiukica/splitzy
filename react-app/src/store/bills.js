@@ -1,5 +1,3 @@
-import { ValidationError } from "../utils/validationError"
-
 const ADD_BILL = 'bills/ADD_BILL'
 
 const create = (newBill) => ({
@@ -8,13 +6,17 @@ const create = (newBill) => ({
 })
 
 export const addBill = (payload) => async(dispatch) => {
-    const response = await fetch('/api/bills', {
+    console.log("INSIDE THE THUNK")
+
+    const response = await fetch('/api/bills/createbill', {
         method: 'POST',
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload)
     })
 
     const newBill = await response.json()
+
+    console.log("NEWBILL ->", newBill)
 
     if (newBill) {
         dispatch(create(newBill))
@@ -29,7 +31,7 @@ const billsReducer = (state = {}, action) => {
             const addState = { ...state, [action.newBill.id]: action.newBill }
             return addState;
         default:
-            return state
+            return state;
     }
 }
 
