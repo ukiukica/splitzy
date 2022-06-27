@@ -1,19 +1,16 @@
-from .db import db
+from .app.models.db import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 
 
-class User(db.Model, UserMixin):
-    __tablename__ = 'users'
+class Comment(db.Model, UserMixin):
+    __tablename__ = 'comments'
 
     id = db.Column(db.Integer, primary_key=True)
-    first_name = db.Column(db.String(50), nullable=False)
-    last_name = db.Column(db.String(50), nullable=False)
-    username = db.Column(db.String(40), nullable=False, unique=True)
-    email = db.Column(db.String(100), nullable=False, unique=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    bill_id = db.Column(db.Integer, db.ForeignKey('bill.id'), nullable=False)
+    content = db.Column(db.String(2000), nullable=False)
     hashed_password = db.Column(db.String(20), nullable=False)
-    created_at = db.Column(db.DateTime)
-    updated_at = db.Column(db.DateTime)
 
     @property
     def password(self):
@@ -32,7 +29,5 @@ class User(db.Model, UserMixin):
             'first_name': self.first_name,
             'last_name': self.last_name,
             'username': self.username,
-            'email': self.email,
-            'created_at': self.created_at,
-            'updated_at': self.updated_at
+            'email': self.email
         }
