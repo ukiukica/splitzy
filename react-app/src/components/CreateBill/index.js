@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from 'react-router-dom';
+import addBill from '../../store/bills.js'
+import { ValidationError } from "../../utils/validationError";
 
 function CreateBill() {
     const dispatch = useDispatch()
@@ -8,7 +11,7 @@ function CreateBill() {
     const sessionUser = useSelector(state => state.session.user)
 
     const [label, setLabel] = useState('')
-    const [amount, setAmount] = useState(null)
+    const [amount, setAmount] = useState(0)
     const [settled, setSettled] = useState(false)
     const [errors, setErrors] = useState([])
 
@@ -53,10 +56,10 @@ function CreateBill() {
     return (
         <div>
             <form onSubmit={handleSubmit} className='add-campus-form'>
-                <ul>
+                {/* <ul>
                     {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-                </ul>
-                <h1>Add a Campus</h1>
+                </ul> */}
+                <h1>Add a BILL</h1>
                 <div>
                     <label>Label
                         <input
@@ -79,7 +82,7 @@ function CreateBill() {
                     <label>Settled
                         <input
                             className='settled-input'
-                            type='boolean'
+                            type='checkbox'
                             value={settled}
                             onChange={(e) => setSettled(e.target.value)}
                             required
