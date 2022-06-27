@@ -1,4 +1,6 @@
+from datetime import datetime
 from flask_wtf import FlaskForm
+from sqlalchemy import DateTime
 from wtforms import StringField
 from wtforms.validators import DataRequired, Email, ValidationError
 from app.models import User
@@ -27,3 +29,5 @@ class SignUpForm(FlaskForm):
         'username', validators=[DataRequired(), username_exists])
     email = StringField('email', validators=[DataRequired(), user_exists])
     password = StringField('password', validators=[DataRequired()])
+    # created_at = DateTime('created_at')
+    # updated_at = DateTime('updated_at')
