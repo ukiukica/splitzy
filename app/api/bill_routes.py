@@ -1,4 +1,3 @@
-from lib2to3.pygram import pattern_symbols
 from flask import Blueprint
 from app.models import Bill
 
