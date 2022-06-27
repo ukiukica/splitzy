@@ -16,7 +16,11 @@ from .seeds import seed_commands
 
 from .config import Config
 
+from flask_wtf.csrf import CSRFProtect
+
+
 app = Flask(__name__)
+csrf = CSRFProtect(app)
 
 # Setup login manager
 login = LoginManager(app)

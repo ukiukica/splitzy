@@ -46,7 +46,7 @@ function App() {
           <Bills />
         </ProtectedRoute>
         {/* DELETE AND TURN INTO MODAL ---------->>>>>>>> */}
-        <ProtectedRoute path='/createbill' exact={true}>
+        <ProtectedRoute path='/bills/createbill' exact={true}>
           <CreateBill />
         </ProtectedRoute>
         <ProtectedRoute path='/' exact={true} >

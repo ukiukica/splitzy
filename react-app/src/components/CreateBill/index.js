@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from 'react-router-dom';
-import addBill from '../../store/bills.js'
+import { addBill } from '../../store/bills.js'
 import { ValidationError } from "../../utils/validationError";
 
 function CreateBill() {
@@ -29,23 +29,27 @@ function CreateBill() {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-
-        const user_id = sessionUser.id
+        console.log("INSIDE HANDLE SUBMIT")
+        // const user_id = sessionUser.id
 
         const payload = {
-            user_id,
+            user_id: sessionUser.id,
             label,
             amount,
             settled
         }
 
-        let createdBill
-        try {
-            createdBill = await dispatch(addBill(payload))
-        } catch (error) {
-            if (error instanceof ValidationError) setErrors(errors.error)
-            else setErrors(error.toString().slice(7))
-        }
+        console.log("payload ->>>", payload)
+
+        let createdBill = await dispatch(addBill(payload))
+
+        console.log("CREATED BILL->>>", createdBill)
+        // try {
+        //     createdBill = await dispatch(addBill(payload))
+        // } catch (error) {
+        //     if (error instanceof ValidationError) setErrors(errors.error)
+        //     else setErrors(error.toString().slice(7))
+        // }
 
         if (createdBill) {
             setErrors([])
@@ -55,7 +59,7 @@ function CreateBill() {
 
     return (
         <div>
-            <form onSubmit={handleSubmit} className='add-campus-form'>
+            <form onSubmit={handleSubmit}>
                 {/* <ul>
                     {errors.map((error, idx) => <li key={idx}>{error}</li>)}
                 </ul> */}
@@ -63,6 +67,7 @@ function CreateBill() {
                 <div>
                     <label>Label
                         <input
+                            name="label"
                             className='label-input'
                             type='text'
                             value={label}
@@ -72,6 +77,7 @@ function CreateBill() {
                     </label>
                     <label>Amount
                         <input
+                            name="amount"
                             className='amount-input'
                             type='float'
                             value={amount}
@@ -81,11 +87,11 @@ function CreateBill() {
                     </label>
                     <label>Settled
                         <input
+                            name="settled"
                             className='settled-input'
                             type='checkbox'
                             value={settled}
                             onChange={(e) => setSettled(e.target.value)}
-                            required
                         />
                     </label>
                 </div>

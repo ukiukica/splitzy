@@ -1,18 +1,29 @@
-from flask import Blueprint
+from flask import Blueprint, Flask
 from app.models import db, Bill
 from app.forms import BillForm
-from sqlalchemy import DateTime
+from datetime import datetime
+
 
 bill_routes = Blueprint('bills', __name__)
 
+def validation_errors_to_error_messages(validation_errors):
+    """
+    Simple function that turns the WTForms validation errors into a simple list
+    """
+    errorMessages = []
+    for field in validation_errors:
+        for error in validation_errors[field]:
+            errorMessages.append(f'{field} : {error}')
+    return errorMessages
 
 @bill_routes.route('/')
 def bills():
     bills = Bill.query.all()
     return {'bills': [bill.to_dict() for bill in bills]}
 
-@bill_routes.route('/', methods=['POST'])
+@bill_routes.route('/createbill', methods=['POST'])
 def post_bill():
+    print("BILL POSTED")
     form = BillForm()
     if form.validate_on_submit():
         data = form.data
