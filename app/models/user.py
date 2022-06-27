@@ -11,9 +11,11 @@ class User(db.Model, UserMixin):
     last_name = db.Column(db.String(50), nullable=False)
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(100), nullable=False, unique=True)
-    hashed_password = db.Column(db.String(20), nullable=False)
+    hashed_password = db.Column(db.String(102), nullable=False)
     created_at = db.Column(db.DateTime)
     updated_at = db.Column(db.DateTime)
+
+    comments = db.relationship("Comment", back_populates="users")
 
     @property
     def password(self):
