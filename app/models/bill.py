@@ -18,4 +18,4 @@ class Bill(db.Model):
     created_at = db.Column(db.DateTime)
     updated_at = db.Column(db.DateTime)
 
-    comment = db.relationship("Comment", back_populates="bills")
+    comments = db.relationship("Comment", back_populates="bills")

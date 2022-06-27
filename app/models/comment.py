@@ -11,5 +11,5 @@ class Comment(db.Model):
     created_at = db.Column(db.DateTime)
     updated_at = db.Column(db.DateTime)
 
-    user = db.relationship("User", back_populates="comments")
-    bill = db.relationship("Bill", back_populates="comments")
+    users = db.relationship("User", back_populates="comments")
+    bills = db.relationship("Bill", back_populates="comments")
