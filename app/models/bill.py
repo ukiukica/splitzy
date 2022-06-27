@@ -18,4 +18,8 @@ class Bill(db.Model):
     created_at = db.Column(db.DateTime)
     updated_at = db.Column(db.DateTime)
 
+<<<<<<< HEAD
     comment = db.relationship("Comment", back_populates="bills")
+=======
+    comments = db.relationship("Comment", back_populates="bills")
+>>>>>>> f3813248f971959345ab4c70836f6d7ca1f89a1f
