@@ -30,8 +30,6 @@ class User(db.Model, UserMixin):
 
     comments = db.relationship("Comment", back_populates="users")
 
-    # bills = db.Relationship
-
     def befriend(self, user):
         if not self.is_friend(user):
             self.friended.append(user)

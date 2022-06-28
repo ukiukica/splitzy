@@ -5,7 +5,6 @@ user_bills = db.Table(
     "user_bills",
     db.Column('user_id', db.Integer, db.ForeignKey('users.id'), primary_key=True),
     db.Column('bill_id', db.Integer, db.ForeignKey('bills.id'), primary_key=True),
-    db.Column('user_amount', db.Float)
 )
 
 class Bill(db.Model):
@@ -19,12 +18,15 @@ class Bill(db.Model):
 
     comments = db.relationship("Comment", back_populates="bills")
 
+    assigned_user_bills = db.relationship("User", secondary=user_bills)
 
-    # def assign_bill_to_user(self, user):
-    #     if not self
+    def assign_bill_to_user(self, user):
+        if not self.is_assigned(user):
+            self.assigned_user_bills.append(user)
+            return self
 
-    # def is_assigned(self, user):
-    #     return self.
+    def is_assigned(self, user):
+        return self.assigned_user_bills.filter(user_bills.c.user_id == user.id).count() > 0
 
     def to_dict(self):
         return {
