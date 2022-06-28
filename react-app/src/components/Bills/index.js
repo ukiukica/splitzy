@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import { viewBills, removeBill } from "../../store/bills";
+import EditBillFormModal from "../EditBillModal";
 
 function Bills() {
   const dispatch = useDispatch();
@@ -26,6 +27,7 @@ function Bills() {
               Delete
             </button>
           </a>
+          <EditBillFormModal billId={bill.id}/>
           <br />
         </ul>
       ))}
