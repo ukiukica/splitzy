@@ -19,3 +19,13 @@ class Bill(db.Model):
     updated_at = db.Column(db.DateTime)
 
     comments = db.relationship("Comment", back_populates="bills")
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'label': self.label,
+            'amount': self.amount,
+            'settled': self.settled,
+            'created_at': self.created_at,
+            'updated_at': self.updated_at
+    }
