@@ -11,12 +11,11 @@ function DeleteComment({ comment }) {
         e.preventDefault()
 
         let commentDeleted = await dispatch(removeComment(comment.id))
-
+        console.log('COMMENT DELETED -->', commentDeleted)
         if (commentDeleted) {
             return history.push('/comments')
         }
     }
-
 
     return (
         <button onClick={handleDelete}>Delete</button>

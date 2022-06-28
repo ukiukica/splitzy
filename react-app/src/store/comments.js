@@ -54,10 +54,11 @@ export const editComment = (payload, id) => async (dispatch) => {
     })
 
     if (response.ok) {
-        dispatch(remove(id));
+        const editedComment = await response.json()
+        dispatch(edit(editedComment))
+        return editedComment
     }
 
-    return response
 }
 
 export const removeComment = (id) => async (dispatch) => {
