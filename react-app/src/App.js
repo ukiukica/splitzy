@@ -9,6 +9,7 @@ import UsersList from './components/UsersList';
 import User from './components/User';
 import Bills from './components/Bills'
 import CreateBill from './components/CreateBill';
+import Comments from './components/Comments'
 import { authenticate } from './store/session';
 
 function App() {
@@ -48,6 +49,9 @@ function App() {
         {/* DELETE AND TURN INTO MODAL ---------->>>>>>>> */}
         <ProtectedRoute path='/bills/createbill' exact={true}>
           <CreateBill />
+        </ProtectedRoute>
+        <ProtectedRoute path='/comments' exact={true}>
+          <Comments />
         </ProtectedRoute>
         <ProtectedRoute path='/' exact={true} >
           <h1>My Home Page</h1>

@@ -23,6 +23,7 @@ function Bills() {
                     <li>{bill.settled}</li>
                     <br />
                 </ul>
+
             ))}
         </div>
 
