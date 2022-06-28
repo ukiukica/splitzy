@@ -1,7 +1,11 @@
-# from app.models import db, Bill
+from app.models import db, Bill, User
 
 
-# def seed_user_bills():
+def seed_user_bills():
+    user = User()
+    bill = Bill()
+
+    
 #     user_bill_1 = Bill(
 #         user_id=1, bill_id=1, user_amount= 62.50 )
 #     user_bill_2 = Bill(
