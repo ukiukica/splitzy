@@ -67,10 +67,10 @@ export const removeComment = (id) => async (dispatch) => {
     })
     console.log('RESPONSE', response)
     if (response.ok) {
-        const removedComment = await response.json()
-        dispatch(remove(removedComment))
-        return removedComment
+        dispatch(remove(id));
+        return response
     }
+
 }
 
 const commentsReducer = (state = {}, action) => {
@@ -84,6 +84,15 @@ const commentsReducer = (state = {}, action) => {
         case ADD_COMMENT:
             const addState = { ...state, [action.newComment.id]: action.newComment }
             return addState
+        case EDIT_COMMENT:
+            const updatedState = {
+                ...state,
+                [action.editedComment.id]: {
+                    ...state[action.editedComment.id],
+                    ...action.editedComment
+                }
+            }
+            return updatedState
         case REMOVE_COMMENT:
             const deleteState = {...state}
             delete deleteState[action.removedComment]
