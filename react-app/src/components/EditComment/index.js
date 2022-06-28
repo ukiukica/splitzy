@@ -47,7 +47,7 @@ function EditComment({ comment }) {
     return (
         <div>
             <form onSubmit={handleSubmit}>
-                <h1> Add a Comment</h1>
+                <h1> Edit Comment</h1>
                 <div>
                     <input
                         name='content'
