@@ -1,5 +1,6 @@
 const ADD_BILL = "bills/ADD_BILL";
 const VIEW_BILLS = "bills/VIEW_BILLS";
+const REMOVE_BILL = "bills/REMOVE_BILL";
 
 const create = (newBill) => ({
   type: ADD_BILL,
@@ -10,6 +11,13 @@ const view = (bills) => ({
   type: VIEW_BILLS,
   bills,
 });
+
+const remove = (billId) => {
+  return {
+    type: REMOVE_BILL,
+    billId,
+  }
+}
 
 export const addBill = (payload) => async (dispatch) => {
   console.log("INSIDE THE THUNK");
@@ -39,6 +47,18 @@ export const viewBills = () => async (dispatch) => {
   }
 };
 
+export const removeBill = (id) => async (dispatch) => {
+  const response = await fetch(`/api/bills/${id}`, {
+    method: "DELETE",
+  })
+
+  if (response.ok) {
+    dispatch(remove(id));
+  }
+
+  return response
+};
+
 const billsReducer = (state = {}, action) => {
   switch (action.type) {
     case ADD_BILL:
@@ -50,6 +70,10 @@ const billsReducer = (state = {}, action) => {
         normalizedBills[bill.id] = bill;
       });
       return { ...normalizedBills };
+    case REMOVE_BILL:
+      const deleteState = { ...state }
+      // delete deleteState[action.id]
+      return deleteState;
     default:
       return state;
   }

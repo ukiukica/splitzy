@@ -43,5 +43,9 @@ def edit_bill():
     pass
 
 @bill_routes.route('/<int:id>', methods=['DELETE'])
-def delete_bill():
-    pass
+def delete_bill(id):
+    bill = Bill.query.get(id)
+    db.session.delete(bill)
+    db.session.commit()
+
+    return "Bill was successfully deleted."
