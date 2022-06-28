@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { useHistory } from 'react-router-dom'
+import { removeComment } from '../../store/comments'
 
 function DeleteComment({ comment }) {
     const dispatch = useDispatch()
@@ -8,7 +10,7 @@ function DeleteComment({ comment }) {
     const handleDelete = async (e) => {
         e.preventDefault()
 
-        let commentDeleted = await dispatch(deleteComment(comment.id))
+        let commentDeleted = await dispatch(removeComment(comment.id))
 
         if (commentDeleted) {
             return history.push('/comments')

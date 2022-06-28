@@ -57,5 +57,7 @@ def edit_comment(id):
 
 
 @comment_routes.route('/<int:id>', methods=['DELETE'])
-def delete_comment():
-    pass
+def delete_comment(id):
+    comment = Comment.query.get(id)
+    db.session.delete(comment)
+    db.session.commit()

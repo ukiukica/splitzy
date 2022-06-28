@@ -1,6 +1,7 @@
 const VIEW_COMMENTS = "comments/VIEW_COMMENTS"
 const ADD_COMMENT = 'comments/ADD_COMMENT'
 const EDIT_COMMENT = 'comments/EDIT_COMMENT'
+const REMOVE_COMMENT = 'comments/REMOVE_COMMENT'
 
 const view = (comments) => ({
     type: VIEW_COMMENTS,
@@ -15,6 +16,11 @@ const create = (newComment) => ({
 const edit = (editedComment) => ({
     type: EDIT_COMMENT,
     editedComment
+})
+
+const remove = (removedComment) => ({
+    type: REMOVE_COMMENT,
+    removedComment
 })
 
 export const viewComments = () => async (dispatch) => {
@@ -55,6 +61,18 @@ export const editComment = (payload, id) => async (dispatch) => {
 
 }
 
+export const removeComment = (id) => async (dispatch) => {
+    const response = await fetch(`/api/comments/${id}`, {
+        method: 'DELETE'
+    })
+    console.log('RESPONSE', response)
+    if (response.ok) {
+        const removedComment = await response.json()
+        dispatch(remove(removedComment))
+        return removedComment
+    }
+}
+
 const commentsReducer = (state = {}, action) => {
     switch (action.type) {
         case VIEW_COMMENTS:
@@ -66,6 +84,10 @@ const commentsReducer = (state = {}, action) => {
         case ADD_COMMENT:
             const addState = { ...state, [action.newComment.id]: action.newComment }
             return addState
+        case REMOVE_COMMENT:
+            const deleteState = {...state}
+            delete deleteState[action.removedComment]
+            return deleteState
         default:
             return state
     }
