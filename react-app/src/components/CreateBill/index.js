@@ -42,7 +42,8 @@ function CreateBill() {
             settled
         }
 
-        let createdBill = await dispatch(addBill(payload))
+        // let createdBill = await dispatch(addBill(payload))
+        let createdBill
 
         try {
             createdBill = await dispatch(addBill(payload))
