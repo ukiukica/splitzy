@@ -20,10 +20,10 @@ function EditBillForm({setShowModal, billId}) {
 
     const bills = Object.values(useSelector((state) => state.bills))
     console.log(bills)
-    // const selectBill = bills.filter((bill) => {
-    //     return bill.id == +billId
-    // })
-    // console.log(selectBill)
+    const selectBill = bills.filter((bill) => {
+        return bill.id == +billId
+    })
+    console.log(selectBill)
 
     useEffect(() => {
         const errors = []
