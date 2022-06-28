@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 import { addBill } from '../../store/bills.js'
 import { ValidationError } from "../../utils/validationError";
 
-function CreateBill() {
+function EditBill() {
     const dispatch = useDispatch()
     const history = useHistory()
 
@@ -100,4 +100,4 @@ function CreateBill() {
 
 }
 
-export default CreateBill;
+export default EditBill;
