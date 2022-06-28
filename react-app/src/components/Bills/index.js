@@ -21,12 +21,12 @@ function Bills() {
           <li>{bill.label}</li>
           <li>{bill.amount}</li>
           <li>{bill.settled}</li>
+          <EditBillFormModal bill={bill}/>
           <a href="/bills">
             <button onClick={() => dispatch(removeBill(bill.id))}>
               Delete
             </button>
           </a>
-          <EditBillFormModal bill={bill}/>
           <br />
         </ul>
       ))}
