@@ -40,6 +40,7 @@ def post_bill():
 @bill_routes.route('/<int:id>', methods=['PUT'])
 def edit_bill():
     bill = Bill.query.get(id)
+    print(bill, "THIS IS BILL!!!!!!")
 
 
 @bill_routes.route('/<int:id>', methods=['DELETE'])
