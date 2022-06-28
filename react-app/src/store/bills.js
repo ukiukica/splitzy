@@ -46,7 +46,7 @@ const billsReducer = (state = {}, action) => {
       return addState;
     case VIEW_BILLS:
       const normalizedBills = {};
-      action.bills.forEach((bill) => {
+      action.bills.bills.forEach((bill) => {
         normalizedBills[bill.id] = bill;
       });
       return { ...normalizedBills };
