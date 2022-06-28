@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
 import EditBillForm from './EditBillForm';
 
-function EditBillFormModal({billId}) {
+function EditBillFormModal({bill}) {
   const [showModal, setShowModal] = useState(false);
 
   return (
@@ -10,7 +10,7 @@ function EditBillFormModal({billId}) {
       <button onClick={() => setShowModal(true)}>Edit</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <EditBillForm setShowModal={setShowModal} billId={billId}/>
+          <EditBillForm setShowModal={setShowModal} bill={bill}/>
         </Modal>
       )}
     </>

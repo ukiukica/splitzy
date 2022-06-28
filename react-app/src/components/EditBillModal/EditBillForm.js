@@ -1,40 +1,38 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from 'react-router-dom';
-import { addBill } from '../../store/bills.js'
+import { addBill, updateBill } from '../../store/bills.js'
 import { ValidationError } from "../../utils/validationError";
 
-function EditBillForm({setShowModal, billId}) {
-    const { id } = useParams()
+function EditBillForm({setShowModal, bill}) {
     const dispatch = useDispatch()
     const history = useHistory()
 
     const sessionUser = useSelector(state => state.session.user)
 
-    const [label, setLabel] = useState('')
-    const [amount, setAmount] = useState(0)
+    const id = bill.id
+
+    const [label, setLabel] = useState(bill.label)
+    const [amount, setAmount] = useState(bill.amount)
     const [settled, setSettled] = useState(false)
     const [errors, setErrors] = useState([])
 
-    // console.log(id)
-
-    const bills = Object.values(useSelector((state) => state.bills))
-    console.log(bills)
-    const selectBill = bills.filter((bill) => {
-        return bill.id == +billId
-    })
-    console.log(selectBill)
 
     useEffect(() => {
         const errors = []
 
         if (label.length > 100) {
             errors.push('Label must be less than 100 characters')
+        } else if (label.length <= 0) {
+            errors.push('Please provide a label')
         }
+
         if (amount <= 0) {
             errors.push('Must enter an amount greater than 0')
         }
+
         setErrors(errors)
+
     }, [label, amount])
 
     const handleSubmit = async (e) => {
@@ -47,27 +45,28 @@ function EditBillForm({setShowModal, billId}) {
             settled
         }
 
-        let createdBill = await dispatch(addBill(payload))
+        // let updatedBill = await dispatch(updateBill(payload, id));
+        let updatedBill
 
-        // try {
-        //     createdBill = await dispatch(addBill(payload))
-        // } catch (error) {
-        //     if (error instanceof ValidationError) setErrors(errors.error)
-        //     else setErrors(error.toString().slice(7))
-        // }
+        try {
+            updatedBill = await dispatch(updateBill(payload, id))
+        } catch (error) {
+            if (error instanceof ValidationError) setErrors(errors.error)
+            else setErrors(error.toString().slice(7))
+        }
 
-        if (createdBill) {
+        if (updatedBill) {
             setErrors([])
-            return history.push('/bills')
+            setShowModal(false);
         }
     }
 
     return (
         <div>
             <form onSubmit={handleSubmit}>
-                {/* <ul>
+                <ul>
                     {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-                </ul> */}
+                </ul>
                 <h1>Edit Bill</h1>
                 <div>
                     <label>Label
@@ -101,10 +100,10 @@ function EditBillForm({setShowModal, billId}) {
                     </label>
                 </div>
                 <div>
-                    <button type='submit'>Submit</button>
+                    <button type='submit' disabled={errors.length > 0}>Submit</button>
                 </div>
             </form>
-            <button>Cancel</button>
+            <button onClick={() => setShowModal(false)}>Cancel</button>
         </div>
     )
 
