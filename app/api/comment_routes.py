@@ -61,3 +61,4 @@ def delete_comment(id):
     comment = Comment.query.get(id)
     db.session.delete(comment)
     db.session.commit()
+    return 'Comment was successfully deleted'
