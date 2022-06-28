@@ -3,6 +3,12 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 
 
+friends = db.Table(
+    'friends',
+    db.Column('friend_id', db.Integer, db.ForeignKey('users.id')),
+    db.Column('friended_id', db.Integer, db.ForeignKey('users.id'))
+)
+
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
 
@@ -15,7 +21,32 @@ class User(db.Model, UserMixin):
     created_at = db.Column(db.DateTime)
     updated_at = db.Column(db.DateTime)
 
+    friended = db.relationship('User',
+        secondary = friends,
+        primaryjoin = (friends.c.friend_id == id),
+        secondaryjoin = (friends.c.friended_id == id),
+        backref = db.backref('friends', lazy = 'dynamic'),
+        lazy = 'dynamic')
+
     comments = db.relationship("Comment", back_populates="users")
+
+
+    def befriend(self, user):
+        if not self.is_friend(user):
+            self.friended.append(user)
+            return self
+
+    def unfriend(self, user):
+        if self.is_friend(user):
+            self.friended.remove(user)
+            return self
+
+    def is_friend(self, user):
+        return self.friended.filter(friends.c.friended_id == user.id).count() > 0
+
+    def friends_list(self):
+        return User.query.join(friends, (friends.c.friend_id == self.id)).all()
+
 
     @property
     def password(self):
