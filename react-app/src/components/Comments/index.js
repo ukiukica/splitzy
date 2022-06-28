@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useHistory } from 'react-router-dom'
+import { useHistory, useParams } from 'react-router-dom'
 import { viewComments } from '../../store/comments'
+import EditComment from '../EditComment'
+import DeleteComment from '../DeleteComment'
 
 function Comments() {
     const dispatch = useDispatch()
@@ -17,11 +19,13 @@ function Comments() {
     return (
         <div>
             {comments.map((comment) =>(
-                <ul key={comment.id}>
-                    <li>{comment.content}</li>
-                </ul>
+                <div key={comment.id}>
+                    <p>{comment.content}</p>
+                    {/* if sessionUser.id == comment.user_id: */}
+                    <EditComment comment={comment} />
+                    <DeleteComment comment={comment} />
+                </div>
             ))}
-
         </div>
     )
 
