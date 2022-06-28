@@ -11,31 +11,32 @@ function EditBillForm({setShowModal, billId}) {
 
     const sessionUser = useSelector(state => state.session.user)
 
-    const [label, setLabel] = useState('')
-    const [amount, setAmount] = useState(0)
+    const bills = Object.values(useSelector((state) => state.bills))
+    console.log(bills)
+    const selectBill = bills.filter((bill) => {
+        return bill.id == +billId
+    })[0]
+    console.log(selectBill)
+
+    const [label, setLabel] = useState(selectBill?.label)
+    const [amount, setAmount] = useState(selectBill?.amount)
     const [settled, setSettled] = useState(false)
     const [errors, setErrors] = useState([])
 
     // console.log(id)
 
-    const bills = Object.values(useSelector((state) => state.bills))
-    console.log(bills)
-    const selectBill = bills.filter((bill) => {
-        return bill.id == +billId
-    })
-    console.log(selectBill)
 
-    useEffect(() => {
-        const errors = []
+    // useEffect(() => {
+    //     const errors = []
 
-        if (label.length > 100) {
-            errors.push('Label must be less than 100 characters')
-        }
-        if (amount <= 0) {
-            errors.push('Must enter an amount greater than 0')
-        }
-        setErrors(errors)
-    }, [label, amount])
+    //     if (label.length > 100) {
+    //         errors.push('Label must be less than 100 characters')
+    //     }
+    //     if (amount <= 0) {
+    //         errors.push('Must enter an amount greater than 0')
+    //     }
+    //     setErrors(errors)
+    // }, [label, amount])
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -104,7 +105,7 @@ function EditBillForm({setShowModal, billId}) {
                     <button type='submit'>Submit</button>
                 </div>
             </form>
-            <button>Cancel</button>
+            <button onClick={() => setShowModal(false)}>Cancel</button>
         </div>
     )
 
