@@ -4,24 +4,24 @@ import { useHistory, useParams } from 'react-router-dom';
 import { addBill, updateBill } from '../../store/bills.js'
 import { ValidationError } from "../../utils/validationError";
 
-function EditBillForm({setShowModal, billId}) {
+function EditBillForm({setShowModal, bill}) {
     // const { id } = useParams()
     const dispatch = useDispatch()
     const history = useHistory()
 
     const sessionUser = useSelector(state => state.session.user)
 
-    const bills = Object.values(useSelector((state) => state.bills))
+    // const bills = Object.values(useSelector((state) => state.bills))
 
-    const selectBill = bills.filter((bill) => {
-        return bill.id == +billId
-    })[0]
-    console.log("SELECT BILL------", selectBill)
+    // const selectBill = bills.filter((bill) => {
+    //     return bill.id == +billId
+    // })[0]
+    // console.log("SELECT BILL------", selectBill)
 
-    const id = selectBill.id
+    const id = bill.id
 
-    const [label, setLabel] = useState(selectBill?.label)
-    const [amount, setAmount] = useState(selectBill?.amount)
+    const [label, setLabel] = useState(bill.label)
+    const [amount, setAmount] = useState(bill.amount)
     const [settled, setSettled] = useState(false)
     // const [id, setId] = useState()
     const [errors, setErrors] = useState([])
@@ -46,14 +46,13 @@ function EditBillForm({setShowModal, billId}) {
 
         const payload = {
             user_id: sessionUser.id,
-            id,
             label,
             amount,
             settled
         }
         console.log(payload)
 
-        let updatedBill = await dispatch(updateBill(payload));
+        let updatedBill = await dispatch(updateBill(payload, id));
 
         // try {
         //     createdBill = await dispatch(addBill(payload))

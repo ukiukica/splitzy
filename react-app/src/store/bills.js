@@ -47,23 +47,20 @@ export const viewBills = () => async (dispatch) => {
   }
 };
 
-export const updateBill = (payload) => async (dispatch) => {
-  console.log(payload)
-  console.log(payload.id)
-
-  const response = await fetch(`/api/bills/${payload.id}`, {
+export const updateBill = (payload, id) => async (dispatch) => {
+  const response = await fetch(`/api/bills/${id}`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload)
   })
 
-  const editedBill = await response.json();
 
-  if (editedBill) {
+  if (response.ok) {
+    const editedBill = await response.json();
     dispatch(create(editedBill));
+    return editedBill;
   }
 
-  return editedBill;
 }
 
 export const removeBill = (id) => async (dispatch) => {

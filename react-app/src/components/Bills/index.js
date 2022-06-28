@@ -27,7 +27,7 @@ function Bills() {
               Delete
             </button>
           </a>
-          <EditBillFormModal billId={bill.id}/>
+          <EditBillFormModal bill={bill}/>
           <br />
         </ul>
       ))}

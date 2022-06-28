@@ -46,14 +46,13 @@ def edit_bill(id):
     if form.validate_on_submit():
         data = form.data
         print("THIS IS THE DATA------", data)
-        bill.id=data['id'],
-        bill.label=data['label'],
-        bill.amount=data['amount'],
-        bill.settled=data['settled'],
+        bill.label=data['label']
+        bill.amount=data['amount']
+        bill.settled=data['settled']
         bill.updated_at=datetime.now()
 
         db.session.commit()
-        return edit_bill.to_dict()
+        return bill.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 

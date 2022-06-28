@@ -4,7 +4,6 @@ from sqlalchemy import DateTime, Integer
 from wtforms.validators import DataRequired
 
 class EditBillForm(FlaskForm):
-    id = IntegerField("Bill_id")
     label = StringField('Label', validators=[DataRequired()])
     amount = FloatField('Amount', validators=[DataRequired()])
     settled = BooleanField('Settled')
