@@ -1,4 +1,4 @@
-from flask import Blueprint, Flask, request
+from flask import Blueprint, request
 from app.models import db, Bill
 from app.forms import BillForm, EditBillForm
 from datetime import datetime
@@ -40,12 +40,10 @@ def post_bill():
 @bill_routes.route('/<int:id>', methods=['PUT'])
 def edit_bill(id):
     bill = Bill.query.get(id)
-    print("THIS IS BILL!!!!!!", bill)
     form = EditBillForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         data = form.data
-        print("THIS IS THE DATA------", data)
         bill.label=data['label']
         bill.amount=data['amount']
         bill.settled=data['settled']

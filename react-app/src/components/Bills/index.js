@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory, useParams } from "react-router-dom";
 import { viewBills, removeBill } from "../../store/bills";
 import EditBillFormModal from "../EditBillModal";
 
