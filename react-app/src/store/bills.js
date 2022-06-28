@@ -47,6 +47,25 @@ export const viewBills = () => async (dispatch) => {
   }
 };
 
+export const updateBill = (payload) => async (dispatch) => {
+  console.log(payload)
+  console.log(payload.id)
+
+  const response = await fetch(`/api/bills/${payload.id}`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload)
+  })
+
+  const editedBill = await response.json();
+
+  if (editedBill) {
+    dispatch(create(editedBill));
+  }
+
+  return editedBill;
+}
+
 export const removeBill = (id) => async (dispatch) => {
   const response = await fetch(`/api/bills/${id}`, {
     method: "DELETE",
@@ -56,7 +75,7 @@ export const removeBill = (id) => async (dispatch) => {
     dispatch(remove(id));
   }
 
-  return response
+  return response;
 };
 
 const billsReducer = (state = {}, action) => {

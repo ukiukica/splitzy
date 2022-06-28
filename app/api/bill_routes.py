@@ -1,6 +1,6 @@
 from flask import Blueprint, Flask, request
 from app.models import db, Bill
-from app.forms import BillForm
+from app.forms import BillForm, EditBillForm
 from datetime import datetime
 
 
@@ -38,9 +38,24 @@ def post_bill():
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 @bill_routes.route('/<int:id>', methods=['PUT'])
-def edit_bill():
-    bill = Bill.query.get(id)
-    print(bill, "THIS IS BILL!!!!!!")
+def edit_bill(id):
+    # bill = Bill.query.get(id)
+    # print(bill, "THIS IS BILL!!!!!!")
+    form = EditBillForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        data = form.data
+        print("THIS IS THE DATA------", data)
+        edit_bill = Bill(id=data['id'],
+                         label=data['label'],
+                         amount=data['amount'],
+                         settled=data['settled'],
+                         created_at=datetime.now(),
+                         updated_at=datetime.now())
+        db.session.update(edit_bill)
+        db.session.commit()
+        return edit_bill.to_dict()
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
 @bill_routes.route('/<int:id>', methods=['DELETE'])

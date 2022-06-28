@@ -1,26 +1,29 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from 'react-router-dom';
-import { addBill } from '../../store/bills.js'
+import { addBill, updateBill } from '../../store/bills.js'
 import { ValidationError } from "../../utils/validationError";
 
 function EditBillForm({setShowModal, billId}) {
-    const { id } = useParams()
+    // const { id } = useParams()
     const dispatch = useDispatch()
     const history = useHistory()
 
     const sessionUser = useSelector(state => state.session.user)
 
     const bills = Object.values(useSelector((state) => state.bills))
-    console.log(bills)
+
     const selectBill = bills.filter((bill) => {
         return bill.id == +billId
     })[0]
-    console.log(selectBill)
+    console.log("SELECT BILL------", selectBill)
+
+    const id = selectBill.id
 
     const [label, setLabel] = useState(selectBill?.label)
     const [amount, setAmount] = useState(selectBill?.amount)
     const [settled, setSettled] = useState(false)
+    // const [id, setId] = useState()
     const [errors, setErrors] = useState([])
 
     // console.log(id)
@@ -43,12 +46,14 @@ function EditBillForm({setShowModal, billId}) {
 
         const payload = {
             user_id: sessionUser.id,
+            id,
             label,
             amount,
             settled
         }
+        console.log(payload)
 
-        let createdBill = await dispatch(addBill(payload))
+        let updatedBill = await dispatch(updateBill(payload));
 
         // try {
         //     createdBill = await dispatch(addBill(payload))
@@ -57,9 +62,10 @@ function EditBillForm({setShowModal, billId}) {
         //     else setErrors(error.toString().slice(7))
         // }
 
-        if (createdBill) {
+        if (updatedBill) {
             setErrors([])
-            return history.push('/bills')
+            setShowModal(false);
+            // return history.push('/bills')
         }
     }
 

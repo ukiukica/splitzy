@@ -9,6 +9,7 @@ import UsersList from './components/UsersList';
 import User from './components/User';
 import Bills from './components/Bills'
 import CreateBill from './components/CreateBill';
+import EditBillForm from './components/EditBillModal/EditBillForm';
 import { authenticate } from './store/session';
 
 function App() {
@@ -49,6 +50,9 @@ function App() {
         <ProtectedRoute path='/bills/createbill' exact={true}>
           <CreateBill />
         </ProtectedRoute>
+        {/* <ProtectedRoute path='/bills/:billId' exact={true}>
+          <EditBillForm />
+        </ProtectedRoute> */}
         <ProtectedRoute path='/' exact={true} >
           <h1>My Home Page</h1>
         </ProtectedRoute>
