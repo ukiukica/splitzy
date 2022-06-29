@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { useHistory } from 'react-router-dom'
 import { addComment } from '../../store/comments'
 
-function CreateComment() {
+function CreateComment({ billId }) {
     const dispatch = useDispatch()
     const history = useHistory()
 
@@ -27,14 +27,14 @@ function CreateComment() {
 
         const payload = {
             user_id: sessionUser.id,
-            bill_id: 1, /* for testing only, refactor this */
+            bill_id: billId, /* for testing only, refactor this */
             content
         }
         let createdComment = await dispatch(addComment(payload))
         console.log("createdComment:", createdComment)
         if (createdComment) {
             setErrors([])
-            return history.push('/comments')
+            return history.push('/bills')
         }
 
     }

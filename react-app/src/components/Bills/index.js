@@ -4,6 +4,7 @@ import { useHistory, useParams } from "react-router-dom";
 import { viewBills, removeBill } from "../../store/bills";
 import EditBillFormModal from "../EditBillModal";
 import Comments from '../Comments';
+import CreateComment from '../CreateComment';
 
 function Bills() {
   const dispatch = useDispatch();
@@ -30,6 +31,9 @@ function Bills() {
           </a>
           <EditBillFormModal billId={bill.id}/>
           <Comments billId={bill.id}/>
+          <button>
+            <CreateComment billId={bill.id}/>
+          </button>
           <br />
         </ul>
       ))}
