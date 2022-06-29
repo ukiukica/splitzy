@@ -1,3 +1,7 @@
 heyyaaaa
 heyy
 
+
+heroku run -a splitzy-app flask db migrate
+heroku run -a splitzy-app flask db upgrade
+heroku run -a splitzy-app flask seed all
