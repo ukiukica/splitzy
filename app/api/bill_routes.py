@@ -25,7 +25,6 @@ def bills():
 
 @bill_routes.route('/createbill', methods=['POST'])
 def post_bill():
-    print("BILL POSTED")
     form = BillForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
@@ -42,8 +41,14 @@ def post_bill():
 
 @bill_routes.route('/<int:id>', methods=['PUT'])
 def edit_bill():
-    pass
+    bill = Bill.query.get(id)
+    print(bill, "THIS IS BILL!!!!!!")
+
 
 @bill_routes.route('/<int:id>', methods=['DELETE'])
-def delete_bill():
-    pass
+def delete_bill(id):
+    bill = Bill.query.get(id)
+    db.session.delete(bill)
+    db.session.commit()
+
+    return "Bill was successfully deleted."

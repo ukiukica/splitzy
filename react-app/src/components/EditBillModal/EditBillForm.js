@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import { addBill } from '../../store/bills.js'
 import { ValidationError } from "../../utils/validationError";
 
-function CreateBill() {
+function EditBillForm({setShowModal, billId}) {
+    const { id } = useParams()
     const dispatch = useDispatch()
     const history = useHistory()
 
@@ -15,7 +16,18 @@ function CreateBill() {
     const [settled, setSettled] = useState(false)
     const [errors, setErrors] = useState([])
 
+    // console.log(id)
+
+    const bills = Object.values(useSelector((state) => state.bills))
+    console.log(bills)
+    const selectBill = bills.filter((bill) => {
+        return bill.id == +billId
+    })
+    console.log(selectBill)
+
     useEffect(() => {
+        const errors = []
+
         if (label.length > 100) {
             errors.push('Label must be less than 100 characters')
         }
@@ -56,7 +68,7 @@ function CreateBill() {
                 {/* <ul>
                     {errors.map((error, idx) => <li key={idx}>{error}</li>)}
                 </ul> */}
-                <h1>Add a BILL</h1>
+                <h1>Edit Bill</h1>
                 <div>
                     <label>Label
                         <input
@@ -98,4 +110,4 @@ function CreateBill() {
 
 }
 
-export default CreateBill;
+export default EditBillForm;
