@@ -29,7 +29,6 @@ function SearchBar() {
                     <p>{user.first_name}</p>
                     <p>{user.last_name}</p>
                     <p>{user.username}</p>
-                    <p>{user.email}</p>
                 </div>
             )) : null }
         </div>

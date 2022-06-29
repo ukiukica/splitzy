@@ -21,6 +21,7 @@ class User(db.Model, UserMixin):
     updated_at = db.Column(db.DateTime)
 
     comments = db.relationship("Comment", back_populates="users")
+    transactions = db.relationship("Transaction", back_populates="users")
 
     friended = db.relationship('User',
         secondary = friends,
