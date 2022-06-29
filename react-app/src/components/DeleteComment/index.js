@@ -13,7 +13,7 @@ function DeleteComment({ comment }) {
         let commentDeleted = await dispatch(removeComment(comment.id))
         console.log('COMMENT DELETED -->', commentDeleted)
         if (commentDeleted) {
-            return history.push('/comments')
+            return history.push('/bills')
         }
     }
 

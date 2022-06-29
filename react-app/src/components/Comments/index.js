@@ -17,6 +17,7 @@ function Comments({ billId }) {
         return comment.bill_id == billId
     })
 
+    console.log('BILL COMMENTS', billComments)
     const [showModal, setShowModal] = useState(false);
 
     const sessionUser = useSelector(state => state.session.user)
