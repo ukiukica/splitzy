@@ -25,7 +25,6 @@ function Bills() {
         <ul key={bill.id}>
           <li>{bill.label}</li>
           <li>{bill.amount}</li>
-          <li>{bill.settled}</li>
           <a href="/bills">
             <button onClick={() => dispatch(removeBill(bill.id))}>
               Delete

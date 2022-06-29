@@ -31,7 +31,6 @@ def post_bill():
         data = form.data
         new_bill = Bill(label=data['label'],
                         amount=data['amount'],
-                        settled=data['settled'],
                         created_at=datetime.now(),
                         updated_at=datetime.now())
         db.session.add(new_bill)
@@ -48,7 +47,6 @@ def edit_bill(id):
         data = form.data
         bill.label=data['label']
         bill.amount=data['amount']
-        bill.settled=data['settled']
         bill.updated_at=datetime.now()
 
         db.session.commit()
