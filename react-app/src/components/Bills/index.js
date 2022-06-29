@@ -31,7 +31,7 @@ function Bills() {
               Delete
             </button>
           </a>
-          <EditBillFormModal billId={bill.id}/>
+          <EditBillFormModal bill={bill}/>
           <Comments billId={bill.id}/>
           <button onClick={() => setShowModal(true)}>Add a Comment</button>
           {showModal && (
