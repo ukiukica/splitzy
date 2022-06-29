@@ -1,5 +1,4 @@
 from flask.cli import AppGroup
-from .users import seed_users, undo_users
 from .users_and_bills import seed_users_and_bills, undo_users_and_bills
 from .comments import seed_comments, undo_comments
 from .transactions import seed_transactions, undo_transactions
