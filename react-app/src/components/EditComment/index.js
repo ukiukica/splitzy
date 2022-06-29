@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { Link, useHistory } from 'react-router-dom'
 import { editComment } from '../../store/comments'
 
-function EditComment({ comment }) {
+function EditComment({ comment, billId }) {
     const dispatch = useDispatch()
     const history = useHistory()
 
@@ -27,7 +27,7 @@ function EditComment({ comment }) {
 
         const payload = {
             user_id: sessionUser.id,
-            bill_id: 1, /* for testing only, refactor this */
+            bill_id: billId, /* for testing only, refactor this */
             content
         }
 
