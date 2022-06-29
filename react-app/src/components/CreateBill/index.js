@@ -18,11 +18,16 @@ function CreateBill() {
     useEffect(() => {
         if (label.length > 100) {
             errors.push('Label must be less than 100 characters')
+        } else if (label.length <= 0) {
+            errors.push('Please provide a label')
         }
+
         if (amount <= 0) {
             errors.push('Must enter an amount greater than 0')
         }
+
         setErrors(errors)
+
     }, [label, amount])
 
     const handleSubmit = async (e) => {
@@ -35,14 +40,15 @@ function CreateBill() {
             settled
         }
 
-        let createdBill = await dispatch(addBill(payload))
+        // let createdBill = await dispatch(addBill(payload))
+        let createdBill
 
-        // try {
-        //     createdBill = await dispatch(addBill(payload))
-        // } catch (error) {
-        //     if (error instanceof ValidationError) setErrors(errors.error)
-        //     else setErrors(error.toString().slice(7))
-        // }
+        try {
+            createdBill = await dispatch(addBill(payload))
+        } catch (error) {
+            if (error instanceof ValidationError) setErrors(errors.error)
+            else setErrors(error.toString().slice(7))
+        }
 
         if (createdBill) {
             setErrors([])
@@ -53,9 +59,9 @@ function CreateBill() {
     return (
         <div>
             <form onSubmit={handleSubmit}>
-                {/* <ul>
+                <ul>
                     {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-                </ul> */}
+                </ul>
                 <h1>Add a BILL</h1>
                 <div>
                     <label>Label
@@ -65,8 +71,9 @@ function CreateBill() {
                             type='text'
                             value={label}
                             onChange={(e) => setLabel(e.target.value)}
+                            placeholder={"Insert label here..."}
                             required
-                        />
+                            />
                     </label>
                     <label>Amount
                         <input
@@ -89,7 +96,7 @@ function CreateBill() {
                     </label>
                 </div>
                 <div>
-                    <button type='submit'>Submit</button>
+                    <button type='submit' disabled={errors.length > 0}>Submit</button>
                 </div>
             </form>
             <button>Cancel</button>
