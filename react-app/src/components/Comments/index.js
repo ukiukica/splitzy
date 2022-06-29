@@ -5,11 +5,15 @@ import { Modal } from '../../context/Modal';
 import EditComment from '../EditComment'
 import DeleteComment from '../DeleteComment'
 
-function Comments() {
+function Comments({ billId }) {
     const dispatch = useDispatch()
 
     const comments = useSelector((state) => {
         return Object.values(state.comments)
+    })
+
+    const billComments = comments.filter((comment) => {
+        return comment.bill_id == billId
     })
 
     const [showModal, setShowModal] = useState(false);
@@ -22,7 +26,7 @@ function Comments() {
 
     return (
         <div>
-            {comments.map((comment) =>(
+            {(billComments) ? billComments.map((comment) =>(
                 <div key={comment.id}>
                     <p>{comment.content}</p>
                     {(sessionUser.id == comment.user_id) ? (
@@ -37,7 +41,7 @@ function Comments() {
                         </div>
                     ) : null }
                 </div>
-            ))}
+            )) : null }
         </div>
     )
 

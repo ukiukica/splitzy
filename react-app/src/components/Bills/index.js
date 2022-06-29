@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import { viewBills, removeBill } from "../../store/bills";
 import EditBillFormModal from "../EditBillModal";
+import Comments from '../Comments';
 
 function Bills() {
   const dispatch = useDispatch();
@@ -28,6 +29,7 @@ function Bills() {
             </button>
           </a>
           <EditBillFormModal billId={bill.id}/>
+          <Comments billId={bill.id}/>
           <br />
         </ul>
       ))}
