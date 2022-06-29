@@ -18,7 +18,9 @@ class Bill(db.Model):
     created_at = db.Column(db.DateTime)
     updated_at = db.Column(db.DateTime)
 
-    comments = db.relationship("Comment", back_populates="bills")
+    comments = db.relationship("Comment",
+            back_populates="bills",
+            cascade="all, delete")
 
     def to_dict(self):
         return {
