@@ -4,6 +4,7 @@ import { viewComments } from '../../store/comments'
 import { Modal } from '../../context/Modal';
 import EditComment from '../EditComment'
 import DeleteComment from '../DeleteComment'
+import './commentsContainer.css'
 
 function Comments({ billId }) {
     const dispatch = useDispatch()
@@ -25,7 +26,7 @@ function Comments({ billId }) {
     }, [dispatch])
 
     return (
-        <div>
+        <div className='comments-container'>
             {(billComments) ? billComments.map((comment) =>(
                 <div key={comment.id}>
                     <p>{comment.content}</p>
