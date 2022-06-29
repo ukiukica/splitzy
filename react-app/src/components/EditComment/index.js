@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from "react-redux"
-import { useHistory } from 'react-router-dom'
-import { editComment, viewComments } from '../../store/comments'
+import { Link, useHistory } from 'react-router-dom'
+import { editComment } from '../../store/comments'
 
 function EditComment({ comment }) {
     const dispatch = useDispatch()
@@ -11,10 +11,6 @@ function EditComment({ comment }) {
 
     const [content, setContent] = useState(comment.content)
     const [errors, setErrors] = useState([])
-
-    // useEffect(() => {
-    //     dispatch(viewComments())
-    // }, [content])
 
     useEffect(() => {
         if (content.length > 2000) {
@@ -61,7 +57,7 @@ function EditComment({ comment }) {
                     <button type='submit'>Submit</button>
                 </div>
             </form>
-            <button>Cancel</button>
+            <Link to='/bills' className='cancel-link'>Cancel</Link>
         </div>
     )
 }
