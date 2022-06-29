@@ -14,6 +14,7 @@ function EditComment({ comment, billId }) {
 
     console.log('CONTENT --->', content)
     useEffect(() => {
+        const errors = []
         if (content.length > 2000) {
             errors.push('Comment must be less than 2000 characters')
         }
@@ -36,7 +37,7 @@ function EditComment({ comment, billId }) {
 
         if (editedComment) {
             setErrors([])
-            return history.push('/comments')
+            return history.push('/bills')
         }
 
     }

@@ -16,6 +16,7 @@ function CreateBill() {
     const [errors, setErrors] = useState([])
 
     useEffect(() => {
+        const errors = []
         if (label.length > 100) {
             errors.push('Label must be less than 100 characters')
         } else if (label.length <= 0) {
