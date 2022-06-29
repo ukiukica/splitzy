@@ -36,6 +36,21 @@ def seed_users_and_bills():
     db.session.add(user_9)
     db.session.add(user_10)
 
+    user_1.befriend(user_2)
+    user_2.befriend(user_3)
+    user_2.befriend(user_4)
+    user_3.befriend(user_4)
+    user_5.befriend(user_6)
+    user_7.befriend(user_8)
+    user_7.befriend(user_9)
+    user_8.befriend(user_9)
+    user_6.befriend(user_7)
+    user_6.befriend(user_2)
+    user_7.befriend(user_2)
+    user_1.befriend(user_3)
+    user_9.befriend(user_10)
+    user_2.befriend(user_5)
+
 
     bill_1 = Bill(
         label='Date Night', amount=125, created_at= '2019-04-14', updated_at= '2019-04-14' )
