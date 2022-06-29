@@ -13,6 +13,7 @@ function CreateComment({ billId }) {
     const [errors, setErrors] = useState([])
 
     useEffect(() => {
+        const errors = []
         if (content.length > 2000) {
             errors.push('Comment must be less than 2000 characters')
         }
