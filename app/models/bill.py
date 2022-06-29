@@ -19,6 +19,7 @@ class Bill(db.Model):
     updated_at = db.Column(db.DateTime)
 
     comments = db.relationship("Comment", back_populates="bills")
+    assigned_user_bills = db.relationship("User", secondary=user_bills)
 
     def to_dict(self):
         return {
@@ -29,3 +30,11 @@ class Bill(db.Model):
             'created_at': self.created_at,
             'updated_at': self.updated_at
     }
+
+    def assign_bill_to_user(self, user):
+        # if not self.is_assigned(user):
+        self.assigned_user_bills.append(user)
+        return self
+
+    # def is_assigned(self, user):
+    #     return self.assigned_user_bills.filter(user_bills.c.user_id == user.id).count() > 0
