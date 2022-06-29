@@ -1,0 +1,8 @@
+.comments-container {
+    border: 1px solid rgb(88, 84, 84);
+    border-radius: 10px;
+    margin: 5%;
+    padding: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgb(88, 84, 84);
+}

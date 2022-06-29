@@ -19,6 +19,8 @@ def validation_errors_to_error_messages(validation_errors):
 @bill_routes.route('/')
 def bills():
     bills = Bill.query.all()
+    print("bills: ", bills)
+    print("returned bills: ", [bill.to_dict() for bill in bills])
     return {'bills': [bill.to_dict() for bill in bills]}
 
 @bill_routes.route('/createbill', methods=['POST'])
