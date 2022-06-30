@@ -23,6 +23,11 @@ class User(db.Model, UserMixin):
     comments = db.relationship("Comment", back_populates="users")
     transactions = db.relationship("Transaction", back_populates="users")
 
+    # assigned_user_bills = db.relationship("Bill",
+    #     secondary=user_bills,
+    #     backref= db.backref('user_bills', lazy = 'dynamic'),
+    #     lazy = 'dynamic')
+
     friended = db.relationship('User',
         secondary = friends,
         primaryjoin = (friends.c.friend_id == id),

@@ -3,8 +3,8 @@ from .db import db
 
 user_bills = db.Table(
     "user_bills",
-    db.Column('users', db.Integer, db.ForeignKey('users.id'), primary_key=True),
-    db.Column('bills', db.Integer, db.ForeignKey('bills.id'), primary_key=True),
+    db.Column('user_id', db.Integer, db.ForeignKey('users.id'), primary_key=True),
+    db.Column('bill_id', db.Integer, db.ForeignKey('bills.id'), primary_key=True),
 )
 
 class Bill(db.Model):
@@ -17,8 +17,13 @@ class Bill(db.Model):
     updated_at = db.Column(db.DateTime)
 
     comments = db.relationship("Comment", back_populates="bills")
+
     transactions = db.relationship("Transaction", back_populates="bills")
-    assigned_user_bills = db.relationship("User", secondary=user_bills)
+
+    assigned_user_bills = db.relationship("User",
+        secondary=user_bills,
+        backref= db.backref('user_bills', lazy = 'dynamic'),
+        lazy = 'dynamic')
 
     def to_dict(self):
         return {
