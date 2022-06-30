@@ -11,6 +11,7 @@ import Bills from './components/Bills'
 import CreateBill from './components/CreateBill';
 import EditBillForm from './components/EditBillModal/EditBillForm';
 import SearchBar from './components/SearchBar';
+import UserBills from './components/UserBills';
 import { authenticate } from './store/session';
 
 function App() {
@@ -57,6 +58,9 @@ function App() {
         {/* <ProtectedRoute path='/bills/:billId' exact={true}>
           <EditBillForm />
         </ProtectedRoute> */}
+        <ProtectedRoute path='/bills/user-bills'>
+          <UserBills />
+        </ProtectedRoute>
         <ProtectedRoute path='/' exact={true} >
           <h1>My Home Page</h1>
         </ProtectedRoute>

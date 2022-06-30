@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { Link, useHistory } from 'react-router-dom'
 import { editComment } from '../../store/comments'
 
-function EditComment({ comment, billId }) {
+function EditComment({ setShowModal, comment, billId }) {
     const dispatch = useDispatch()
     const history = useHistory()
 
@@ -29,7 +29,7 @@ function EditComment({ comment, billId }) {
 
         const payload = {
             user_id: sessionUser.id,
-            bill_id: billId, /* for testing only, refactor this */
+            bill_id: billId,
             content
         }
 
@@ -37,6 +37,7 @@ function EditComment({ comment, billId }) {
 
         if (editedComment) {
             setErrors([])
+            setShowModal(false)
             return history.push('/bills')
         }
 
@@ -59,7 +60,7 @@ function EditComment({ comment, billId }) {
                     <button type='submit'>Submit</button>
                 </div>
             </form>
-            <Link to='/bills' className='cancel-link'>Cancel</Link>
+            <button onClick={()=> setShowModal(false)}>Cancel</button>
         </div>
     )
 }

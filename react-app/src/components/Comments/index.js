@@ -17,7 +17,7 @@ function Comments({ billId }) {
         return comment.bill_id == billId
     })
 
-    console.log('BILL COMMENTS', billComments)
+    // console.log('BILL COMMENTS', billComments)
     const [showModal, setShowModal] = useState(false);
 
     const sessionUser = useSelector(state => state.session.user)
@@ -36,7 +36,7 @@ function Comments({ billId }) {
                             <button onClick={() => setShowModal(true)}>Edit</button>
                             {showModal && (
                                 <Modal onClose={() => setShowModal(false)}>
-                                    <EditComment comment={comment} billId={billId} />
+                                    <EditComment setShowModal={setShowModal} comment={comment} billId={billId} />
                                 </Modal>
                             )}
                             <DeleteComment comment={comment} />

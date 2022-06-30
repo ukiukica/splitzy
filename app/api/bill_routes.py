@@ -1,5 +1,6 @@
 from flask import Blueprint, request
-from app.models import db, Bill
+from app.models import db, Bill, User
+from app.models.bill import user_bills
 from app.forms import BillForm, EditBillForm
 from datetime import datetime
 
@@ -19,9 +20,19 @@ def validation_errors_to_error_messages(validation_errors):
 @bill_routes.route('/')
 def bills():
     bills = Bill.query.all()
-    print("bills: ", bills)
+    # bills = Bill.query.join(user_bills).join(User).filter((user_bills.c.bill_id == Bill.id) & (user_bills.c.user_id == User.id)).all()
     print("returned bills: ", [bill.to_dict() for bill in bills])
     return {'bills': [bill.to_dict() for bill in bills]}
+
+@bill_routes.route('/user-bills/<int:id>')
+def get_user_bill(id):
+    bill = Bill.query.get(id)
+    assigned_users = bill.assigned_user_bills[0:]
+    # user_bills = [bill.assigned_user_bills for bill in bills]
+    # user_bills = list(bills)[0].assigned_user_bills.all()
+    # print("USER_BILLS: ", list(user_bill for user_bill in user_bills))
+    print("LOOK FOR THIS: ", [assigned_user for assigned_user in assigned_users])
+    return {'user_bills': [assigned_user.username for assigned_user in assigned_users]}
 
 @bill_routes.route('/createbill', methods=['POST'])
 def post_bill():
