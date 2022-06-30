@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { useHistory } from 'react-router-dom'
 import { addComment } from '../../store/comments'
 
-function CreateComment({ billId }) {
+function CreateCommentForm({ billId, setShowModal }) {
     const dispatch = useDispatch()
     const history = useHistory()
 
@@ -28,13 +28,14 @@ function CreateComment({ billId }) {
 
         const payload = {
             user_id: sessionUser.id,
-            bill_id: billId, /* for testing only, refactor this */
+            bill_id: billId,
             content
         }
         let createdComment = await dispatch(addComment(payload))
         console.log("createdComment:", createdComment)
         if (createdComment) {
             setErrors([])
+            setShowModal(false)
             return history.push('/bills')
         }
 
@@ -57,9 +58,9 @@ function CreateComment({ billId }) {
                     <button type='submit'>Submit</button>
                 </div>
             </form>
-            <button>Cancel</button>
+            <button onClick={()=> setShowModal(false)}>Cancel</button>
         </div>
     )
 }
 
-export default CreateComment
+export default CreateCommentForm

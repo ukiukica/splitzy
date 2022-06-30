@@ -12,7 +12,6 @@ function CreateBill() {
 
     const [label, setLabel] = useState('')
     const [amount, setAmount] = useState(0)
-    const [settled, setSettled] = useState(false)
     const [errors, setErrors] = useState([])
 
     useEffect(() => {
@@ -38,7 +37,6 @@ function CreateBill() {
             user_id: sessionUser.id,
             label,
             amount,
-            settled
         }
 
         // let createdBill = await dispatch(addBill(payload))
@@ -84,15 +82,6 @@ function CreateBill() {
                             value={amount}
                             onChange={(e) => setAmount(e.target.value)}
                             required
-                        />
-                    </label>
-                    <label>Settled
-                        <input
-                            name="settled"
-                            className='settled-input'
-                            type='checkbox'
-                            value={settled}
-                            onChange={(e) => setSettled(e.target.value)}
                         />
                     </label>
                 </div>

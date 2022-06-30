@@ -14,7 +14,6 @@ function EditBillForm({setShowModal, bill}) {
 
     const [label, setLabel] = useState(bill.label)
     const [amount, setAmount] = useState(bill.amount)
-    const [settled, setSettled] = useState(false)
     const [errors, setErrors] = useState([])
 
 
@@ -42,7 +41,6 @@ function EditBillForm({setShowModal, bill}) {
             user_id: sessionUser.id,
             label,
             amount,
-            settled
         }
 
         // let updatedBill = await dispatch(updateBill(payload, id));
@@ -87,15 +85,6 @@ function EditBillForm({setShowModal, bill}) {
                             value={amount}
                             onChange={(e) => setAmount(e.target.value)}
                             required
-                        />
-                    </label>
-                    <label>Settled
-                        <input
-                            name="settled"
-                            className='settled-input'
-                            type='checkbox'
-                            value={settled}
-                            onChange={(e) => setSettled(e.target.value)}
                         />
                     </label>
                 </div>

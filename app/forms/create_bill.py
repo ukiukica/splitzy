@@ -6,7 +6,6 @@ from wtforms.validators import DataRequired
 class BillForm(FlaskForm):
     label = StringField('Label', validators=[DataRequired()])
     amount = FloatField('Amount', validators=[DataRequired()])
-    settled = BooleanField('Settled')
     created_at = DateTime('created_at')
     updated_at = DateTime('updated_at')
     submit = SubmitField('Submit')
