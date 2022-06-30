@@ -36,7 +36,7 @@ function Comments({ billId }) {
                             <button onClick={() => setShowModal(true)}>Edit</button>
                             {showModal && (
                                 <Modal onClose={() => setShowModal(false)}>
-                                    <EditComment comment={comment} billId={billId} />
+                                    <EditComment setShowModal={setShowModal} comment={comment} billId={billId} />
                                 </Modal>
                             )}
                             <DeleteComment comment={comment} />

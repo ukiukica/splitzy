@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { viewBills, removeBill } from "../../store/bills";
 import EditBillFormModal from "../EditBillModal";
 import Comments from '../Comments';
-import CreateComment from '../CreateComment';
+import CreateCommentFormModal from '../CreateCommentModal';
 import { Modal } from "../../context/Modal";
 
 function Bills() {
@@ -32,12 +32,7 @@ function Bills() {
           </a>
           <EditBillFormModal bill={bill}/>
           <Comments billId={bill.id}/>
-          <button onClick={() => setShowModal(true)}>Add a Comment</button>
-          {showModal && (
-            <Modal onClose={() => setShowModal(false)}>
-              <CreateComment billId={bill.id}/>
-            </Modal>
-          )}
+          <CreateCommentFormModal billId={bill.id} />
           <br />
         </ul>
       ))}
