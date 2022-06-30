@@ -59,7 +59,7 @@ function App() {
         {/* <ProtectedRoute path='/bills/:billId' exact={true}>
           <EditBillForm />
         </ProtectedRoute> */}
-        <ProtectedRoute path='/friends/:id'>
+        <ProtectedRoute path='/friends'>
           <Friends />
         </ProtectedRoute>
         <ProtectedRoute path='/' exact={true} >

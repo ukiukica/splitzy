@@ -1,8 +1,16 @@
 import React, { useState, useEffect } from 'react'
+import { useSelector } from "react-redux";
+import './searchbar.css'
 
 function SearchBar() {
     const [users, setUsers] = useState([]);
     const [ query, setQuery ] = useState('')
+    const [friends, setFriends] = useState([]);
+    const [toggleButtons, setToggleButtons] = useState(false)
+
+    console.log('TOGGLE BUTTONS', friends)
+
+    const sessionUser = useSelector((state) => state.session.user);
 
     useEffect(() => {
       async function fetchData() {
@@ -12,6 +20,24 @@ function SearchBar() {
       }
       fetchData();
     }, []);
+
+    useEffect(() => {
+        async function fetchData() {
+          const response = await fetch(`/api/friends/${sessionUser.id}`);
+          const responseData = await response.json();
+          setFriends(Object.values(responseData)[0]);
+        }
+        fetchData();
+    }, []);
+
+    const addFriend = (id) => {
+        async function fetchData() {
+          const response = await fetch(`/api/friends/${sessionUser.id}/add/${id}`);
+          return response
+        }
+        fetchData();
+        setToggleButtons(false)
+    };
 
     return (
         <div>
@@ -29,6 +55,9 @@ function SearchBar() {
                     <p>{user.first_name}</p>
                     <p>{user.last_name}</p>
                     <p>{user.username}</p>
+                    {(friends.includes(user.username)) ?
+                        <p className={toggleButtons ? '' : 'hidden'}>✔</p>
+                    : <button className={toggleButtons ? 'hidden' : ''} onClick={(e) => addFriend(user.id)}>Add Friend</button>}
                 </div>
             )) : null }
         </div>
