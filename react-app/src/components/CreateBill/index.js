@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from 'react-router-dom';
 import { addBill } from '../../store/bills.js'
 import { ValidationError } from "../../utils/validationError";
+import "./CreateBill.css"
 
 function CreateBill() {
     const dispatch = useDispatch()
@@ -56,7 +57,7 @@ function CreateBill() {
     }
 
     return (
-        <div>
+        <div className='page-body'>
             <form onSubmit={handleSubmit}>
                 <ul>
                     {errors.map((error, idx) => <li key={idx}>{error}</li>)}
