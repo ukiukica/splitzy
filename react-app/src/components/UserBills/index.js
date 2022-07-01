@@ -31,6 +31,7 @@ function UserBills({ sessionUser, bill }) {
                         <>
                             <li>{bill.label}</li>
                             <li>{bill.amount}</li>
+                            <li>{bill.created_at}</li>
                             <li>
                                 {userBills[0]?.map((userBill) => (
                                     <ul>
