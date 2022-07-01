@@ -40,11 +40,19 @@ def post_bill():
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         data = form.data
+        print("DATA: ", data)
         new_bill = Bill(label=data['label'],
                         amount=data['amount'],
                         created_at=datetime.now(),
                         updated_at=datetime.now())
         db.session.add(new_bill)
+        db.session.commit()
+        user_id = data['user_id']
+        user = User.query.get(user_id)
+        print("USER_ID: ", user.id)
+        bill_made = Bill.query.order_by(Bill.id.desc()).first()
+        print("BILL MADE: ", bill_made.id)
+        bill_made.assign_bill_to_user(user)
         db.session.commit()
         return new_bill.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
