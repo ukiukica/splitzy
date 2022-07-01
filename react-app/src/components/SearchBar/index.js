@@ -55,6 +55,11 @@ function SearchBar() {
                     <p>{user.first_name}</p>
                     <p>{user.last_name}</p>
                     <p>{user.username}</p>
+                    {/* {(friends.includes(user.username)) ? <p>✔</p> :
+                    <a href="/search">
+                    <button onClick={(e) => addFriend(user.id)}>Add Friend</button>
+                    </a>
+                    } */}
                     {(friends.includes(user.username)) ?
                         <p className={toggleButtons ? '' : 'hidden'}>✔</p>
                     : <button className={toggleButtons ? 'hidden' : ''} onClick={(e) => addFriend(user.id)}>Add Friend</button>}
