@@ -34,7 +34,7 @@ function CreateBill() {
         e.preventDefault()
 
         const payload = {
-            user_id: 1,
+            user_id: sessionUser.id,
             label,
             amount,
         }
