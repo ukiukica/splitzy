@@ -51,7 +51,7 @@ function CreateBill() {
 
         if (createdBill) {
             setErrors([])
-            return history.push('/bills')
+            return history.push('/add-bill-friends')
         }
     }
 
