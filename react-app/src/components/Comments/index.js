@@ -4,6 +4,7 @@ import { viewComments } from '../../store/comments'
 import { Modal } from '../../context/Modal';
 import EditComment from '../EditComment'
 import DeleteComment from '../DeleteComment'
+import GetUser from '../GetUser';
 import './commentsContainer.css'
 
 function Comments({ billId }) {
@@ -17,7 +18,6 @@ function Comments({ billId }) {
         return comment.bill_id == billId
     })
 
-    // console.log('BILL COMMENTS', billComments)
     const [showModal, setShowModal] = useState(false);
 
     const sessionUser = useSelector(state => state.session.user)
@@ -31,6 +31,7 @@ function Comments({ billId }) {
             {(billComments) ? billComments.map((comment) =>(
                 <div key={comment.id}>
                     <p>{comment.content}</p>
+                    <GetUser userId={comment.user_id} />
                     {(sessionUser.id == comment.user_id) ? (
                         <div>
                             <button onClick={() => setShowModal(true)}>Edit</button>
