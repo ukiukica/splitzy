@@ -10,6 +10,7 @@ def get_friends(id):
     friends = user.friended[0:]
     return {'friends': [friend.username for friend in friends]}
 
+
 @friend_routes.route('/<int:id1>/add/<int:id2>')
 def befriend_user(id1,id2):
     user = User.query.get(id1)
