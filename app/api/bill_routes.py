@@ -49,9 +49,9 @@ def post_bill():
         db.session.commit()
         user_id = data['user_id']
         user = User.query.get(user_id)
-        print("USER_ID: ", user.id)
+        # print("USER_ID: ", user.id)
         bill_made = Bill.query.order_by(Bill.id.desc()).first()
-        print("BILL MADE: ", bill_made.id)
+        # print("BILL MADE: ", bill_made.id)
         bill_made.assign_bill_to_user(user)
         db.session.commit()
         return new_bill.to_dict()
