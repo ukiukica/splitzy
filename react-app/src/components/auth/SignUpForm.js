@@ -27,25 +27,25 @@ const SignUpForm = () => {
   useEffect(() => {
     const errors = []
 
-    if (firstName.length < 1) {
-      errors.push("Please provide a first name")
-    }
+    // if (firstName.length < 1) {
+    //   errors.push("Please provide a first name")
+    // }
 
-    if (lastName.length < 1) {
-      errors.push("Please provide a last name")
-    }
+    // if (lastName.length < 1) {
+    //   errors.push("Please provide a last name")
+    // }
 
-    if (username.length < 1) {
-      errors.push("Please provide a username")
-    }
+    // if (username.length < 1) {
+    //   errors.push("Please provide a username")
+    // }
 
-    if (email.length < 1) {
-      errors.push("Please provide an email")
-    }
+    // if (email.length < 1) {
+    //   errors.push("Please provide an email")
+    // }
 
-    if (password.length < 1) {
-      errors.push("Please provide a password")
-    }
+    // if (password.length < 1) {
+    //   errors.push("Please provide a password")
+    // }
 
 
 
@@ -137,10 +137,11 @@ const SignUpForm = () => {
           name='password'
           onChange={updatePassword}
           value={password}
+          required={true}
         ></input>
       </div>
       <div>
-        <label>Repeat Password</label>
+        <label>Confirm Password</label>
         <input
           type='password'
           name='repeat_password'
