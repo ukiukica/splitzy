@@ -14,14 +14,14 @@ function AddFriendBill() {
 
   useEffect(() => {
     async function fetchData() {
-      const response = await fetch('/api/users/');
+      const response = await fetch("/api/users/");
       const responseData = await response.json();
       setUsers(responseData.users);
     }
     fetchData();
   }, []);
 
-  console.log("USERS", users)
+  console.log("USERS", users);
 
   useEffect(() => {
     async function fetchData() {
@@ -32,28 +32,40 @@ function AddFriendBill() {
     fetchData();
   }, []);
 
-
-//   console.log(friends)
-const addFriendToBill = (friend) => {
+  //   console.log(friends)
+  const addFriendToBill = (friend) => {
     async function fetchData() {
-      const userFriend = users.filter((user) => user.username === friend)
-      console.log(userFriend[0].id, "USERFIREND")
-      const response = await fetch(`/api/bills/add-bill-friends/${userFriend[0].id}`);
+      const userFriend = users.filter((user) => user.username === friend);
+      console.log(userFriend[0].id, "USERFIREND");
+      const response = await fetch(
+        `/api/bills/add-bill-friends/${userFriend[0].id}`
+      );
 
-      history.push("/bills")
-      return response
+      history.push("/bills");
+      return response;
     }
     fetchData();
-};
+  };
+
+  console.log("FRIENDS", friends);
 
   return (
     <div>
-      {friends[0]?.map((friend) => (
-        <ul key={friend}>
-            {console.log(friend)}
-          <button onClick={() => addFriendToBill(friend)}>{friend}</button>
-        </ul>
-      ))}
+      <h2>Assign friends to bill:</h2>
+      {friends[0]?.length > 0 ? (
+        friends[0]?.map((friend) => (
+          <ul key={friend}>
+            <button onClick={() => addFriendToBill(friend)}>{friend}</button>
+          </ul>
+        ))
+      ) : (
+        <div>
+          <p>You have no friends! Click continue to view your bills.</p>
+          <a href="/bills">
+            <button>Continue</button>
+          </a>
+        </div>
+      )}
     </div>
   );
 }
