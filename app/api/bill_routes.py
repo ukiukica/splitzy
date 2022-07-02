@@ -80,3 +80,12 @@ def delete_bill(id):
     db.session.commit()
 
     return "Bill was successfully deleted."
+
+@bill_routes.route('/add-bill-friends/<int:id>')
+def add_bill_friends(id):
+    bill_made = Bill.query.order_by(Bill.id.desc()).first()
+    friend = User.query.get(id)
+    print("FRIEND`````````", friend)
+    bill_made.assign_bill_to_user(friend)
+    db.session.commit()
+    return "Friend was added to bill"
