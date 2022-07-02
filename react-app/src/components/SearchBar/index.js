@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector } from "react-redux";
+import { NavLink } from 'react-router-dom';
 import './searchbar.css'
 
 function SearchBar() {
@@ -52,17 +53,19 @@ function SearchBar() {
                 }
             }).map((user) => (
                 <div key={user.id}>
-                    <p>{user.first_name}</p>
-                    <p>{user.last_name}</p>
-                    <p>{user.username}</p>
+                    <NavLink to={`/user-overview/${user.id}`}>
+                        <p>{`${user.first_name} ${user.last_name}`}</p>
+                    </ NavLink>
+                    {/* <p>{user.last_name}</p>
+                    <p>{user.username}</p> */}
                     {/* {(friends.includes(user.username)) ? <p>✔</p> :
                     <a href="/search">
                     <button onClick={(e) => addFriend(user.id)}>Add Friend</button>
                     </a>
                     } */}
-                    {(friends.includes(user.username)) ?
+                    {/* {(friends.includes(user.username)) ?
                         <p className={toggleButtons ? '' : 'hidden'}>✔</p>
-                    : <button className={toggleButtons ? 'hidden' : ''} onClick={(e) => addFriend(user.id)}>Add Friend</button>}
+                    : <button className={toggleButtons ? 'hidden' : ''} onClick={(e) => addFriend(user.id)}>Add Friend</button>} */}
                 </div>
             )) : null }
         </div>
