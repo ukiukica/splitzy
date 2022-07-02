@@ -37,7 +37,7 @@ function AddFriendBill() {
 const addFriendToBill = (friend) => {
     async function fetchData() {
       const userFriend = users.filter((user) => user.username === friend)
-      console.log(userFriend[0].id, "USERFIREND")
+      // console.log(userFriend[0].id, "USERFIREND")
       const response = await fetch(`/api/bills/add-bill-friends/${userFriend[0].id}`);
 
       history.push("/bills")

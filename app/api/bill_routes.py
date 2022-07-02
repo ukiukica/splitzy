@@ -85,7 +85,16 @@ def delete_bill(id):
 def add_bill_friends(id):
     bill_made = Bill.query.order_by(Bill.id.desc()).first()
     friend = User.query.get(id)
-    print("FRIEND`````````", friend)
     bill_made.assign_bill_to_user(friend)
     db.session.commit()
     return "Friend was added to bill"
+
+@bill_routes.route('/<int:id1>/remove-bill-friend/<int:id2>')
+def remove_bill_friend(id1, id2):
+    print("INSIDE REMOVE BILL FRIEND ROUTE")
+    bill = Bill.query.get(id1)
+    print("------------------------BILL--------", bill)
+    friend = User.query.get(id2)
+    bill.remove_bill_from_user(friend)
+    db.session.commit()
+    return "Friend was removed from bill"
