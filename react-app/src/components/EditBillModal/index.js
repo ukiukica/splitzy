@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
 import EditBillForm from './EditBillForm';
-import "./EditBillButton.css"
+import "./EditBillForm.css"
 
 function EditBillFormModal({bill}) {
   const [showModal, setShowModal] = useState(false);

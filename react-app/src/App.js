@@ -69,7 +69,6 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/add-bill-friends'>
           <AddFriendBill />
-
         </ProtectedRoute>
         <ProtectedRoute path='/' exact={true} >
           <h1>My Home Page</h1>

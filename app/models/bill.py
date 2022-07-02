@@ -39,5 +39,12 @@ class Bill(db.Model):
         self.assigned_user_bills.append(user)
         return self
 
+    def remove_bill_from_user(self, user):
+        # if not self.is_assigned(user):
+        self.assigned_user_bills.remove(user)
+        return self
+
+
+
     # def is_assigned(self, user):
     #     return self.assigned_user_bills.filter(user_bills.c.user_id == user.id).count() > 0
