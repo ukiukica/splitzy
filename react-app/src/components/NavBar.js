@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import LogoutButton from "./auth/LogoutButton";
 import SearchBar from "./SearchBar";
-import "./NavBar.css"
+import "./NavBar.css";
 
 function NavBar() {
   const sessionUser = useSelector((state) => state.session.user);
@@ -11,14 +11,26 @@ function NavBar() {
   let sessionLinks;
   if (!sessionUser) {
     sessionLinks = (
-      <div>
+      <div className="nav-bar-logged-out-div">
         <div>
-          <NavLink to="/login" exact={true} activeClassName="active">
+          <NavLink
+            to="/login"
+            exact={true}
+            activeClassName="active"
+            className="logged-out-links"
+            id="login-btn"
+          >
             Login
           </NavLink>
         </div>
         <div>
-          <NavLink to="/sign-up" exact={true} activeClassName="active">
+          <NavLink
+            to="/sign-up"
+            exact={true}
+            activeClassName="active"
+            className="logged-out-links"
+            id="signup-btn"
+          >
             Sign Up
           </NavLink>
         </div>
@@ -28,25 +40,41 @@ function NavBar() {
     sessionLinks = (
       <div className="nav-bar-session">
         <div>
-
-          <NavLink to="/bills/createbill" exact={true} activeClassName="active">
-            Create A Bill
+          <NavLink
+            to="/bills/createbill"
+            exact={true}
+            activeClassName="active"
+            className="logged-in-links"
+            id="create-bill-link"
+          >
+            Create a bill
           </NavLink>
         </div>
-
-      <div>
-
-          <NavLink to="/bills" exact={true} activeClassName="active" className="logged-in-links">
+        <div>
+          <NavLink
+            to="/bills"
+            exact={true}
+            activeClassName="active"
+            className="logged-in-links"
+            id="bills-link"
+          >
             Bills
           </NavLink>
-      </div>
-      <div>
-
-
-
+        </div>
+        <div>
+          <NavLink
+            to="/friends"
+            exact={true}
+            activeClassName="active"
+            className="logged-in-links"
+            id="bills-link"
+          >
+            Friends
+          </NavLink>
+        </div>
+        <div>
           <SearchBar />
-      </div>
-
+        </div>
       </div>
     );
   }
@@ -75,18 +103,16 @@ function NavBar() {
     <nav>
       <div className="nav-bar">
         <div>
-          <NavLink to="/" exact={true} activeClassName="active">
-            Home
+          <NavLink to="/" exact={true} id="home-btn" activeClassName="active">
+            splitzy
           </NavLink>
         </div>
-        <div>
-        {sessionLinks}
-        </div>
-        <div>
+        <div>{sessionLinks}</div>
+        {/* <div>
           <NavLink to="/users" exact={true} activeClassName="active">
             Users
           </NavLink>
-        </div>
+        </div> */}
         <div>
           <LogoutButton />
         </div>
