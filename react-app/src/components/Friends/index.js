@@ -19,6 +19,7 @@ function Friends() {
 
   return (
     <div>
+      <h1>Friends List</h1>
       {friends[0]?.length ? friends[0]?.map((friend) => (
         <ul key={friend}>
           <li>{friend}</li>
