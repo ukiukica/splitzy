@@ -39,6 +39,10 @@ const SignUpForm = () => {
       errors.push("Please provide a username")
     }
 
+    if (email.length < 1) {
+      errors.push("Please provide an email")
+    }
+
     if (password.length < 1) {
       errors.push("Please provide a password")
     }
