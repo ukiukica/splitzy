@@ -24,6 +24,19 @@ def befriend_user(id1,id2):
     return "Friend successfully added"
 
 
+@friend_routes.route('/<int:id1>/remove/<int:id2>')
+def unfriend_user(id1,id2):
+    user = User.query.get(id1)
+    friend = User.query.get(id2)
+    # print('USER -->', user)
+    # print('NEW FRIEND --->', friend)
+    # print('IS FRIEND--->', user.is_friend(friend))
+    user.unfriend(friend)
+    db.session.commit()
+    # print('IS FRIEND--->', user.is_friend(friend))
+    return "Friend successfully removed"
+
+
 @friend_routes.route('/<int:id>', methods=['DELETE'])
 def delete_friends():
     pass

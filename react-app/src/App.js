@@ -14,6 +14,7 @@ import SearchBar from './components/SearchBar';
 import UserBills from './components/UserBills';
 import Friends from './components/Friends';
 import { authenticate } from './store/session';
+import UserOverview from './components/UserOverview';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -61,6 +62,9 @@ function App() {
         </ProtectedRoute> */}
         <ProtectedRoute path='/friends'>
           <Friends />
+        </ProtectedRoute>
+        <ProtectedRoute path='/user-overview/:userId'>
+          <UserOverview />
         </ProtectedRoute>
         <ProtectedRoute path='/' exact={true} >
           <h1>My Home Page</h1>
