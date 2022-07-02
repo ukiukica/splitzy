@@ -56,7 +56,6 @@ const SignUpForm = () => {
     }
 
     setErrors(errors)
-    console.log(errors)
   }, [repeatPassword, password, firstName, lastName, username])
 
   const updateFirstName = (e) => {
