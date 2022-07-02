@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
+<<<<<<< HEAD
 import "./searchbar.css";
+=======
+import { NavLink } from 'react-router-dom';
+import './searchbar.css'
+>>>>>>> cebc1d3045f2f6da35109a77255fe7eff3153838
 
 function SearchBar() {
   const [users, setUsers] = useState([]);
@@ -74,16 +79,9 @@ function SearchBar() {
                     <button onClick={(e) => addFriend(user.id)}>Add Friend</button>
                     </a>
                     } */}
-                  {friends.includes(user.username) ? (
-                    <p className={toggleButtons ? "" : "hidden"}>✔</p>
-                  ) : (
-                    <button
-                      className={toggleButtons ? "hidden" : ""}
-                      onClick={(e) => addFriend(user.id)}
-                    >
-                      Add Friend
-                    </button>
-                  )}
+                    {/* {(friends.includes(user.username)) ?
+                        <p className={toggleButtons ? '' : 'hidden'}>✔</p>
+                    : <button className={toggleButtons ? 'hidden' : ''} onClick={(e) => addFriend(user.id)}>Add Friend</button>} */}
                 </div>
               ))
           : null}
