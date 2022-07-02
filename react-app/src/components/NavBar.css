@@ -26,19 +26,27 @@ html {
     flex-wrap: wrap;
 }
 
+.nav-bar-logged-out-div {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
 .logged-in-links {
     display: flex;
-    /* align-items: center; */
     font-family: Arial, Helvetica, sans-serif;
     color: rgb(247, 243, 231);
-    font-size: 18px;
+    font-size: 16px;
     text-decoration: none;
 }
 
 .logged-out-links {
     display: flex;
     justify-content: space-between;
-
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgb(247, 243, 231);
+    font-size: 16px;
+    text-decoration: none;
 }
 
 #home-btn {
@@ -49,12 +57,17 @@ html {
 }
 
 #create-bill-link {
-    /* display: flex; */
     margin-right: 45px;
 }
 
 #bills-link {
-    /* display: flex; */
-    /* align-items: center; */
     margin-right: 45px;
 }
+
+#login-btn {
+    margin-right: 45px;
+}
+
+/* #signup-btn {
+
+} */

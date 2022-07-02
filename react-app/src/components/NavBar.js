@@ -11,14 +11,26 @@ function NavBar() {
   let sessionLinks;
   if (!sessionUser) {
     sessionLinks = (
-      <div className="logged-out-links">
+      <div className="nav-bar-logged-out-div">
         <div>
-          <NavLink to="/login" exact={true} activeClassName="active">
+          <NavLink
+            to="/login"
+            exact={true}
+            activeClassName="active"
+            className="logged-out-links"
+            id="login-btn"
+          >
             Login
           </NavLink>
         </div>
         <div>
-          <NavLink to="/sign-up" exact={true} activeClassName="active">
+          <NavLink
+            to="/sign-up"
+            exact={true}
+            activeClassName="active"
+            className="logged-out-links"
+            id="signup-btn"
+          >
             Sign Up
           </NavLink>
         </div>
