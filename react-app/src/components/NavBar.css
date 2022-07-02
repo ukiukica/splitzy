@@ -1,0 +1,31 @@
+html {
+    margin-top: 65px;
+}
+
+* {
+    margin: 0
+}
+
+.nav-bar {
+    background-color: #f6b8b8;
+    width: 100%;
+    height: 14px;
+    padding: 0px 0px 35px 0px;
+    margin: 0;
+    position: fixed;
+    top: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.nav-bar-session {
+display: flex;
+    flex-direction: row;
+    width: 482px;
+    flex-wrap: wrap;
+}
+
+.logged-in-links {
+    margin: 0px 107px;
+}
