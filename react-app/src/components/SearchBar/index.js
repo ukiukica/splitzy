@@ -53,9 +53,9 @@ function SearchBar() {
                 }
             }).map((user) => (
                 <div key={user.id}>
-                    <NavLink to={`/user-overview/${user.id}`}>
+                    <a href={`/user-overview/${user.id}`}>
                         <p>{`${user.first_name} ${user.last_name}`}</p>
-                    </ NavLink>
+                    </a>
                     {/* <p>{user.last_name}</p>
                     <p>{user.username}</p> */}
                     {/* {(friends.includes(user.username)) ? <p>✔</p> :
