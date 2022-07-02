@@ -24,19 +24,21 @@ html {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    align-items: center;
 }
 
 .nav-bar-logged-out-div {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    align-items: center;
 }
 
 .logged-in-links {
     display: flex;
     font-family: Arial, Helvetica, sans-serif;
     color: rgb(247, 243, 231);
-    font-size: 16px;
+    font-size: 14px;
     text-decoration: none;
 }
 
@@ -45,11 +47,11 @@ html {
     justify-content: space-between;
     font-family: Arial, Helvetica, sans-serif;
     color: rgb(247, 243, 231);
-    font-size: 16px;
+    font-size: 14px;
     text-decoration: none;
 }
 
-#home-btn {
+#home-link {
     font-family: Arial, Helvetica, sans-serif;
     color: rgb(247, 243, 231);
     font-size: 30px;
@@ -61,6 +63,10 @@ html {
 }
 
 #bills-link {
+    margin-right: 45px;
+}
+
+#friends-link {
     margin-right: 45px;
 }
 
