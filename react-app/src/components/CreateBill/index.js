@@ -79,7 +79,10 @@ function CreateBill() {
                         <input
                             name="amount"
                             className='amount-input'
-                            type='float'
+                            type='number'
+                            min="0.01"
+                            max="999999.99"
+                            step="0.01"
                             value={amount}
                             onChange={(e) => setAmount(e.target.value)}
                             required
