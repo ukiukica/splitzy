@@ -40,7 +40,6 @@ function AddFriendBill() {
       const response = await fetch(
         `/api/bills/add-bill-friends/${userFriend[0].id}`
       );
-
       history.push("/bills");
       return response;
     }

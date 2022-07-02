@@ -1,3 +1,12 @@
 .hidden {
     visibility: hidden;
 }
+
+.nav-search-div {
+    position: relative;
+}
+
+#nav-search {
+    display: flex;
+    padding: 3px 5px;
+}

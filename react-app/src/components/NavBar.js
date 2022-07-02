@@ -67,7 +67,7 @@ function NavBar() {
             exact={true}
             activeClassName="active"
             className="logged-in-links"
-            id="bills-link"
+            id="friends-link"
           >
             Friends
           </NavLink>
@@ -103,7 +103,7 @@ function NavBar() {
     <nav>
       <div className="nav-bar">
         <div>
-          <NavLink to="/" exact={true} id="home-btn" activeClassName="active">
+          <NavLink to="/" exact={true} id="home-link" activeClassName="active">
             splitzy
           </NavLink>
         </div>
@@ -113,9 +113,7 @@ function NavBar() {
             Users
           </NavLink>
         </div> */}
-        <div>
-          <LogoutButton />
-        </div>
+        <div>{sessionUser ? <LogoutButton /> : null}</div>
       </div>
     </nav>
   );
