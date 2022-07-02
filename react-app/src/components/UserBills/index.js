@@ -21,8 +21,6 @@ function UserBills({ sessionUser, bill }) {
         fetchData();
     }, []);
 
-    console.log(userBills)
-
     return (
         <div>
             {userBills[0]?.map((userBill) => (
