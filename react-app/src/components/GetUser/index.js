@@ -14,7 +14,7 @@ function GetUser({userId}) {
 
     return users.map((user) => (
         <>
-            {(user.id == userId) ? <p>{user.username}</p>
+            {(user.id == userId) ? <p id="comment-username">{user.username}</p>
             : null}
         </>
     ))

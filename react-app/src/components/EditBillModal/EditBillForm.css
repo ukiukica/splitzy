@@ -1,0 +1,116 @@
+* {
+    color: rgb(58, 46, 57)
+}
+
+#modal-content {
+    position: absolute;
+    display: flex;
+    border-radius: 3px;
+    background-color: white;
+    height: 220px;
+    width: 300px;
+    flex-direction: column;
+    justify-content: center;
+    /* z-index: 10; */
+}
+
+/* .edit-bill-form {
+    width: 100%;
+} */
+
+#edit-bill-title {
+    padding-left: 10px;
+    margin-bottom: 10px;
+    background-color: rgb(237, 177, 131);
+}
+
+.edit-bill-labels-inputs-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    align-items: center;
+
+}
+
+.edit-bill-labels-inputs-div {
+    width: 205px;
+}
+
+#edit-bill-label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    justify-content: space-between;
+}
+
+#edit-bill-amount {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    justify-content: space-between;
+}
+
+#edit-bill-users {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    justify-content: space-between;
+}
+
+.edit-bill-submit-cancel-btns {
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+}
+
+#edit-bill-submit-btn {
+    color: white;
+    background-color: rgb(30, 85, 92);
+    border: transparent;
+    border-radius: 3px;
+    margin-right: 3px;
+    font-size: 13px;
+}
+
+#edit-bill-remove-btn {
+    color: white;
+    background-color: rgb(241, 81, 82);
+    border: transparent;
+    border-radius: 3px;
+    margin-right: 3px;
+    font-size: 11px;
+}
+
+#edit-bill-remove-btn:hover {
+    opacity: .7;
+}
+
+#edit-bill-submit-btn:hover {
+    opacity: .7;
+}
+
+#edit-bill-cancel-btn {
+    color: white;
+    background-color: rgb(241, 81, 82);
+    border: transparent;
+    border-radius: 3px;
+    font-size: 13px;
+}
+
+#edit-bill-cancel-btn:hover {
+    opacity: .7;
+}
+
+#edit-bill-btn {
+    color: white;
+    background-color: rgb(237, 177, 131);
+    border: transparent;
+    border-radius: 3px;
+    margin-right: 3px;
+    font-size: 13px;
+}
+
+#edit-bill-btn:hover {
+    opacity: .7;
+}

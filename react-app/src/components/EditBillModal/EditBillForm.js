@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import { addBill, updateBill } from "../../store/bills.js";
 import { ValidationError } from "../../utils/validationError";
+import "./EditBillForm.css";
 
 function EditBillForm({ setShowModal, bill }) {
   const dispatch = useDispatch();
@@ -17,8 +18,8 @@ function EditBillForm({ setShowModal, bill }) {
   const [errors, setErrors] = useState([]);
   const [users, setUsers] = useState([]);
   const [userBills, setUserBills] = useState([]);
-  const userBillsNoSessionUser = userBills[0]?.slice(1)
-  console.log("FRIENDS NO SESSION USER", userBillsNoSessionUser)
+  const userBillsNoSessionUser = userBills[0]?.slice(1);
+  console.log("FRIENDS NO SESSION USER", userBillsNoSessionUser);
 
   useEffect(() => {
     async function fetchData() {
@@ -63,7 +64,7 @@ function EditBillForm({ setShowModal, bill }) {
         `/api/bills/${bill.id}/remove-bill-friend/${userFriend[0].id}`
       );
 
-    //   history.push("/bills")
+      //   history.push("/bills")
       window.location.reload(false);
       return response;
     }
@@ -96,58 +97,72 @@ function EditBillForm({ setShowModal, bill }) {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
+    <div className="edit-bill-modal">
+      <form className="edit-bill-form" onSubmit={handleSubmit}>
         <ul>
           {errors.map((error, idx) => (
             <li key={idx}>{error}</li>
           ))}
         </ul>
-        <h1>Edit Bill</h1>
-        <div>
-          <label>
-            Label
-            <input
-              name="label"
-              className="label-input"
-              type="text"
-              value={label}
-              onChange={(e) => setLabel(e.target.value)}
-              required
-            />
-          </label>
-          <label>
-            Amount
-            <input
-              name="amount"
-              className="amount-input"
-              type="float"
-              value={amount}
-              onChange={(e) => setAmount(e.target.value)}
-              required
-            />
-          </label>
-          <label>Associated Users: </label>
-          {userBillsNoSessionUser?.length < 1 ? "No Other Users" : <></>}
-          <div>
-            {userBillsNoSessionUser?.map((user) => (
-              <ul key={user}>
-                {/* <a href="/bills"> */}
-                <button onClick={() => removeFriendFromBill(user)}>
-                  Remove {user}
-                </button>
-                {/* </a> */}
-              </ul>
-            ))}
+        <h1 id="edit-bill-title">Edit Bill</h1>
+        <div className="edit-bill-labels-inputs-container">
+          <div className="edit-bill-labels-inputs-div">
+            <label id="edit-bill-label">
+              Label
+              <input
+                name="label"
+                className="label-input"
+                type="text"
+                value={label}
+                onChange={(e) => setLabel(e.target.value)}
+                required
+              />
+            </label>
+            <label id="edit-bill-amount">
+              Amount
+              <input
+                name="amount"
+                className="amount-input"
+                type="float"
+                value={amount}
+                onChange={(e) => setAmount(e.target.value)}
+                required
+              />
+            </label>
+            <label id="edit-bill-users">
+              Associated Users:
+              {userBillsNoSessionUser?.length < 1 ? " None" : <></>}
+              <div>
+                {userBillsNoSessionUser?.map((user) => (
+                  <ul key={user}>
+                    {/* <a href="/bills"> */}
+                    {user}{" "}
+                    <button id="edit-bill-remove-btn" onClick={() => removeFriendFromBill(user)}>
+                      Remove
+                    </button>
+                    {/* </a> */}
+                  </ul>
+                ))}
+              </div>
+            </label>
+          </div>
+          <div className="edit-bill-submit-cancel-btns">
+            <button
+              id="edit-bill-submit-btn"
+              type="submit"
+              disabled={errors.length > 0}
+            >
+              Submit
+            </button>
+            <button
+              id="edit-bill-cancel-btn"
+              onClick={() => setShowModal(false)}
+            >
+              Cancel
+            </button>
           </div>
         </div>
-        <div>
-          <button type="submit" disabled={errors.length > 0}>
-            Submit
-          </button>
-        </div>
       </form>
-        <button onClick={() => setShowModal(false)}>Cancel</button>
     </div>
   );
 }

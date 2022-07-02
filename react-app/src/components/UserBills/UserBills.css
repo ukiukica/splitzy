@@ -1,0 +1,77 @@
+
+.userbills-container {
+    display: flex;
+    justify-content: center;
+}
+
+.info-comments-div {
+    display: flex;
+}
+
+/* .userbills-ul {
+
+} */
+
+.userbills-info-div {
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgb(58, 46, 57);
+    margin-right: 20px;
+    /* font-size: 15px; */
+    background-color: rgba(237, 177, 131, 0.231);
+    padding: 10px;
+}
+
+#userbills-label {
+    font-size: 15px;
+    background-color: rgb(237, 177, 131);
+    font-weight: bold;
+    -webkit-font-smoothing: antialiased;
+    padding: 2px 0px 2px 5px;
+    /* border-radius: 3px; */
+    margin-bottom: 4px;
+}
+
+#userbills-amount {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+#userbills-time {
+    font-size: 14px;
+}
+
+.userbills-users-div {
+    display: flex;
+
+}
+
+/* .userbills-users {
+
+} */
+
+.associated-users {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    -webkit-font-smoothing: antialiased;
+}
+
+.comments-div {
+    display: flex;
+    flex-direction: column;
+}
+
+#delete-bill-btn {
+    color: white;
+    background-color: rgb(241, 81, 82);
+    border: transparent;
+    border-radius: 3px;
+    font-size: 13px;
+}
+
+#delete-bill-btn:hover {
+    opacity: .7;
+}

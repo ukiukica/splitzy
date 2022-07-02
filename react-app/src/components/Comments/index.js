@@ -5,7 +5,7 @@ import { Modal } from '../../context/Modal';
 import EditComment from '../EditComment'
 import DeleteComment from '../DeleteComment'
 import GetUser from '../GetUser';
-import './commentsContainer.css'
+import './Comments.css'
 
 function Comments({ billId }) {
     const dispatch = useDispatch()
@@ -29,12 +29,15 @@ function Comments({ billId }) {
     return (
         <div className='comments-container'>
             {(billComments) ? billComments.map((comment) =>(
-                <div key={comment.id}>
-                    <p>{comment.content}</p>
+                <div className='each-comment-div' key={comment.id}>
+                    <div className="username-and-comment">
                     <GetUser userId={comment.user_id} />
+                    <p id="all-comments">{comment.content}</p>
+                    </div>
+                    <div >
                     {(sessionUser.id == comment.user_id) ? (
-                        <div>
-                            <button onClick={() => setShowModal(true)}>Edit</button>
+                        <div className='edit-delete-comment-btns'>
+                            <button id="edit-comment-btn" onClick={() => setShowModal(true)}>Edit</button>
                             {showModal && (
                                 <Modal onClose={() => setShowModal(false)}>
                                     <EditComment setShowModal={setShowModal} comment={comment} billId={billId} />
@@ -43,6 +46,7 @@ function Comments({ billId }) {
                             <DeleteComment comment={comment} />
                         </div>
                     ) : null }
+                    </div>
                 </div>
             )) : null }
         </div>

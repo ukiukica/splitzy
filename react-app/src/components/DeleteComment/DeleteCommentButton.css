@@ -1,0 +1,11 @@
+#delete-comment-btn {
+    color: rgb(241, 81, 82);
+    background-color: transparent;
+    border: none;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+#delete-comment-btn:hover {
+    opacity: .7;
+}
