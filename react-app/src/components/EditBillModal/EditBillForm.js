@@ -128,7 +128,7 @@ function EditBillForm({ setShowModal, bill }) {
             />
           </label>
           <label>Associated Users: </label>
-          {userBillsNoSessionUser?.length <= 1 ? "No Other Users" : <></>}
+          {userBillsNoSessionUser?.length < 1 ? "No Other Users" : <></>}
           <div>
             {userBillsNoSessionUser?.map((user) => (
               <ul key={user}>
