@@ -1,11 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-<<<<<<< HEAD
-import "./searchbar.css";
-=======
 import { NavLink } from 'react-router-dom';
 import './searchbar.css'
->>>>>>> cebc1d3045f2f6da35109a77255fe7eff3153838
 
 function SearchBar() {
   const [users, setUsers] = useState([]);
