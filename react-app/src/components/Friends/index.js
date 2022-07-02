@@ -1,24 +1,22 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { viewFriends } from "../../store/friends";
 
 function Friends() {
   const dispatch = useDispatch();
 
-  const [friends, setFriends] = useState([]);
   const sessionUser = useSelector((state) => state.session.user);
+  const friends = useSelector((state) => {
+    return Object.values(state.friends)
+  })
 
   useEffect(() => {
-    async function fetchData() {
-      const response = await fetch(`/api/friends/${sessionUser.id}`);
-      const responseData = await response.json();
-      setFriends(Object.values(responseData));
-    }
-    fetchData();
-  }, []);
+    dispatch(viewFriends(sessionUser.id))
+  }, [dispatch]);
 
   return (
     <div>
-      {friends[0]?.map((friend) => (
+      {friends?.map((friend) => (
         <ul key={friend}>
           <li>{friend}</li>
         </ul>
