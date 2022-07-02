@@ -16,13 +16,15 @@ function Friends() {
     fetchData();
   }, []);
 
+
   return (
     <div>
-      {friends[0]?.map((friend) => (
+      <h1>Friends List</h1>
+      {friends[0]?.length ? friends[0]?.map((friend) => (
         <ul key={friend}>
           <li>{friend}</li>
         </ul>
-      ))}
+      )) : "You have no friends!"}
     </div>
   );
 }
