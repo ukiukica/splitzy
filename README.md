@@ -98,7 +98,7 @@ splitzy is built with Flask (backend), React and Redux (frontend), and PostgresS
 * [React.js](https://reactjs.org/)
 * [Redux](https://redux.js.org/)
 * [Javascript](https://www.javascript.com/)
-* [Python] (https://www.python.org/)
+* [Python](https://www.python.org/)
 * [PostgresSQL](https://www.postgresql.org/)
 * [SQLAlchemy](https://www.sqlalchemy.org/)
 * [Flask](https://flask.palletsprojects.com/en/2.1.x/)
