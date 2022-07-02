@@ -15,6 +15,7 @@ import UserBills from './components/UserBills';
 import Friends from './components/Friends';
 import AddFriendBill from './components/AddFriendBill';
 import { authenticate } from './store/session';
+import UserOverview from './components/UserOverview';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -63,8 +64,12 @@ function App() {
         <ProtectedRoute path='/friends'>
           <Friends />
         </ProtectedRoute>
+        <ProtectedRoute path='/user-overview/:userId'>
+          <UserOverview />
+        </ProtectedRoute>
         <ProtectedRoute path='/add-bill-friends'>
           <AddFriendBill />
+
         </ProtectedRoute>
         <ProtectedRoute path='/' exact={true} >
           <h1>My Home Page</h1>
