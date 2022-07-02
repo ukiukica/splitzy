@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session';
@@ -23,6 +23,41 @@ const SignUpForm = () => {
       }
     }
   };
+
+  useEffect(() => {
+    const errors = []
+
+    // if (firstName.length < 1) {
+    //   errors.push("Please provide a first name")
+    // }
+
+    // if (lastName.length < 1) {
+    //   errors.push("Please provide a last name")
+    // }
+
+    // if (username.length < 1) {
+    //   errors.push("Please provide a username")
+    // }
+
+    // if (email.length < 1) {
+    //   errors.push("Please provide an email")
+    // }
+
+    // if (password.length < 1) {
+    //   errors.push("Please provide a password")
+    // }
+
+
+
+    if (repeatPassword.length < password.length) {
+      errors.push("Please confirm your password")
+    } else if (repeatPassword !== password) {
+      errors.push("Passwords must match")
+    }
+
+    setErrors(errors)
+  }, [repeatPassword, password, firstName, lastName, username])
+
   const updateFirstName = (e) => {
     setFirstName(e.target.value);
   };
@@ -101,10 +136,11 @@ const SignUpForm = () => {
           name='password'
           onChange={updatePassword}
           value={password}
+          required={true}
         ></input>
       </div>
       <div>
-        <label>Repeat Password</label>
+        <label>Confirm Password</label>
         <input
           type='password'
           name='repeat_password'
@@ -113,7 +149,7 @@ const SignUpForm = () => {
           required={true}
         ></input>
       </div>
-      <button type='submit'>Sign Up</button>
+      <button disabled={errors.length} type='submit'>Sign Up</button>
     </form>
   );
 };
