@@ -1,0 +1,34 @@
+div#login-html-body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#video-header {
+    min-width: 1080px;
+    opacity: 1;
+    transition: .4s .2s;
+    width: 100%;
+    z-index: -1;
+}
+
+#login-form {
+    width: 583px;
+    height: 150px;
+    background: #f7f3e7;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    bottom: 409px;
+}
+
+.login-input {
+    margin: 0 5px;
+}
+
+.login-label {
+    margin-left: 10px;
+}
