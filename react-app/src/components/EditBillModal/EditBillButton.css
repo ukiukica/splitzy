@@ -1,0 +1,12 @@
+#edit-bill-btn {
+    color: white;
+    background-color: rgb(237, 177, 131);
+    border: transparent;
+    border-radius: 3px;
+    margin-right: 3px;
+    font-size: 13px;
+}
+
+#edit-bill-btn:hover {
+    opacity: .7;
+}

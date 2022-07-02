@@ -1,0 +1,12 @@
+#add-comment-btn {
+    color: white;
+    background-color: rgb(30, 85, 92);
+    border: 0px solid transparent;
+    border-radius: 3px;
+    font-size: 12px;
+    margin-left: 40px;
+}
+
+#add-comment-btn:hover {
+    opacity: .7;
+}

@@ -1,60 +1,79 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import EditBillFormModal from "../EditBillModal";
-import Comments from '../Comments';
-import CreateCommentFormModal from '../CreateCommentModal';
+import Comments from "../Comments";
+import CreateCommentFormModal from "../CreateCommentModal";
 import { removeBill } from "../../store/bills";
+import "./UserBills.css";
 
 function UserBills({ sessionUser, bill }) {
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-    const [userBills, setUserBills] = useState([]);
+  const [userBills, setUserBills] = useState([]);
 
+  useEffect(() => {
+    async function fetchData() {
+      const response = await fetch(`/api/bills/user-bills/${bill.id}`);
+      const responseData = await response.json();
+      setUserBills(Object.values(responseData));
+    }
+    fetchData();
+  }, []);
 
+  return (
+    <>
+      <div className="userbills-container">
+        {userBills[0]?.map((userBill) => (
+          <ul className="userbills-ul">
+            {sessionUser.username == userBill ? (
+              <div className="info-comments-div">
+                <div className="userbills-info-div">
+                  <li id="userbills-label">{bill.label}</li>
+                  <li id="userbills-amount">${bill.amount}</li>
+                  <li id="userbills-time">{bill.created_at}</li>
+                  <li>
+                    <br></br>
+                    <>
+                      <EditBillFormModal bill={bill} />
+                      <a href="/bills">
+                        <button
+                          id="delete-bill-btn"
+                          onClick={() => dispatch(removeBill(bill.id))}
+                        >
+                          Delete
+                        </button>
+                      </a>
+                    </>
+                      <br></br>
 
-    useEffect(() => {
-        async function fetchData() {
-            const response = await fetch(`/api/bills/user-bills/${bill.id}`);
-            const responseData = await response.json();
-            setUserBills(Object.values(responseData));
-        }
-        fetchData();
-    }, []);
+                    <div className="associated-users">Associated users:
+                    {userBills[0]?.map((userBill) => (
+                      <div className="userbills-users-div">
+                        <ul className="userbills-users">
+                          <li>{userBill}</li>
+                        </ul>
+                      </div>
+                    ))}
+                    </div>
+                  </li>
+                </div>
 
-    console.log(userBills)
-
-    return (
-        <div>
-            {userBills[0]?.map((userBill) => (
-                <ul>
-                    {(sessionUser.username == userBill) ? (
-                        <>
-                            <li>{bill.label}</li>
-                            <li>{bill.amount}</li>
-                            <li>{bill.created_at}</li>
-                            <li>
-                                {userBills[0]?.map((userBill) => (
-                                    <ul>
-                                        <li>{userBill}</li>
-                                    </ul>
-                                ))}
-                            </li>
-                            <>
-                                <a href="/bills">
-                                    <button onClick={() => dispatch(removeBill(bill.id))}>
-                                        Delete
-                                    </button>
-                                </a>
-                                <EditBillFormModal bill={bill} />
-                            </>
-                            <Comments billId={bill.id} />
-                            <CreateCommentFormModal billId={bill.id} />
-                        </>
-                    ) : null}
-                </ul>
-            ))}
-        </div>
-    )
+                <div className="comments-div">
+                  <div>
+                    <p id="notes-comments-heading">NOTES & COMMENTS:</p>
+                    <Comments billId={bill.id} />
+                  </div>
+                  <div>
+                  <CreateCommentFormModal billId={bill.id} />
+                  </div>
+                </div>
+              </div>
+            ) : null}
+          </ul>
+        ))}
+      </div>
+    </>
+  );
 }
 
-export default UserBills
+export default UserBills;
