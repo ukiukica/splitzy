@@ -55,6 +55,7 @@ body {
     color: rgb(247, 243, 231);
     font-size: 14px;
     text-decoration: none;
+    margin-right: 45px;
 }
 
 #home-link {
@@ -76,8 +77,23 @@ body {
     margin-right: 45px;
 }
 
-#login-btn {
+/* #login-btn {
     margin-right: 45px;
+} */
+
+
+/* #signup-btn {
+
+} */
+
+#demo-btn {
+    background-color: rgb(43, 123, 133);
+    color: rgb(247, 243, 231);
+    /* border: 1px solid rgba(247, 243, 231, 0.408); */
+    border: none;
+    border-radius: 4px;
+    font-size: 13px;
+    padding: 4px 8px 4px 8px;
 }
 
 .nav-search-div {
