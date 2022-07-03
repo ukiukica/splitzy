@@ -72,8 +72,14 @@
     border: transparent;
     border-radius: 3px;
     font-size: 13px;
+    height: 25px;
+    width: 65px;
 }
 
 #delete-bill-btn:hover {
     opacity: .7;
+}
+
+#split-header {
+    margin-bottom: 5px;
 }
