@@ -27,10 +27,10 @@ function Bills() {
     <>
       <div className="bills-container">
         {bills.map((bill) => (
-          <ul className="bills-ul" key={bill.id}>
+          <div className="bills-ul" key={bill.id}>
             <UserBills sessionUser={sessionUser} bill={bill} />
             <br />
-          </ul>
+          </div>
         ))}
       </div>
     </>
