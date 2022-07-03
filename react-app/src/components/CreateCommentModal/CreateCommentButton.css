@@ -11,9 +11,11 @@
 }
 
 #add-cmt-title {
-    padding-left: 10px;
+    /* padding-left: 10px; */
     margin-bottom: 10px;
     background-color: rgb(237, 177, 131);
+    display:flex;
+    justify-content: center;
 }
 
 .add-cmt-content-div {
@@ -68,4 +70,9 @@
 
 #add-comment-btn:hover {
     opacity: .7;
+}
+
+.comment-textarea {
+    height: 50px;
+    width: auto;
 }
