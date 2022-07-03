@@ -46,7 +46,7 @@ function CreateCommentForm({ billId, setShowModal }) {
             <li key={idx}>{error}</li>
           ))}
         </ul>
-        <h1 id="add-cmt-title"> Add a Comment</h1>
+        <h1 className="add-cmt-title"> Add a Comment</h1>
           <div className="add-cmt-content-div">
           <textarea
             className='comment-textarea'
@@ -59,8 +59,8 @@ function CreateCommentForm({ billId, setShowModal }) {
           />
           </div>
         <div className="add-cmt-submit-cancel-btns-div">
-          <button id="add-cmt-submit-btn" disabled={content.length < 1} type="submit">Submit</button>
-          <button id="add-cmt-cancel-btn" onClick={() => setShowModal(false)}>Cancel</button>
+          <button className="add-cmt-submit-btn" disabled={content.length < 1} type="submit">Submit</button>
+          <button className="add-cmt-cancel-btn" onClick={() => setShowModal(false)}>Cancel</button>
         </div>
       </form>
     </div>
