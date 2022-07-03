@@ -58,54 +58,62 @@ function CreateBill() {
 
   return (
     <div className="page-body">
-        <div id="create-bill-form">
-
-
-      <form onSubmit={handleSubmit}>
-        <h1 id="create-bill-header">Create a New Bill</h1>
-        <div id="create-bill-input-container">
-          <label className="create-bill-labels">
-            Label
-            <input
-              name="label"
-              className="create-bill-input"
-              type="text"
-              value={label}
-              onChange={(e) => setLabel(e.target.value)}
-              placeholder={"Insert label here..."}
-              required
-            />
-          </label>
-          <label className="create-bill-labels">
-            Amount
-            <input
-              name="amount"
-              className="create-bill-input"
-              type="number"
-              min="0.01"
-              max="999999.99"
-              step="0.01"
-              value={amount}
-              onChange={(e) => setAmount(e.target.value)}
-              required
-            />
-          </label>
-        </div>
-        <div>
-          <button id="create-bill-submit" className="create-bill-btns" type="submit" disabled={errors.length > 0}>
-            Submit
-          </button>
-        </div>
-      </form>
-        <a href="/bills" className="create-bill-btns">
-          <button id="create-cancel" className="create-bill-btns">Cancel</button>
-        </a>
-        </div>
-        <ul>
-          {errors.map((error, idx) => (
-            <li key={idx}>{error}</li>
-          ))}
-        </ul>
+      <div id="create-bill-form">
+        <form onSubmit={handleSubmit}>
+          <h1 id="create-bill-header">Create a Bill</h1>
+          <div id="create-bill-input-container">
+            <label className="create-bill-labels">
+              Label
+              <input
+                name="label"
+                className="create-bill-input"
+                type="text"
+                value={label}
+                onChange={(e) => setLabel(e.target.value)}
+                placeholder={"Insert label here..."}
+                required
+              />
+            </label>
+            <label className="create-bill-labels">
+              Amount
+              <input
+                name="amount"
+                className="create-bill-input"
+                type="number"
+                min="0.01"
+                max="999999.99"
+                step="0.01"
+                value={amount}
+                onChange={(e) => setAmount(e.target.value)}
+                placeholder={"Insert amount here..."}
+                required
+              />
+            </label>
+          </div>
+          <div className="create-bill-errors-div">
+            <ul className="create-bill-errors-ul">
+              {errors.map((error, idx) => (
+                <li className="create-bill-errors-li" key={idx}>{error}</li>
+              ))}
+            </ul>
+          </div>
+          <div className="create-bill-btns-div">
+            <button
+              id="create-bill-submit"
+              className="create-bill-btns"
+              type="submit"
+              disabled={errors.length > 0}
+            >
+              Submit
+            </button>
+            <a href="/bills" className="create-bill-btns">
+              <button id="create-cancel" className="create-bill-btns">
+                Cancel
+              </button>
+            </a>
+          </div>
+        </form>
+      </div>
     </div>
   );
 }

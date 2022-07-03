@@ -49,6 +49,10 @@ body {
     text-decoration: none;
 }
 
+.logged-in-links:hover {
+    color: rgb(254, 238, 187);
+}
+
 .logged-out-links {
     display: flex;
     justify-content: space-between;
@@ -57,6 +61,10 @@ body {
     font-size: 14px;
     text-decoration: none;
     margin-right: 45px;
+}
+
+.logged-out-links:hover {
+    color: rgb(254, 238, 187);
 }
 
 #home-link {

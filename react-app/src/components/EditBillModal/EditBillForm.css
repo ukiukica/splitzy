@@ -11,12 +11,7 @@
     width: 300px;
     flex-direction: column;
     justify-content: center;
-    /* z-index: 10; */
 }
-
-/* .edit-bill-form {
-    width: 100%;
-} */
 
 #edit-bill-title {
     padding-left: 10px;
@@ -62,6 +57,7 @@
     display: flex;
     flex-direction: row;
     margin-top: 10px;
+    cursor: pointer;
 }
 
 #edit-bill-submit-btn {
@@ -71,6 +67,7 @@
     border-radius: 3px;
     margin-right: 3px;
     font-size: 13px;
+    cursor: pointer;
 }
 
 #edit-bill-remove-btn {
@@ -80,6 +77,7 @@
     border-radius: 3px;
     margin-right: 3px;
     font-size: 11px;
+    cursor: pointer;
 }
 
 #edit-bill-remove-btn:hover {
@@ -96,6 +94,7 @@
     border: transparent;
     border-radius: 3px;
     font-size: 13px;
+    cursor: pointer;
 }
 
 #edit-bill-cancel-btn:hover {
@@ -111,6 +110,7 @@
     font-size: 13px;
     height: 25px;
     width: 65px;
+    cursor: pointer;
 }
 
 #edit-bill-btn:hover {

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import { editComment } from "../../store/comments";
+import '../CreateCommentModal/CreateCommentButton.css'
 
 function EditComment({ setShowModal, comment, billId }) {
   const dispatch = useDispatch();
@@ -50,21 +51,23 @@ function EditComment({ setShowModal, comment, billId }) {
             <li key={idx}>{error}</li>
           ))}
         </ul>
-        <h1> Edit Comment</h1>
-        <div>
-          <input
+        <h1 className="add-cmt-title"> Edit Comment</h1>
+        <div className="add-cmt-content-div">
+          <textarea
+            className='comment-textarea'
             name="content"
             type="textarea"
+            placeholder="Type something here..."
             value={content}
             onChange={(e) => setContent(e.target.value)}
             required
           />
         </div>
-        <div>
-          <button type="submit">Submit</button>
+        <div className="add-cmt-submit-cancel-btns-div">
+          <button className="add-cmt-submit-btn" type="submit">Submit</button>
+          <button className="add-cmt-cancel-btn" onClick={() => setShowModal(false)}>Cancel</button>
         </div>
       </form>
-      <button onClick={() => setShowModal(false)}>Cancel</button>
     </div>
   );
 }

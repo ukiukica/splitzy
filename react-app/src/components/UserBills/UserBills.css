@@ -8,10 +8,6 @@
     display: flex;
 }
 
-/* .userbills-ul {
-
-} */
-
 .userbills-info-div {
     display: flex;
     flex-direction: column;
@@ -19,11 +15,9 @@
     font-family: Arial, Helvetica, sans-serif;
     color: rgb(58, 46, 57);
     margin-right: 20px;
-    /* font-size: 15px; */
     background-color: rgba(237, 177, 131, 0.231);
     padding: 10px;
     min-width: 500px;
-    /* max-width: 500px; */
 }
 
 #userbills-label {
@@ -32,7 +26,6 @@
     font-weight: bold;
     -webkit-font-smoothing: antialiased;
     padding: 2px 0px 2px 5px;
-    /* border-radius: 3px; */
     margin-bottom: 4px;
 }
 
@@ -74,6 +67,7 @@
     font-size: 13px;
     height: 25px;
     width: 65px;
+    cursor: pointer;
 }
 
 #delete-bill-btn:hover {
