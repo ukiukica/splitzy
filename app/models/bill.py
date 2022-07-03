@@ -23,7 +23,8 @@ class Bill(db.Model):
     assigned_user_bills = db.relationship("User",
         secondary=user_bills,
         backref= db.backref('user_bills', lazy = 'dynamic'),
-        lazy = 'dynamic')
+        lazy = 'dynamic',
+        cascade="all, delete")
 
     def to_dict(self):
         return {

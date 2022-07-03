@@ -24,24 +24,16 @@ function Bills() {
     dispatch(viewBills());
   }, [dispatch]);
 
-  useEffect(() => {
-    async function fetchData() {
-      const response = await fetch(`/api/bills/get-bill-users`);
-      const responseData = await response.json();
-      setBillsWithUsers(responseData)
-    }
-    fetchData();
-  }, []);
-
   return (
     <>
       <div className="bills-container">
-        {(billsWithUsers[userId] !== undefined) ? bills?.map((bill) => (
+        <h1>Your Bills:</h1>
+        {bills?.map((bill) => (
           <ul className="bills-ul" key={bill.id}>
             <UserBills sessionUser={sessionUser} bill={bill} />
             <br />
           </ul>
-        )) : <h1>You have no bills!</h1>}
+        ))}
       </div>
     </>
   );
