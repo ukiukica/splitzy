@@ -22,6 +22,8 @@
     /* font-size: 15px; */
     background-color: rgba(237, 177, 131, 0.231);
     padding: 10px;
+    min-width: 500px;
+    /* max-width: 500px; */
 }
 
 #userbills-label {

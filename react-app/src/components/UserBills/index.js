@@ -24,7 +24,7 @@ function UserBills({ sessionUser, bill }) {
     <>
       <div className="userbills-container">
         {userBills[0]?.map((userBill) => (
-          <ul className="userbills-ul">
+          <div className="userbills-ul">
             {sessionUser.username == userBill ? (
               <div className="info-comments-div">
                 <div className="userbills-info-div">
@@ -48,11 +48,9 @@ function UserBills({ sessionUser, bill }) {
 
                     <div className="associated-users">Associated users:
                     {userBills[0]?.map((userBill) => (
-                      <div className="userbills-users-div">
-                        <ul className="userbills-users">
-                          <li>{userBill}</li>
-                        </ul>
-                      </div>
+
+                          <div>{userBill}</div>
+
                     ))}
                     </div>
                   </li>
@@ -69,7 +67,7 @@ function UserBills({ sessionUser, bill }) {
                 </div>
               </div>
             ) : null}
-          </ul>
+          </div>
         ))}
       </div>
     </>
