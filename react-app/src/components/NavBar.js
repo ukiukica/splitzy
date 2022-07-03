@@ -106,7 +106,7 @@ function NavBar() {
           </NavLink>
         </div>
         {sessionLinks}
-        <SearchBar />
+        {sessionUser ? <SearchBar /> : <></>}
         {/* <div>
           <NavLink to="/users" exact={true} activeClassName="active">
             Users

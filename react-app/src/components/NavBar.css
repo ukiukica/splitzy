@@ -83,7 +83,6 @@ body {
 .nav-search-div {
     position: fixed;
     top: 10px;
-    height: 200px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
