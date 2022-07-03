@@ -32,7 +32,7 @@ function Bills() {
           <ul className="bills-ul" key={bill.id}>
             <UserBills sessionUser={sessionUser} bill={bill} />
             <br />
-          </ul>
+          </div>
         ))}
       </div>
     </>

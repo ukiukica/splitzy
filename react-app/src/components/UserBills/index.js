@@ -47,13 +47,10 @@ function UserBills({ sessionUser, bill }) {
                     </>
                       <br></br>
 
-                    <div className="associated-users">Associated users:
+                    <div className="associated-users">
+                      <h4 id="split-header">Amount Split Between:</h4>
                     {userBills[0]?.map((userBill) => (
-                      <div className="userbills-users-div">
-                        <ul className="userbills-users">
-                          <li>{userBill}</li>
-                        </ul>
-                      </div>
+                          <div>{userBill === sessionUser.username ? <p>You</p> : userBill}</div>
                     ))}
                     </div>
                   </li>
@@ -70,7 +67,7 @@ function UserBills({ sessionUser, bill }) {
                 </div>
               </div>
             ) : null}
-          </ul>
+          </div>
         ))}
       </div>
     </>

@@ -10,3 +10,13 @@
     display: flex;
     padding: 3px 5px;
 }
+
+.username-search-result {
+    background: white;
+    padding: 10px;
+}
+
+.username-result {
+    color: #3a2e39;
+    text-decoration: none;
+}
