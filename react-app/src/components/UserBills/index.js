@@ -20,11 +20,12 @@ function UserBills({ sessionUser, bill }) {
     fetchData();
   }, []);
 
+
   return (
     <>
       <div className="userbills-container">
         {userBills[0]?.map((userBill) => (
-          <div className="userbills-ul">
+          <ul className="userbills-ul" key={userBill}>
             {sessionUser.username == userBill ? (
               <div className="info-comments-div">
                 <div className="userbills-info-div">

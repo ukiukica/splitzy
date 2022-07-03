@@ -45,7 +45,7 @@ function SearchBar() {
       <div className="nav-search-div">
         <input
           id="nav-search"
-          placeholder="Search"
+          placeholder="Search Users"
           onChange={(e) => setQuery(e.target.value)}
         />
         {query

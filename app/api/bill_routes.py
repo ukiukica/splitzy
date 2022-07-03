@@ -1,5 +1,5 @@
 from flask import Blueprint, request
-from app.models import db, Bill, User
+from app.models import db, Bill, User, Comment
 from app.models.bill import user_bills
 from app.forms import BillForm, EditBillForm
 from datetime import datetime
@@ -31,7 +31,7 @@ def get_user_bill(id):
     # user_bills = [bill.assigned_user_bills for bill in bills]
     # user_bills = list(bills)[0].assigned_user_bills.all()
     # print("USER_BILLS: ", list(user_bill for user_bill in user_bills))
-    print("LOOK FOR THIS: ", [assigned_user for assigned_user in assigned_users])
+    # print("LOOK FOR THIS: ", [assigned_user for assigned_user in assigned_users])
     return {'user_bills': [assigned_user.username for assigned_user in assigned_users]}
 
 @bill_routes.route('/createbill', methods=['POST'])
@@ -89,6 +89,14 @@ def add_bill_friends(id):
     db.session.commit()
     return "Friend was added to bill"
 
+
+@bill_routes.route('/get-bill-users')
+def get_bill_users():
+    users_on_bills = db.session.query(user_bills).all()
+    # print('USERS ON BILLS --->', users_on_bills)
+    return dict(users_on_bills)
+
+
 # For removing friends after bill creation
 @bill_routes.route('/remove-bill-friends/<int:id>')
 def remove_friend_from_new_bill(id):
@@ -103,7 +111,7 @@ def remove_friend_from_new_bill(id):
 def remove_bill_friend(id1, id2):
     print("INSIDE REMOVE BILL FRIEND ROUTE")
     bill = Bill.query.get(id1)
-    print("------------------------BILL--------", bill)
+    # print("------------------------BILL--------", bill)
     friend = User.query.get(id2)
     bill.remove_bill_from_user(friend)
     db.session.commit()
