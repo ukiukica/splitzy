@@ -20,11 +20,12 @@ function UserBills({ sessionUser, bill }) {
     fetchData();
   }, []);
 
+
   return (
     <>
       <div className="userbills-container">
         {userBills[0]?.map((userBill) => (
-          <ul className="userbills-ul">
+          <ul className="userbills-ul" key={userBill}>
             {sessionUser.username == userBill ? (
               <div className="info-comments-div">
                 <div className="userbills-info-div">
@@ -46,13 +47,10 @@ function UserBills({ sessionUser, bill }) {
                     </>
                       <br></br>
 
-                    <div className="associated-users">Associated users:
+                    <div className="associated-users">
+                      <h4 id="split-header">Amount Split Between:</h4>
                     {userBills[0]?.map((userBill) => (
-                      <div className="userbills-users-div">
-                        <ul className="userbills-users">
-                          <li>{userBill}</li>
-                        </ul>
-                      </div>
+                          <div>{userBill === sessionUser.username ? <p>You</p> : userBill}</div>
                     ))}
                     </div>
                   </li>

@@ -45,7 +45,7 @@ function SearchBar() {
       <div className="nav-search-div">
         <input
           id="nav-search"
-          placeholder="Search"
+          placeholder="Search Users"
           onChange={(e) => setQuery(e.target.value)}
         />
         {query
@@ -64,9 +64,9 @@ function SearchBar() {
                 }
               })
               .map((user) => (
-                <div key={user.id}>
-                  <a href={`/user-overview/${user.id}`}>
-                    <p>{`${user.first_name} ${user.last_name}`}</p>
+                <div className="username-search-result" key={user.id}>
+                  <a href={`/user-overview/${user.id}`} className="username-result">
+                    <p className="username-result">{`${user.first_name} ${user.last_name}`}</p>
                   </a>
                   {/* <p>{user.last_name}</p>
                     <p>{user.username}</p> */}

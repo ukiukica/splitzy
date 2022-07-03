@@ -1,16 +1,34 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
-import { addBill } from "../../store/bills.js";
+import { useHistory, useParams } from "react-router-dom";
+import { addBill, viewBills } from "../../store/bills.js";
 import { ValidationError } from "../../utils/validationError";
+import "./AddFriendBill.css";
 
 function AddFriendBill() {
   const dispatch = useDispatch();
   const history = useHistory();
+  const { billId } = useParams();
+
+  let friendAdded;
 
   const [friends, setFriends] = useState([]);
   const [users, setUsers] = useState([]);
+  const [userBills, setUserBills] = useState([]);
+  // const [addedFriends, setAddedFriends] = useState([]);
+  const [friendIsAdded, setFriendIsAdded] = useState(false);
   const sessionUser = useSelector((state) => state.session.user);
+
+  let friend = [];
+  // console.log("FRIEND", friend)
+
+  const bills = useSelector((state) => {
+    return Object.values(state.bills);
+  });
+
+  useEffect(() => {
+    dispatch(viewBills());
+  }, [dispatch]);
 
   useEffect(() => {
     async function fetchData() {
@@ -21,13 +39,22 @@ function AddFriendBill() {
     fetchData();
   }, []);
 
-  console.log("USERS", users);
+  // console.log("USERS", users);
 
   useEffect(() => {
     async function fetchData() {
       const response = await fetch(`/api/friends/${sessionUser.id}`);
       const responseData = await response.json();
       setFriends(Object.values(responseData));
+    }
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    async function fetchData() {
+      const response = await fetch(`/api/bills/user-bills/${billId}`);
+      const responseData = await response.json();
+      setUserBills(Object.values(responseData));
     }
     fetchData();
   }, []);
@@ -40,31 +67,96 @@ function AddFriendBill() {
       const response = await fetch(
         `/api/bills/add-bill-friends/${userFriend[0].id}`
       );
-      history.push("/bills");
+      // history.push("/bills");
       return response;
     }
     fetchData();
   };
 
-  console.log("FRIENDS", friends);
+  const removeFriendFromBill = (friend) => {
+    async function fetchData() {
+      const userFriend = users.filter((user) => user.username === friend);
+      console.log("USER FRIEND", userFriend[0].id);
+      const response = await fetch(
+        `/api/bills/remove-bill-friends/${userFriend[0].id}`
+      );
+
+      //   history.push("/bills")
+      window.location.reload(false);
+      return response;
+    }
+    fetchData();
+  };
 
   return (
-    <div>
-      <h2>Assign friends to bill:</h2>
-      {friends[0]?.length > 0 ? (
-        friends[0]?.map((friend) => (
-          <ul key={friend}>
-            <button onClick={() => addFriendToBill(friend)}>{friend}</button>
-          </ul>
-        ))
-      ) : (
-        <div>
-          <p>You have no friends! Click continue to view your bills.</p>
-          <a href="/bills">
-            <button>Continue</button>
-          </a>
+    <div id="new-bill-friends-html-body">
+      <div id="friends-container">
+        <div id="inner-container-friends-bill">
+          <div id="assign-friends-table"></div>
+          <h2>Assign friends to bill:</h2>
+          {friends[0]?.length > 0 ? (
+            <>
+              {
+                <div>
+                  {friends[0]?.map((friend) => (
+                    <div
+                      className={userBills[0]?.includes(friend) ? "hidden" : ""}
+                      key={friend}
+                    >
+                      <button
+                        className="new-bill-friends-btn-add"
+                        onClick={async (e) => {
+                          // e.preventDefault()
+                          await addFriendToBill(friend);
+                          // setFriendIsAdded(true)
+                          window.location.reload(false);
+                          // console.log("FRIEND IS ADDED", friendIsAdded)
+                        }}
+                      >
+                        {friend}
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              }
+              <br />
+              <br />
+              <br />
+
+              <div>
+                <h2>Friends Added on This Bill:</h2>
+                {
+                  <div id="remove-friends-btn-container">
+                    {userBills[0]?.slice(1).map((userBill) => (
+                      <div>
+
+                          <button
+                          className="new-bill-friends-btn-remove"
+                          onClick={() => removeFriendFromBill(userBill)}
+                          >
+                          Remove {userBill}
+                        </button>
+                      </div>
+                    ))}
+                  </div>
+                }
+              </div>
+              <div>
+                <a href="/bills">
+                  <button className="continue-btn">Continue</button>
+                </a>
+              </div>
+            </>
+          ) : (
+            <div>
+              <p>You have no friends! Click continue to view your bills.</p>
+              <a href="/bills">
+                <button className="continue-btn">Continue</button>
+              </a>
+            </div>
+          )}
         </div>
-      )}
+      </div>
     </div>
   );
 }

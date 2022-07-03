@@ -5,8 +5,8 @@ class Transaction(db.Model):
     __tablename__ = "transactions"
 
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
-    bill_id = db.Column(db.Integer, db.ForeignKey('bills.id'), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    bill_id = db.Column(db.Integer, db.ForeignKey('bills.id'))
     user_amount = db.Column('user_amount', db.Float)
     settled = db.Column(db.Boolean('false'))
     created_at = db.Column(db.DateTime)

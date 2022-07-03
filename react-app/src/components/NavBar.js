@@ -1,12 +1,19 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import LogoutButton from "./auth/LogoutButton";
 import SearchBar from "./SearchBar";
+import { demouser } from "../store/session";
 import "./NavBar.css";
 
 function NavBar() {
+  const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
+
+  const demoOnClick = async (e) => {
+    e.preventDefault()
+    await dispatch(demouser('demo@aa.io', 'password'));
+  }
 
   let sessionLinks;
   if (!sessionUser) {
@@ -33,6 +40,14 @@ function NavBar() {
           >
             Sign Up
           </NavLink>
+        </div>
+        <div>
+          <button
+          onClick={demoOnClick}
+          activeClassName="active"
+          className="logged-out-links"
+          id='demo-btn'
+          >Demo</button>
         </div>
       </div>
     );
@@ -72,9 +87,7 @@ function NavBar() {
             Friends
           </NavLink>
         </div>
-        <div>
-          <SearchBar />
-        </div>
+        {/* <SearchBar /> */}
       </div>
     );
   }
@@ -107,7 +120,8 @@ function NavBar() {
             splitzy
           </NavLink>
         </div>
-        <div>{sessionLinks}</div>
+        {sessionLinks}
+        {sessionUser ? <SearchBar /> : <></>}
         {/* <div>
           <NavLink to="/users" exact={true} activeClassName="active">
             Users

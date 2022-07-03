@@ -15,9 +15,10 @@ function Bills() {
     return Object.values(state.bills);
   });
 
-  const [showModal, setShowModal] = useState(false);
-
   const sessionUser = useSelector((state) => state.session.user);
+  const [billsWithUsers, setBillsWithUsers] = useState({})
+
+  const userId = sessionUser.id
 
   useEffect(() => {
     dispatch(viewBills());
@@ -26,7 +27,8 @@ function Bills() {
   return (
     <>
       <div className="bills-container">
-        {bills.map((bill) => (
+        <h1>Your Bills:</h1>
+        {bills?.map((bill) => (
           <ul className="bills-ul" key={bill.id}>
             <UserBills sessionUser={sessionUser} bill={bill} />
             <br />
