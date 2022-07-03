@@ -52,7 +52,8 @@ function CreateBill() {
 
         if (createdBill) {
             setErrors([])
-            return history.push('/add-bill-friends')
+            console.log("CREATED BILL: ", createdBill)
+            return history.push(`/add-bill-friends/${createdBill.id}`)
         }
     }
 
