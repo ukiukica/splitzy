@@ -1,8 +1,8 @@
 """create tables
 
-Revision ID: 075c1d4acee5
+Revision ID: ac2364b94795
 Revises: 
-Create Date: 2022-07-02 20:10:05.366572
+Create Date: 2022-07-03 14:14:30.394068
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '075c1d4acee5'
+revision = 'ac2364b94795'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -41,12 +41,12 @@ def upgrade():
     )
     op.create_table('comments',
     sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('user_id', sa.Integer(), nullable=False),
-    sa.Column('bill_id', sa.Integer(), nullable=False),
+    sa.Column('user_id', sa.Integer(), nullable=True),
+    sa.Column('bill_id', sa.Integer(), nullable=True),
     sa.Column('content', sa.String(length=2000), nullable=False),
     sa.Column('created_at', sa.DateTime(), nullable=True),
     sa.Column('updated_at', sa.DateTime(), nullable=True),
-    sa.ForeignKeyConstraint(['bill_id'], ['bills.id'], ),
+    sa.ForeignKeyConstraint(['bill_id'], ['bills.id'], ondelete='CASCADE'),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
@@ -58,8 +58,8 @@ def upgrade():
     )
     op.create_table('transactions',
     sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('user_id', sa.Integer(), nullable=False),
-    sa.Column('bill_id', sa.Integer(), nullable=False),
+    sa.Column('user_id', sa.Integer(), nullable=True),
+    sa.Column('bill_id', sa.Integer(), nullable=True),
     sa.Column('user_amount', sa.Float(), nullable=True),
     sa.Column('settled', sa.Boolean(create_constraint='false'), nullable=True),
     sa.Column('created_at', sa.DateTime(), nullable=True),
