@@ -24,7 +24,8 @@ class Bill(db.Model):
         secondary=user_bills,
         backref= db.backref('user_bills', lazy = 'dynamic'),
         lazy = 'dynamic',
-        cascade="all, delete")
+        # cascade="all, delete"
+        )
 
     def to_dict(self):
         return {
