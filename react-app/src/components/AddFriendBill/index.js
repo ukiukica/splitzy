@@ -48,7 +48,7 @@ function AddFriendBill() {
       setUserBills(Object.values(responseData));
     }
     fetchData();
-  }, [friendIsAdded]);
+  }, []);
 
   //   console.log(friends)
   const addFriendToBill = (friend) => {
@@ -72,11 +72,12 @@ function AddFriendBill() {
       {friends[0]?.length > 0 ? (
         <>
         {friends[0]?.map((friend) => (
-          <div className={userBills.includes(friend) ? 'hidden' : ''} key={friend}>
+          <div className={userBills[0]?.includes(friend) ? 'hidden' : ''} key={friend}>
             <button onClick={async (e) => {
               // e.preventDefault()
               await addFriendToBill(friend)
-              setFriendIsAdded(true)
+              // setFriendIsAdded(true)
+              window.location.reload(false);
               console.log("USER BILLS", userBills)
               console.log("FRIEND IS ADDED", friendIsAdded)
             }}
@@ -85,12 +86,14 @@ function AddFriendBill() {
         ))}
       <div>
         <span>Friends Added on This Bill:</span>
-        <p>{userBills[0][1]}</p>
-        {userBills[0]?.map((userBill) => {
-          {console.log("USERBILLS[0]: ", userBills[0])}
-          {console.log("USERBILL: ", userBill)}
+        {userBills[0]?.slice(1).map((userBill) => (
           <p>{userBill}</p>
-        })}
+        ))}
+      </div>
+      <div>
+      <a href="/bills">
+            <button>Continue</button>
+          </a>
       </div>
       </>
       ) : (
