@@ -10,10 +10,12 @@
     /* z-index: 10; */
 }
 
-#add-cmt-title {
-    padding-left: 10px;
+.add-cmt-title {
+    /* padding-left: 10px; */
     margin-bottom: 10px;
     background-color: rgb(237, 177, 131);
+    display:flex;
+    justify-content: center;
 }
 
 .add-cmt-content-div {
@@ -32,7 +34,7 @@
     margin-top: 10px;
 }
 
-#add-cmt-submit-btn {
+.add-cmt-submit-btn {
     color: white;
     background-color: rgb(30, 85, 92);
     border: 0px solid transparent;
@@ -41,11 +43,11 @@
     margin-right: 3px;
 }
 
-#add-cmt-submit-btn:hover {
+.add-cmt-submit-btn:hover {
     opacity: .7;
 }
 
-#add-cmt-cancel-btn {
+.add-cmt-cancel-btn {
     color: white;
     background-color: rgb(241, 81, 82);
     border: transparent;
@@ -53,7 +55,7 @@
     font-size: 12px;
 }
 
-#add-cmt-cancel-btn:hover {
+.add-cmt-cancel-btn:hover {
     opacity: .7;
 }
 
@@ -73,4 +75,9 @@
 
 #add-comment-btn:hover {
     opacity: .7;
+}
+
+.comment-textarea {
+    height: 50px;
+    width: auto;
 }
