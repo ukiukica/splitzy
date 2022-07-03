@@ -58,3 +58,9 @@ button#create-cancel {
     background-color: #9fd356;
     border: none;
 }
+
+#create-bill-header {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+}

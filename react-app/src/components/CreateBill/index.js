@@ -62,7 +62,7 @@ function CreateBill() {
 
 
       <form onSubmit={handleSubmit}>
-        <h1>Create a New Bill</h1>
+        <h1 id="create-bill-header">Create a New Bill</h1>
         <div id="create-bill-input-container">
           <label className="create-bill-labels">
             Label
