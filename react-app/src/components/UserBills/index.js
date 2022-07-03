@@ -67,7 +67,7 @@ function UserBills({ sessionUser, bill }) {
                 </div>
               </div>
             ) : null}
-          </div>
+          </ul>
         ))}
       </div>
     </>
