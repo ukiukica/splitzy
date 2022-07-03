@@ -80,6 +80,10 @@ body {
     margin-right: 45px;
 }
 
-/* #signup-btn {
-
-} */
+.nav-search-div {
+    position: fixed;
+    top: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
