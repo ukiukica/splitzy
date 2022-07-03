@@ -2,22 +2,27 @@
     margin: 0 25px;
     display: flex;
     justify-content: center;
+    flex-direction: column;
     align-items: center;
 }
 
 div#create-bill-form {
     width: 600px;
     height: 300px;
-    /* border: 1px black solid; */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    background-color: rgba(237, 177, 131, 0.231);
+    margin-top: 30px;
+    margin-bottom: 60px;
+    border-radius: 8px;
 }
 
 #create-bill-input-container {
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
 input.create-bill-input {
@@ -34,10 +39,16 @@ label.create-bill-labels {
     margin-top: 5px;
     font-weight: 600;
     font-size: 18px;
+    -webkit-font-smoothing: antialiased;
+}
+
+.create-bill-btns-div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
 
 .create-bill-btns {
-    /* width: 100%; */
     height: 35px;
     color: white;
     font-weight: 600;
@@ -47,20 +58,48 @@ label.create-bill-labels {
 }
 
 button#create-cancel {
-    background: #f15152;
+    background: rgb(241, 81, 82);
     border: none;
-    width: 307px;
+    width: 100px;
+    margin-top: 0px;
+}
+
+button#create-cancel:hover {
+    opacity: .7;
 }
 
 #create-bill-submit {
-    margin-top: 10px;
-    width: 100%;
-    background-color: #9fd356;
+    margin-right: 10px;
+    background-color: rgb(237, 177, 131);
     border: none;
+    width: 100px;
+}
+
+#create-bill-submit:hover {
+    opacity: .7;
 }
 
 #create-bill-header {
     margin-bottom: 10px;
     display: flex;
     justify-content: center;
+    background-color: rgb(237, 177, 131);
+    width: 600px;
+}
+
+.create-bill-errors-div {
+    display: flex;
+    justify-content: center;
+}
+
+.create-bill-errors-ul {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-left: 0px;
+}
+
+.create-bill-errors-li {
+    color: rgb(241, 81, 82);
 }
