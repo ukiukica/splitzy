@@ -10,12 +10,15 @@
     background-color: rgba(237, 177, 131, 0.692);
     color: rgb(58, 46, 57);
     min-height: 250px;
+    width: 200px;
 }
 
 #notes-comments-heading {
     font-size: 12px;
     font-weight: bold;
     color: rgb(58, 46, 57);
+    display: flex;
+    justify-content: center;
 }
 
 #comment-username {
@@ -46,6 +49,7 @@
 .edit-delete-comment-btns {
     display: flex;
     flex-direction: row;
+    cursor: pointer;
 }
 
 #edit-comment-btn {
@@ -54,7 +58,8 @@
     border: transparent;
     border-radius: 3px;
     font-size: 11px;
-    padding: 0px 5px 0px 5px;
+    padding: 5px 15px;
+    cursor: pointer;
 }
 
 #edit-comment-btn:hover {
