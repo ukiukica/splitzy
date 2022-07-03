@@ -1,1 +1,23 @@
 
+div#bills-side-bar {
+    /* border: 1px solid black; */
+    width: 20%;
+    height: 100%;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    /* background: white; */
+}
+
+#friends-label {
+    background-color: #edb183;
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    height: 35px;
+    align-items: center;
+    margin-bottom: 10px;
+    margin-left: 15px;
+
+}

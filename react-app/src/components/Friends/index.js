@@ -19,7 +19,7 @@ function Friends() {
 
   return (
     <div>
-      <h1>Friends List</h1>
+      <h2 id="friends-label">Friends List</h2>
       {friends[0]?.length ? friends[0]?.map((friend) => (
         <ul key={friend}>
           <li>{friend}</li>
