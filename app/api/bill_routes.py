@@ -89,6 +89,12 @@ def add_bill_friends(id):
     db.session.commit()
     return "Friend was added to bill"
 
+@bill_routes.route('/get-bill-users')
+def get_bill_users():
+    users_on_bills = db.session.query(user_bills).all()
+    print('USERS ON BILLS --->', users_on_bills)
+    return dict(users_on_bills)
+
 @bill_routes.route('/<int:id1>/remove-bill-friend/<int:id2>')
 def remove_bill_friend(id1, id2):
     print("INSIDE REMOVE BILL FRIEND ROUTE")
