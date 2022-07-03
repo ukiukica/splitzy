@@ -81,6 +81,7 @@ body {
     margin-right: 45px;
 } */
 
+
 /* #signup-btn {
 
 } */
@@ -93,4 +94,12 @@ body {
     border-radius: 4px;
     font-size: 13px;
     padding: 4px 8px 4px 8px;
+}
+
+.nav-search-div {
+    position: fixed;
+    top: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }

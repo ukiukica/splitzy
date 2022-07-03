@@ -87,9 +87,7 @@ function NavBar() {
             Friends
           </NavLink>
         </div>
-        <div>
-          <SearchBar />
-        </div>
+        {/* <SearchBar /> */}
       </div>
     );
   }
@@ -122,7 +120,8 @@ function NavBar() {
             splitzy
           </NavLink>
         </div>
-        <div>{sessionLinks}</div>
+        {sessionLinks}
+        {sessionUser ? <SearchBar /> : <></>}
         {/* <div>
           <NavLink to="/users" exact={true} activeClassName="active">
             Users
