@@ -106,6 +106,7 @@ body {
     font-size: 13px;
     padding: 4px 8px 4px 8px;
     margin-left: 45px;
+    cursor: pointer;
 }
 
 #demo-btn:hover {
