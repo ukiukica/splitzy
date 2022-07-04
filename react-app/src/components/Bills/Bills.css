@@ -1,24 +1,42 @@
 
 div#bills-side-bar {
-    /* border: 1px solid black; */
-    width: 20%;
-    height: 100%;
+    width: 203px;
+    height: 357px;
     position: absolute;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     margin-left: 100px;
-    /* background: white; */
+    background: #f5e5d0;
+    top: 129px;
+    margin-left: 160px;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
 }
 
 #friends-label {
     background-color: #edb183;
-    width: 200px;
+    width: 193px;
     display: flex;
-    justify-content: center;
-    height: 35px;
     align-items: center;
     margin-bottom: 10px;
-    margin-left: 15px;
+    border-top-right-radius: 4px;
+    border-top-left-radius: 4px;
+    padding: 5px 0px 5px 10px;
+    font-size: 15px;
+    font-weight: bold;
+}
 
+.friend-a-tag {
+    text-decoration: none;
+}
+
+.friend-li {
+    /* text-decoration: none; */
+    font-size: 15px;
+    line-height: 2;
+}
+
+.friend-li:hover {
+    opacity: .7;
 }
