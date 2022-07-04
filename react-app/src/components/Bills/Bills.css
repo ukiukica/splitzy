@@ -10,6 +10,7 @@ div#bills-side-bar {
     /* left: 720px; */
     border-bottom-left-radius: 4px;
     border-bottom-right-radius: 4px;
+    margin-right: 10px;
 }
 
 #friends-label {
@@ -38,3 +39,10 @@ div#bills-side-bar {
 .friend-li:hover {
     opacity: .7;
 }
+
+#main-div {
+    display:flex;
+    justify-content: space-around;
+}
+
+

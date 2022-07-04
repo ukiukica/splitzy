@@ -56,7 +56,7 @@ function UserBills({ sessionUser, bill }) {
                   </li>
                 </div>
 
-                <div className="comments-div">
+                <div className="comments-div" id="comments-div">
                   <div>
                     <p id="notes-comments-heading">NOTES & COMMENTS:</p>
                     <Comments billId={bill.id} />
