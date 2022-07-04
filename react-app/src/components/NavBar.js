@@ -77,7 +77,7 @@ function NavBar() {
             Bills
           </NavLink>
         </div>
-        <div>
+        {/* <div>
           <NavLink
             to="/friends"
             exact={true}

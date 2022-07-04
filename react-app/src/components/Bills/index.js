@@ -5,6 +5,7 @@ import { viewBills, removeBill } from "../../store/bills";
 // import Comments from '../Comments';
 import CreateCommentFormModal from "../CreateCommentModal";
 import UserBills from "../UserBills";
+import Friends from "../Friends";
 // import { Modal } from "../../context/Modal";
 import "./Bills.css";
 
@@ -16,9 +17,9 @@ function Bills() {
   });
 
   const sessionUser = useSelector((state) => state.session.user);
-  const [billsWithUsers, setBillsWithUsers] = useState({})
+  const [billsWithUsers, setBillsWithUsers] = useState({});
 
-  const userId = sessionUser.id
+  const userId = sessionUser.id;
 
   useEffect(() => {
     dispatch(viewBills());
@@ -27,7 +28,10 @@ function Bills() {
   return (
     <>
       <div className="bills-container">
-        <h1>Your Bills:</h1>
+        {/* <h1>Your Bills:</h1> */}
+        <div id="bills-side-bar">
+          <Friends />
+        </div>
         {bills?.map((bill) => (
           <ul className="bills-ul" key={bill.id}>
             <UserBills sessionUser={sessionUser} bill={bill} />
