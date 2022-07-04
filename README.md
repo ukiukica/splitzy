@@ -4,7 +4,7 @@
 
 <br>
 
-## Getting started
+## Building the App
 1. Clone this repository (only this branch)
 
    ```bash
