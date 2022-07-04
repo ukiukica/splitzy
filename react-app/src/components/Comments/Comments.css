@@ -14,11 +14,9 @@
 }
 
 #notes-comments-heading {
-    font-size: 12px;
+    font-size: 16px;
     font-weight: bold;
     color: rgb(58, 46, 57);
-    display: flex;
-    justify-content: center;
 }
 
 #comment-username {

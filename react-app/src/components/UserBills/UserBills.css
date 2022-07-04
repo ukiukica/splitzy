@@ -22,11 +22,11 @@
 }
 
 #userbills-label {
-    font-size: 15px;
+    font-size: 20px;
     background-color: rgb(237, 177, 131);
     font-weight: bold;
     -webkit-font-smoothing: antialiased;
-    padding: 2px 0px 2px 5px;
+    padding: 5px 0px 5px 5px;
     margin-bottom: 4px;
 }
 
@@ -47,11 +47,11 @@
 }
 
 #userbills-time {
-    font-size: 12px;
+    font-size: 14px;
     position: relative;
     top: 117px;
-    left: 429px;
-    color: #edb183;
+    left: 397px;
+    color: #1e555c;
 }
 
 .userbills-users-div {
@@ -100,9 +100,9 @@
 #split-header {
     margin-bottom: 5px;
     font-size: 18px;
-    color: #d8945f;
+    color: #1e555c;
 }
 
 .userBill-name {
-    color: #bf8050;
+    color: #1e555c;
 }
