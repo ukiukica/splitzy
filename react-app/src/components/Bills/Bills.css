@@ -45,4 +45,7 @@ div#bills-side-bar {
     justify-content: space-around;
 }
 
-
+#bills-heading {
+    position: relative;
+    left: 295px;
+}
