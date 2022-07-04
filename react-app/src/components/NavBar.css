@@ -2,7 +2,7 @@ html {
     margin-top: 65px;
     background-color: rgb(247, 243, 231);
     font-size: 14px;
-    min-width: 1400px;
+    /* min-width: 1400px; */
 }
 
 body {
