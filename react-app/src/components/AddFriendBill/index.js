@@ -92,7 +92,7 @@ function AddFriendBill() {
     <div id="new-bill-friends-html-body">
       <div id="friends-container">
         <div id="inner-container-friends-bill">
-          <div id="assign-friends-table"></div>
+          {/* <div id="assign-friends-table"></div> */}
           <h2>Assign friends to bill:</h2>
           {friends[0]?.length > 0 ? (
             <>

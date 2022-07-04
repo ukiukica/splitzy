@@ -1,22 +1,18 @@
-.btn {
-
-}
-
 .hidden {
     display: none
 }
 
-#new-bill-friends-html-body {
+/* #new-bill-friends-html-body {
     display: flex;
     justify-content: center;
     align-items: center;
-}
+} */
 
 div#friends-container {
     width: 800px;
     height: 500px;
     display: flex;
-    flex-direction: row;
+    /* flex-direction: row; */
     justify-content: center;
     align-items: center;
 }
@@ -28,7 +24,7 @@ div#friends-container {
     align-items: center;
     align-content: center;
     flex-direction: column;
-    justify-content: space-evenly;
+    /* justify-content: space-evenly; */
 }
 
 .new-bill-friends-btn-add {
