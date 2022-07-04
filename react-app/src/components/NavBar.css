@@ -83,9 +83,9 @@ body {
     margin-right: 45px;
 }
 
-#friends-link {
+/* #friends-link {
     margin-right: 45px;
-}
+} */
 
 /* #login-btn {
     margin-right: 45px;
@@ -104,6 +104,12 @@ body {
     border-radius: 4px;
     font-size: 13px;
     padding: 4px 8px 4px 8px;
+    margin-left: 45px;
+}
+
+#demo-btn:hover {
+    background-color: rgb(247, 243, 231);
+    color: rgb(30, 85, 92);
 }
 
 .nav-search-div {
