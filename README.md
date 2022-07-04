@@ -5,7 +5,7 @@
 <br>
 
 ## Technologies Used
-![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)(https://www.javascript.com/)
+![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
 ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
 ![Redux](https://img.shields.io/badge/redux-%23593d88.svg?style=for-the-badge&logo=redux&logoColor=white)
 ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
@@ -57,20 +57,6 @@
 ### Application Architecture
 
 splitzy is built with Flask (backend), React and Redux (frontend), and PostgresSQL (database).
-
-<br>
-
-### Technologies Used
-* [React.js](https://reactjs.org/)
-* [Redux](https://redux.js.org/)
-* [Javascript](https://www.javascript.com/)
-* [Python](https://www.python.org/)
-* [PostgresSQL](https://www.postgresql.org/)
-* [SQLAlchemy](https://www.sqlalchemy.org/)
-* [Flask](https://flask.palletsprojects.com/en/2.1.x/)
-* [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
-* ![Python](https://img.shields.io/badge/Python-FFD43B?style=for-the-badge&logo=python&logoColor=blue)
-* ![Flask](https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white)
 
 <br>
 
