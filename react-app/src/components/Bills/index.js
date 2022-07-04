@@ -28,7 +28,7 @@ function Bills() {
   return (
     <div id='main-div'>
       <div className="bills-container">
-        <h1>Your Bills:</h1>
+        <h1 id="bills-heading">Your Bills</h1>
         <div id="bills-side-bar">
           <Friends />
         </div>
