@@ -102,9 +102,14 @@ body {
     /* border: 1px solid rgba(247, 243, 231, 0.408); */
     border: none;
     border-radius: 4px;
-    font-size: 13px;
+    font-size: 14px;
     padding: 4px 8px 4px 8px;
     margin-left: 45px;
+}
+
+#demo-btn:hover {
+    background-color: rgb(247, 243, 231);
+    color: rgb(30, 85, 92);
 }
 
 #demo-btn:hover {

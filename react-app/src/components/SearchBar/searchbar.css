@@ -9,14 +9,32 @@
 #nav-search {
     display: flex;
     padding: 3px 5px;
+    background-color: rgb(247, 243, 231);
+    border-radius: 5px;
 }
 
 .username-search-result {
-    background: white;
-    padding: 10px;
+    background: rgb(247, 243, 231);
+    /* padding: 10px; */
+    padding-left: 5px;
+
+
+}
+
+.username-search-result:hover {
+    background-color: rgb(30, 85, 92);
+    color: rgb(247, 243, 231);
 }
 
 .username-result {
     color: #3a2e39;
+    line-height: 3;
     text-decoration: none;
+
+    width: 100%;
+    height: 100%;
+}
+
+.username-result:hover {
+    color: rgb(247, 243, 231);
 }
