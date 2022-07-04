@@ -5,13 +5,13 @@
 <br>
 
 ## Building the App
-1. Clone this repository (only this branch)
+1. Clone the main repository
 
    ```bash
    git clone https://github.com/ukiukica/splitzy.git
    ```
 
-2. Install dependencies
+2. Install the dependencies
 
       ```bash
       pipenv install --dev -r dev-requirements.txt && pipenv install -r requirements.txt
