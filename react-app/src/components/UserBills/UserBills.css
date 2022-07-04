@@ -16,17 +16,16 @@
     color: rgb(58, 46, 57);
     margin-right: 20px;
     background-color: rgba(237, 177, 131, 0.231);
-    padding: 10px;
     min-width: 600px;
     margin-left: 130px;
 }
 
 #userbills-label {
-    font-size: 20px;
+    font-size: 22px;
     background-color: rgb(237, 177, 131);
     font-weight: bold;
     -webkit-font-smoothing: antialiased;
-    padding: 5px 0px 5px 5px;
+    padding: 5px 0px 5px 10px;
     margin-bottom: 4px;
 }
 
@@ -35,22 +34,22 @@
     display: flex;
     font-size: 80px;
     background: #f7f3e7;
-    width: 596px;
+    width: 566px;
     border-radius: 9px;
     color: green;
     height: 165px;
     align-items: center;
     justify-content: center;
     position: relative;
-    left: 2px;
-    top: 6px;
+    left: 18px;
+    top: 12px;
 }
 
 #userbills-time {
-    font-size: 14px;
+    font-size: 15px;
     position: relative;
-    top: 117px;
-    left: 397px;
+    top: 116px;
+    left: 370px;
     color: #1e555c;
 }
 
@@ -69,8 +68,8 @@
     margin-top: 20px;
     -webkit-font-smoothing: antialiased;
     position: relative;
-    bottom: 61px;
-    left: 2px;
+    bottom: 50px;
+    left: 18px;
     width: 203px;
 }
 
@@ -89,8 +88,8 @@
     width: 65px;
     cursor: pointer;
     position: relative;
-    left: 465px;
-    top: -17px;
+    bottom: 6px;
+    left: 448px;
 }
 
 #delete-bill-btn:hover {
