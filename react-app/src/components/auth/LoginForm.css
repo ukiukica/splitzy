@@ -4,9 +4,9 @@ div#login-html-body {
     justify-content: center;
     flex-direction: column;
     position: relative;
-    bottom: 21px;
+    bottom: -105px;
     height: 700px;
-
+    min-width: 100%;
 }
 
 #video-header {
@@ -20,19 +20,49 @@ div#login-html-body {
 #login-form {
     width: 583px;
     height: 200px;
-    background: #f7f3e7;
+    background: #f7f3e7c2;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     position: absolute;
-    bottom: 300px;
+    bottom: 90px;
+    border-radius: 5px;
 }
 
 .login-input {
     margin: 0 5px;
+    height: 20px;
+    width: 150px;
+    padding-left: 5px;
 }
 
 .login-label {
     margin-left: 10px;
+    font-weight: 600;
+}
+
+#login-form-btn {
+    height: 45px;
+    width: 78.25%;
+    background: #9fd356;
+    border: none;
+    position: relative;
+    top: 21px;
+    color: white;
+    font-weight: 600;
+    font-size: 18px;
+    border-radius: 2px;
+}
+
+div#login-auth-container {
+    display: flex;
+    flex-direction: row;
+}
+
+h2#login-title-header {
+    position: absolute;
+    font-size: 100px;
+    bottom: 208px;
+    color: white;
 }
