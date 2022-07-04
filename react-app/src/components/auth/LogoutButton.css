@@ -6,6 +6,7 @@
     border-radius: 4px;
     font-size: 13px;
     padding: 4px 8px 4px 8px;
+    cursor: pointer;
 }
 
 #logout-btn:hover {
