@@ -43,12 +43,12 @@ function Friends() {
 
   return (
     <div>
-      <h2 id="friends-label">Friends List</h2>
+      <h2 id="friends-label">FRIENDS LIST</h2>
       {friends[0]?.length
         ? friends[0]?.map((friend) => (
             <ul key={friend}>
-              <a href={`/user-overview/${users.filter((user) => user.username === friend)[0]?.id}`}>
-                <li>{friend}</li>
+              <a className="friend-a-tag" href={`/user-overview/${users.filter((user) => user.username === friend)[0]?.id}`}>
+                <li className="friend-li">{friend}</li>
               </a>
             </ul>
           ))

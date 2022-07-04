@@ -89,62 +89,68 @@ function AddFriendBill() {
   };
 
   return (
-    <div id="new-bill-friends-html-body">
-      <div id="friends-container">
-        <div id="inner-container-friends-bill">
-          <div id="assign-friends-table"></div>
-          <h2>Assign friends to bill:</h2>
+    <div>
+      <div id="assign-friends-container">
+        <div id="inner-assign-friends-container">
           {friends[0]?.length > 0 ? (
             <>
-              {
-                <div>
-                  {friends[0]?.map((friend) => (
-                    <div
-                      className={userBills[0]?.includes(friend) ? "hidden" : ""}
-                      key={friend}
-                    >
-                      <button
-                        className="new-bill-friends-btn-add"
-                        onClick={async (e) => {
-                          // e.preventDefault()
-                          await addFriendToBill(friend);
-                          // setFriendIsAdded(true)
-                          window.location.reload(false);
-                          // console.log("FRIEND IS ADDED", friendIsAdded)
-                        }}
-                      >
-                        {friend}
-                      </button>
-                    </div>
-                  ))}
-                </div>
-              }
-              <br />
-              <br />
-              <br />
-
-              <div>
-                <h2>Friends Added on This Bill:</h2>
+              <div className="assign-friends-list-div">
+                <h2 className="assign-friend-headings">
+                  Assign friends to bill:
+                </h2>
                 {
-                  <div id="remove-friends-btn-container">
-                    {userBills[0]?.slice(1).map((userBill) => (
-                      <div>
-
-                          <button
-                          className="new-bill-friends-btn-remove"
-                          onClick={() => removeFriendFromBill(userBill)}
-                          >
-                          Remove {userBill}
+                  <div>
+                    {friends[0]?.map((friend) => (
+                      <div
+                        id="friend-and-add-btn-div"
+                        className={
+                          userBills[0]?.includes(friend) ? "hidden" : ""
+                        }
+                        key={friend}
+                      >
+                        <button
+                          className="new-bill-friends-btn-add"
+                          onClick={async (e) => {
+                            // e.preventDefault()
+                            await addFriendToBill(friend);
+                            // setFriendIsAdded(true)
+                            window.location.reload(false);
+                            // console.log("FRIEND IS ADDED", friendIsAdded)
+                          }}
+                        >
+                          +
                         </button>
+                        <div className="add-to-bill-friend-name">{friend}</div>
                       </div>
                     ))}
                   </div>
                 }
               </div>
-              <div>
-                <a href="/bills">
-                  <button className="continue-btn">Continue</button>
-                </a>
+              <div className="friends-added-div">
+                <div>
+                  <h2 className="assign-friend-headings">
+                    Friends added to bill:
+                  </h2>
+
+                  <div id="remove-friends-btn-container">
+                    {userBills[0]?.slice(1).map((userBill) => (
+                      <div className="add-bill-remove-friends-div">
+                        <button
+                          className="new-bill-friends-btn-remove"
+                          onClick={() => removeFriendFromBill(userBill)}
+                        >
+                          x
+                        </button>
+                        <div className="add-to-bill-friend-name">
+                          {userBill}
+                        </div>
+                      </div>
+                    ))}
+                    <a id="continue-btn-a-tag" href="/bills">
+                      <button className="continue-btn">Continue</button>
+                    </a>
+                  </div>
+                </div>
               </div>
             </>
           ) : (

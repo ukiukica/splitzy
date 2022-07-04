@@ -71,12 +71,13 @@
 }
 
 #edit-bill-remove-btn {
-    color: white;
-    background-color: rgb(241, 81, 82);
+    color: rgb(241, 81, 82);
+    background-color: white;
     border: transparent;
     border-radius: 3px;
     margin-right: 3px;
-    font-size: 11px;
+    font-size: 14px;
+    font-weight: bold;
     cursor: pointer;
 }
 
@@ -103,7 +104,7 @@
 
 #edit-bill-btn {
     color: white;
-    background-color: rgb(237, 177, 131);
+    background-color: rgb(96 77 79);
     border: transparent;
     border-radius: 3px;
     margin-right: 3px;
@@ -112,8 +113,8 @@
     width: 65px;
     cursor: pointer;
     position: relative;
-    bottom: 17px;
-    left: 460px;
+    bottom: 6px;
+    left: 444px;
 }
 
 #edit-bill-btn:hover {

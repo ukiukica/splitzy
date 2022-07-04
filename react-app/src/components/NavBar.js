@@ -43,6 +43,17 @@ function NavBar() {
           </NavLink>
         </div>
         <div>
+          <NavLink
+            to="/about-us"
+            exact={true}
+            activeClassName="active"
+            className="logged-in-links"
+            id="about-us-link"
+          >
+            About Us
+          </NavLink>
+        </div>
+        <div>
           <button
           onClick={demoOnClick}
           activeClassName="active"
@@ -77,7 +88,7 @@ function NavBar() {
             Bills
           </NavLink>
         </div>
-        <div>
+        {/* <div>
           <NavLink
             to="/friends"
             exact={true}
@@ -87,7 +98,7 @@ function NavBar() {
           >
             Friends
           </NavLink>
-        </div>
+        </div> */}
         <div>
           <NavLink
             to="/about-us"

@@ -138,7 +138,7 @@ function EditBillForm({ setShowModal, bill }) {
                     {/* <a href="/bills"> */}
                     {user}{" "}
                     <button id="edit-bill-remove-btn" onClick={() => removeFriendFromBill(user)}>
-                      Remove
+                      x
                     </button>
                     {/* </a> */}
                   </ul>
