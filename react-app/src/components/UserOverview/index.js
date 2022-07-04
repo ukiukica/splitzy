@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import './useroverview.css'
 
 function UserOverview() {
   const history = useHistory();
@@ -56,18 +57,18 @@ function UserOverview() {
   };
 
   return (
-    <>
-      <p>
+    <div className="useroverview-container">
+      <p className="friend-name">
         {user.first_name} {user.last_name}
       </p>
       {friends.includes(user.username) ? (
         <>
-          <p>Friends</p>
+          <p className="friends-label">(Friends)</p>
           <a href={`/user-overview/${user.id}`}>
         <button
           onClick={(e) => {
-            // e.preventDefault()
             removeFriend(user.id)}}
+            className="unfriend-btn"
             >Unfriend</button>
           </a>
         </>
@@ -75,12 +76,12 @@ function UserOverview() {
         <a href={`/user-overview/${user.id}`}>
         <button
           onClick={(e) => {
-            // e.preventDefault()
             addFriend(user.id)}}
+            className="submit-add-friend"
             >Add Friend</button>
           </a>
       )}
-    </>
+    </div>
   );
 }
 
