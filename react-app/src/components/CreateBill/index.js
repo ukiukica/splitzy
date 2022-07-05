@@ -107,12 +107,12 @@ function CreateBill() {
               Submit
             </button>
             <a href="/bills" className="create-bill-btns">
-              <button id="create-cancel" className="create-bill-btns">
-                Cancel
-              </button>
             </a>
           </div>
         </form>
+        <a href='/bills' id="create-cancel" className="create-bill-btns">
+          Cancel
+        </a>
       </div>
     </div>
   );

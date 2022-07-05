@@ -111,7 +111,7 @@ function EditBillForm({ setShowModal, bill }) {
               Label
               <input
                 name="label"
-                className="label-input"
+                className="edit-bill-input"
                 type="text"
                 value={label}
                 onChange={(e) => setLabel(e.target.value)}
@@ -122,7 +122,7 @@ function EditBillForm({ setShowModal, bill }) {
               Amount
               <input
                 name="amount"
-                className="amount-input"
+                className="edit-bill-input"
                 type="float"
                 value={amount}
                 onChange={(e) => setAmount(e.target.value)}

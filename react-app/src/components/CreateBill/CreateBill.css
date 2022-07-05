@@ -57,14 +57,17 @@ label.create-bill-labels {
     border-radius: 3px;
 }
 
-button#create-cancel {
+#create-cancel {
     background: rgb(241, 81, 82);
     border: none;
+    text-decoration: none;
     width: 100px;
     margin-top: 0px;
+    margin-right: 15px;
+    padding-left: 10%;
 }
 
-button#create-cancel:hover {
+#create-cancel:hover {
     opacity: .7;
 }
 

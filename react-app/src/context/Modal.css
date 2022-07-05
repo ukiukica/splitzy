@@ -22,7 +22,7 @@
     position: absolute;
     display: flex;
     border-radius: 3px;
-    background-color: white;
+    /* background-color: white; */
     height: 450px;
     width: 700px;
     flex-direction: column;
