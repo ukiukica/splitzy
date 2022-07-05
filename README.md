@@ -67,6 +67,35 @@ We plan to refactor our code to create a dynamic single page application that wi
 
 <br>
 
+## Demo Screens!
+
+### Splash
+![Screen Shot 2022-07-04 at 10 04 11 PM](https://user-images.githubusercontent.com/96567728/177253486-65efe242-000c-49c9-8d55-17b986db0f38.png)
+h Page
+
+
+### Bills Page
+![Screen Shot 2022-07-04 at 10 05 54 PM](https://user-images.githubusercontent.com/96567728/177253407-12d25dd0-8df0-403b-be05-7aa78ecc050c.png)
+
+### Edit Existing Bill
+![Screen Shot 2022-07-04 at 10 07 39 PM](https://user-images.githubusercontent.com/96567728/177253596-7ad619d4-52c8-4501-a66f-2dbc3b775ed8.png)
+
+### Edit Existing Comment
+![Screen Shot 2022-07-04 at 10 08 33 PM](https://user-images.githubusercontent.com/96567728/177253658-dcfbd00e-dc79-41a6-b448-99447d8db020.png)
+
+### Create a New Bill
+![Screen Shot 2022-07-04 at 10 08 33 PM](https://user-images.githubusercontent.com/96567728/177253693-39a5e3bd-04ab-4a50-b8a0-b84fa87d8f96.png)
+
+### Adding Existing Friends to the New Bill
+![Screen Shot 2022-07-04 at 10 10 15 PM](https://user-images.githubusercontent.com/96567728/177253821-55226821-0d1b-4fba-8baf-11f363bce3de.png)
+
+### Searching Users List to Add as a Friend
+![Screen Shot 2022-07-04 at 10 11 09 PM](https://user-images.githubusercontent.com/96567728/177253895-1fb1ad29-8586-4669-8707-727b29476453.png)
+
+### About Us
+![Screen Shot 2022-07-04 at 10 12 26 PM](https://user-images.githubusercontent.com/96567728/177254014-84eb8114-7508-4e6f-b30d-5774e57d1cc4.png)
+
+
 ### Contact Us!
 * Uki:  <a href="https://www.linkedin.com/in/ukipavlovic/">Linkedin</a> | <a href="https://github.com/ukiukica/">Github</a> 
 * Olivia:  <a href="https://www.linkedin.com/in/olivia-bir-74b16b7b/">Linkedin</a> | <a href="https://github.com/oliviabir">Github</a>
