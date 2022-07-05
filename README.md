@@ -2,6 +2,8 @@
 
 <p align="center">splitzy - an original application based off Splitwise - is a full stack application that provides users the ability to search and add other users as friends and bill them for their dues. Users also have the ability to make notes or add comments to existing bills. To make use of these features, users are required to sign up for an account.</p>
 
+
+**Live Link**: https://splitzy-app.herokuapp.com/login
 <br>
 
 ## Technologies Used
