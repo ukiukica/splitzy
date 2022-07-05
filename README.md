@@ -63,7 +63,7 @@ splitzy is built with Flask (backend), React and Redux (frontend), and PostgresS
 <br>
 
 ### Future Features
-We plan to refactor our code to create a dynamic single page application that will mirror that of Splitwise. Refactoring our code will provide enhanced efficiency, fetching required information from the Redux store rather than from backend routes. Our bonus feature, transactions, will also be something to consider including in our splitzy app.
+We plan to refactor our code to create a dynamic single page application that will mirror that of Splitwise. Refactoring our code will provide enhanced efficiency, fetching required information from the Redux store rather than from backend routes. Our bonus feature, transactions, will also be something to consider including in our splitzy app. More features we plan on implementing is the ability to settle a bill and the ability to subtract from a bill's amount based on recorded payments.
 
 <br>
 
