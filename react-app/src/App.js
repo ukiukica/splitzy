@@ -74,9 +74,9 @@ function App() {
         <ProtectedRoute path="/" exact={true}>
           <Bills />
         </ProtectedRoute>
-        <ProtectedRoute path="/about-us" exact={true}>
+        <Route path="/about-us" exact={true}>
           <AboutUs />
-        </ProtectedRoute>
+        </Route>
       </Switch>
     </BrowserRouter>
   );
