@@ -71,7 +71,6 @@ We plan to refactor our code to create a dynamic single page application that wi
 
 ### Splash
 ![Screen Shot 2022-07-04 at 10 04 11 PM](https://user-images.githubusercontent.com/96567728/177253486-65efe242-000c-49c9-8d55-17b986db0f38.png)
-h Page
 
 
 ### Bills Page
