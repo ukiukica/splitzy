@@ -43,6 +43,8 @@ div#login-html-body {
     margin-left: 10px;
     font-weight: 600;
     font-size: 16px;
+    margin-left: 4px;
+    color: #515151;
 }
 
 
@@ -109,6 +111,10 @@ div#login-btns-container {
     display: flex;
     justify-content: center;
     margin: 8px 5px 12px 5px;
+}
+
+p {
+    color: #515151;
 }
 
 #already-have-acc-text-container {
