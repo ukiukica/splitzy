@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { addComment } from "../../store/comments";
+import { addComment, viewComments } from "../../store/comments";
 
-function CreateCommentForm({ billId, setShowModal }) {
+function CreateCommentForm({ billId }) {
   const dispatch = useDispatch();
-  const history = useHistory();
 
   const sessionUser = useSelector((state) => state.session.user);
 
@@ -33,8 +32,8 @@ function CreateCommentForm({ billId, setShowModal }) {
     console.log("createdComment:", createdComment);
     if (createdComment) {
       setErrors([]);
-      setShowModal(false);
-      return history.push("/bills");
+      setContent("");
+      await dispatch(viewComments())
     }
   };
 
@@ -46,21 +45,19 @@ function CreateCommentForm({ billId, setShowModal }) {
             <li key={idx}>{error}</li>
           ))}
         </ul>
-        <h1 className="add-cmt-title"> Add a Comment</h1>
           <div className="add-cmt-content-div">
           <textarea
             className='comment-textarea'
             name="content"
             type="textarea"
-            placeholder="Type something here..."
+            placeholder="Add a comment"
             value={content}
             onChange={(e) => setContent(e.target.value)}
             required
           />
           </div>
         <div className="add-cmt-submit-cancel-btns-div">
-          <button className="add-cmt-submit-btn" disabled={content.length < 1} type="submit">Submit</button>
-          <button className="add-cmt-cancel-btn" onClick={() => setShowModal(false)}>Cancel</button>
+          <button className="add-cmt-submit-btn" disabled={content.length < 1} type="submit">Post</button>
         </div>
       </form>
     </div>

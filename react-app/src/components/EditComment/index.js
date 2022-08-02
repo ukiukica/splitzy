@@ -5,7 +5,7 @@ import { editComment } from "../../store/comments";
 import DeleteComment from "../DeleteComment";
 import '../CreateCommentModal/CreateCommentButton.css'
 
-function EditComment({ comment, billId }) {
+function EditComment({ comment, billId, setShowEdit }) {
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -39,6 +39,7 @@ function EditComment({ comment, billId }) {
 
     if (editedComment) {
       setErrors([]);
+      setShowEdit(false)
 
     }
   };

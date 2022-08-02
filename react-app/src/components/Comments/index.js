@@ -7,6 +7,7 @@ import DeleteComment from '../DeleteComment'
 import GetUser from '../GetUser';
 import './Comments.css'
 import SingleComment from '../SingleComment';
+import CreateCommentForm from '../CreateCommentModal/CreateCommentForm';
 
 function Comments({ billId }) {
     const dispatch = useDispatch()
@@ -53,6 +54,7 @@ function Comments({ billId }) {
 
                 // </div>
             ))}
+            <CreateCommentForm billId={billId} />
         </div >
     )
 

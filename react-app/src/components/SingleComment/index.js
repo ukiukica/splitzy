@@ -31,12 +31,12 @@ function SingleComment ({comment, billId}) {
                     {sessionUser.id == comment.user_id && (
                         <>
                             <button onClick={(e) => onEdit(e)}>{showEdit ? "Cancel" : "Edit"}</button>
-                            
+
                         </>
                     )}
                     {showEdit && (
                         <>
-                        <EditComment comment={comment} billId={billId}/>
+                        <EditComment comment={comment} billId={billId} setShowEdit={setShowEdit}/>
                         </>
                     )}
 

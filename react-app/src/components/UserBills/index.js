@@ -4,6 +4,7 @@ import EditBillFormModal from "../EditBillModal";
 import Comments from "../Comments";
 import CreateCommentFormModal from "../CreateCommentModal";
 import { removeBill, viewBills } from "../../store/bills";
+import CreateCommentForm from "../CreateCommentModal/CreateCommentForm";
 import "./UserBills.css";
 
 function UserBills({ sessionUser, bill }) {
@@ -57,7 +58,8 @@ function UserBills({ sessionUser, bill }) {
           </div>
           <div>
           <Comments billId={bill.id} />
-          <CreateCommentFormModal billId={bill.id} />
+          
+          {/* <CreateCommentFormModal billId={bill.id} /> */}
           </div>
         </div>
       )}
