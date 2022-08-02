@@ -51,7 +51,7 @@ function NavBar() {
             Create a bill
           </NavLink>
         </div>
-        <div>
+        {/* <div>
           <NavLink
             to="/bills"
             exact={true}
@@ -61,7 +61,7 @@ function NavBar() {
           >
             Bills
           </NavLink>
-        </div>
+        </div> */}
         <div>
           <NavLink
             to="/about-us"
@@ -86,7 +86,7 @@ function NavBar() {
           </NavLink>
         </div>
         {sessionLinks}
-        {sessionUser ? <SearchBar /> : <></>}
+        {/* {sessionUser ? <SearchBar /> : <></>} */}
         {sessionUser ? <LogoutButton /> : <></>}
       </div>
     </nav>

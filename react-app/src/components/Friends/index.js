@@ -1,60 +1,22 @@
-import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState } from 'react';
+import { Modal } from '../../context/Modal';
+import Friends from './Friends';
+import UserOverview from '../UserOverview'
 
-function Friends() {
-  const dispatch = useDispatch();
-
-  // const [friends, setFriends] = useState([]);
-  const sessionUser = useSelector((state) => state.session.user);
-
-  useEffect(() => {
-    async function fetchData() {
-      const response = await fetch(`/api/friends/${sessionUser.id}`);
-      const responseData = await response.json();
-      setFriends(Object.values(responseData));
-    }
-    fetchData();
-  }, []);
-
-  // fetch friend id
-  const [users, setUsers] = useState([]);
-  const [friends, setFriends] = useState([]);
-
-  // fetches all users
-  useEffect(() => {
-    async function fetchData() {
-      const response = await fetch("/api/users/");
-      const responseData = await response.json();
-      setUsers(responseData.users);
-    }
-    fetchData();
-  }, []);
-
-  // fetches friends
-  useEffect(() => {
-    async function fetchData() {
-      const response = await fetch(`/api/friends/${sessionUser.id}`);
-      const responseData = await response.json();
-      setFriends(Object.values(responseData));
-    }
-    fetchData();
-  }, []);
-
+function FriendsModal({friend}) {
+  const [showModal, setShowModal] = useState(false);
 
   return (
-    <div>
-      <h2 id="friends-label">FRIENDS LIST</h2>
-      {friends[0]?.length
-        ? friends[0]?.map((friend) => (
-            <ul key={friend}>
-              <a className="friend-a-tag" href={`/user-overview/${users.filter((user) => user.username === friend)[0]?.id}`}>
-                <li className="friend-li">{friend}</li>
-              </a>
-            </ul>
-          ))
-        : "You have no friends!"}
-    </div>
+    <>
+      <div className="friend-a-tag friend-li" onClick={() => setShowModal(true)}><i class="fa-solid fa-user"></i>&nbsp;&nbsp;{friend}</div>
+      {console.log("FRIEND", friend)}
+      {showModal && (
+        <Modal onClose={() => setShowModal(false)}>
+          <UserOverview setShowModal={setShowModal} friend={friend}/>
+        </Modal>
+      )}
+    </>
   );
 }
 
-export default Friends;
+export default FriendsModal;

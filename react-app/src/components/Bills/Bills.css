@@ -30,22 +30,7 @@ div#bills-side-bar {
     text-decoration: none;
 }
 
-.friend-li {
-    /* text-decoration: none; */
-    font-size: 15px;
-    line-height: 2;
-}
-
-.friend-li:hover {
-    opacity: .7;
-}
-
 #main-div {
-    display:flex;
-    justify-content: space-around;
-}
-
-#bills-heading {
-    position: relative;
-    left: 295px;
-}
+    display: flex;
+    justify-content: center;
+  }

@@ -4,16 +4,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import './useroverview.css'
 
-function UserOverview() {
-  const history = useHistory();
-  const dispatch = useDispatch();
-  const { userId } = useParams();
+function UserOverview({friend}) {
+
 
   const [friends, setFriends] = useState([]);
   const [user, setUser] = useState([]);
 
   const sessionUser = useSelector((state) => state.session.user);
+  const usersList = useSelector((state) => Object.values(state.users))
 
+  const friendId = usersList.filter((user) => user.username == friend )
   // const friends = useSelector((state) => {
   //   return Object.values(state.friends)
   // })
@@ -24,7 +24,7 @@ function UserOverview() {
 
   useEffect(() => {
     async function fetchData() {
-      const response = await fetch(`/api/users/${userId}`);
+      const response = await fetch(`/api/users/${friendId[0]?.id}`);
       const responseData = await response.json();
       setUser(responseData);
     }
