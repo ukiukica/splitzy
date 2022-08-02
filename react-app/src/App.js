@@ -17,10 +17,25 @@ import AddFriendBill from "./components/AddFriendBill";
 import { authenticate } from "./store/session";
 import UserOverview from "./components/UserOverview";
 import AboutUs from "./components/AboutUs";
+import { viewUsers } from "./store/users";
+import { viewBills } from "./store/bills";
+import { viewComments } from "./store/comments";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(viewUsers())
+  }, [dispatch])
+
+  useEffect(() => {
+    dispatch(viewBills());
+  }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(viewComments())
+}, [dispatch])
 
   useEffect(() => {
     (async () => {

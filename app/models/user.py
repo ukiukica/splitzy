@@ -69,6 +69,7 @@ class User(db.Model, UserMixin):
             'last_name': self.last_name,
             'username': self.username,
             'email': self.email,
+            'friends': [friend.username for friend in self.friended[0:]],
             'created_at': self.created_at,
             'updated_at': self.updated_at
         }

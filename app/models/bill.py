@@ -32,6 +32,7 @@ class Bill(db.Model):
             'id': self.id,
             'label': self.label,
             'amount': self.amount,
+            'assigned_users': [user.username for user in self.assigned_user_bills[0:]],
             'created_at': self.created_at,
             'updated_at': self.updated_at
     }

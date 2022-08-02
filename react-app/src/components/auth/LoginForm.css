@@ -2,32 +2,32 @@ div#login-html-body {
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
-    position: relative;
-    bottom: -105px;
-    height: 700px;
+    flex-direction: row;
+    /* position: relative; */
+    /* bottom: -105px; */
     min-width: 100%;
 }
 
 #video-header {
-    min-width: 1080px;
     opacity: 1;
     transition: .4s .2s;
-    width: 100%;
     z-index: -1;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    top: 22px;
+    min-width: 100%;
+    min-height: 100%;
 }
 
 #login-form {
-    width: 855px;
-    height: 261px;
     background: #ffffff59;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    position: absolute;
-    bottom: -30px;
     border-radius: 5px;
+    padding: 30px
 }
 
 .login-input {
@@ -37,6 +37,7 @@ div#login-html-body {
     padding-left: 5px;
     border-radius: 3px;
     border: none;
+    margin-bottom: 20px;
 }
 
 .login-label {
@@ -45,29 +46,60 @@ div#login-html-body {
     font-size: 16px;
 }
 
-#login-form-btn {
-    height: 60px;
-    width: 90%;
-    background: #9fd356;
-    border: none;
-    position: relative;
-    top: 45px;
-    color: white;
-    font-weight: 600;
-    font-size: 20px;
-    border-radius: 2px;
-    cursor: pointer;
-}
 
 div#login-auth-container {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
 }
 
 h2#login-title-header {
-    position: absolute;
     font-size: 125px;
-    bottom: 273px;
     color: white;
     text-shadow: 1px 1px 15px #0000004a;
+    padding-top: 80px;
+}
+
+div#login-btns-container {
+    display: flex;
+    flex-direction: column;
+}
+
+#login-btn {
+    display: flex;
+    justify-content: center;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    background-color: #204660;
+    color: white;
+    font-weight: 600;
+    font-size: 20px;
+    cursor: pointer;
+    margin-bottom: 8px;
+    padding: 8px 130px;
+}
+
+#login-btn:hover {
+    border: 1px solid white;
+    color: #204660;
+    background-color: white;
+}
+
+#demo-btn {
+    display: flex;
+    justify-content: center;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    background-color: #10d48e;
+    color: white;
+    font-weight: 600;
+    font-size: 20px;
+    cursor: pointer;
+    margin-bottom: 8px;
+    padding: 8px 130px;
+}
+
+#demo-btn:hover {
+    border: 1px solid white;
+    background-color: white;
+    color: #10d48e;
 }
