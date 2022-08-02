@@ -3,9 +3,8 @@ div#login-html-body {
     align-items: center;
     justify-content: center;
     flex-direction: row;
-    /* position: relative; */
-    /* bottom: -105px; */
     min-width: 100%;
+    padding: 100px 0;
 }
 
 #video-header {
@@ -52,11 +51,17 @@ div#login-auth-container {
     flex-direction: column;
 }
 
-h2#login-title-header {
+h2.login-title-header {
     font-size: 125px;
     color: white;
     text-shadow: 1px 1px 15px #0000004a;
-    padding-top: 80px;
+    margin-right: 40px;
+}
+
+h2#login-title-splitzy {
+    font-size: 125px;
+    color: #36d48e;
+    text-shadow: 1px 1px 15px #0000004a;
 }
 
 div#login-btns-container {
@@ -69,10 +74,10 @@ div#login-btns-container {
     justify-content: center;
     border: 1px solid transparent;
     border-radius: 5px;
-    background-color: #204660;
+    background-color: #36d48e;
     color: white;
     font-weight: 600;
-    font-size: 20px;
+    font-size: 18px;
     cursor: pointer;
     margin-bottom: 8px;
     padding: 8px 130px;
@@ -80,8 +85,6 @@ div#login-btns-container {
 
 #login-btn:hover {
     border: 1px solid white;
-    color: #204660;
-    background-color: white;
 }
 
 #demo-btn {
@@ -89,17 +92,38 @@ div#login-btns-container {
     justify-content: center;
     border: 1px solid transparent;
     border-radius: 5px;
-    background-color: #10d48e;
-    color: white;
+    color: #10d48e;
+    background-color: white;
     font-weight: 600;
-    font-size: 20px;
+    font-size: 18px;
     cursor: pointer;
     margin-bottom: 8px;
     padding: 8px 130px;
 }
 
 #demo-btn:hover {
-    border: 1px solid white;
-    background-color: white;
-    color: #10d48e;
+    border: 1px solid #10d48e;
+}
+
+#or-text-container {
+    display: flex;
+    justify-content: center;
+    margin: 8px 5px 12px 5px;
+}
+
+#already-have-acc-text-container {
+    padding-top: 20px;
+    display: flex;
+    align-items: center;
+}
+
+#already-have-acc-text {
+    display: flex;
+    margin-right: 6px;
+}
+
+#sign-up-link {
+    display: flex;
+    color: white;
+    font-weight: bold;
 }
