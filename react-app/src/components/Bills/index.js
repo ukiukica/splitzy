@@ -25,9 +25,9 @@ function Bills() {
     <div id='main-div'>
       <div className="bills-container">
         <h1 id="bills-heading">Your Bills</h1>
-        <div id="bills-side-bar">
+        {/* <div id="bills-side-bar">
           <Friends />
-        </div>
+        </div> */}
         {bills?.map((bill) => (
           <ul className="bills-ul" key={bill.id}>
             <UserBills sessionUser={sessionUser} bill={bill} />

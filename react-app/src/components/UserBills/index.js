@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import EditBillFormModal from "../EditBillModal";
 import Comments from "../Comments";
 import CreateCommentFormModal from "../CreateCommentModal";
-import { removeBill } from "../../store/bills";
+import billsReducer, { removeBill } from "../../store/bills";
 import "./UserBills.css";
 
 function UserBills({ sessionUser, bill }) {
@@ -11,65 +11,48 @@ function UserBills({ sessionUser, bill }) {
 
   const [userBills, setUserBills] = useState([]);
 
-  useEffect(() => {
-    async function fetchData() {
-      const response = await fetch(`/api/bills/user-bills/${bill.id}`);
-      const responseData = await response.json();
-      setUserBills(Object.values(responseData));
-    }
-    fetchData();
-  }, []);
 
+  const formatDate = (dateString) => {
+    const options = { year: "numeric", month: "long", day: "numeric" }
+    return new Date(dateString).toLocaleDateString(undefined, options)
+}
+  // useEffect(() => {
+  //   async function fetchData() {
+  //     const response = await fetch(`/api/bills/user-bills/${bill.id}`);
+  //     const responseData = await response.json();
+  //     setUserBills(Object.values(responseData));
+  //   }
+  //   fetchData();
+  // }, []);
 
+  console.log("BILL: ", bill)
   return (
     <>
-      <div className="userbills-container">
-        {userBills[0]?.map((userBill) => (
-          <ul className="userbills-ul" key={userBill}>
-            {sessionUser.username == userBill ? (
-              <div className="info-comments-div">
-                <div className="userbills-info-div">
-                  <li id="userbills-label">{bill.label}</li>
-                  <li id="userbills-amount">${bill.amount}</li>
-                  <li id="userbills-time">{bill.created_at}</li>
-                  <li>
-                    <br></br>
-                    <>
-                      <EditBillFormModal bill={bill} />
-                      <a href="/bills">
-                        <button
-                          id="delete-bill-btn"
-                          onClick={() => dispatch(removeBill(bill.id))}
-                        >
-                          Delete
-                        </button>
-                      </a>
-                    </>
-                      <br></br>
-
-                    <div className="associated-users">
-                      <h4 id="split-header">Amount Split Between:</h4>
-                    {userBills[0]?.map((userBill) => (
-                          <div className="userBill-name">{userBill === sessionUser.username ? <p className="userBill-name">You</p> : userBill}</div>
-                    ))}
-                    </div>
-                  </li>
-                </div>
-
-                <div className="comments-div" id="comments-div">
-                  <div>
-                    <p id="notes-comments-heading">NOTES & COMMENTS:</p>
-                    <Comments billId={bill.id} />
-                  </div>
-                  <div>
-                  <CreateCommentFormModal billId={bill.id} />
-                  </div>
-                </div>
-              </div>
-            ) : null}
-          </ul>
-        ))}
+      <div className="">
+        <p id="">{bill.label}</p>
+        <p id="">${bill.amount}</p>
+        <p id="">{formatDate(bill.created_at)}</p>
       </div>
+      <>
+        <EditBillFormModal bill={bill} />
+        <a href="/bills">
+          <button
+            id="delete-bill-btn"
+            onClick={() => dispatch(removeBill(bill.id))}
+          >
+            Delete
+          </button>
+        </a>
+      </>
+      {/* <div className="comments-div" id="comments-div">
+                <div>
+                  <p id="notes-comments-heading">NOTES & COMMENTS:</p>
+                  <Comments billId={bill.id} />
+                </div>
+                <div>
+                  <CreateCommentFormModal billId={bill.id} />
+                </div>
+              </div> */}
     </>
   );
 }
