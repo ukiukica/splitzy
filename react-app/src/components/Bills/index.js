@@ -29,10 +29,9 @@ function Bills() {
           <Friends />
         </div> */}
         {bills?.map((bill) => (
-          <ul className="bills-ul" key={bill.id}>
+          <div key={bill.id}>
             <UserBills sessionUser={sessionUser} bill={bill} />
-            <br />
-          </ul>
+          </div>
         ))}
       </div>
     </div>

@@ -10,6 +10,8 @@ import './Comments.css'
 function Comments({ billId }) {
     const dispatch = useDispatch()
 
+    const users = useSelector((state) => state.users)
+
     const comments = useSelector((state) => {
         return Object.values(state.comments)
     })
@@ -18,33 +20,36 @@ function Comments({ billId }) {
         return comment.bill_id == billId
     })
 
+
+
     const [showModal, setShowModal] = useState(false);
 
     const sessionUser = useSelector(state => state.session.user)
 
+
     return (
         <div className='comments-container'>
-            {(billComments) ? billComments.map((comment) =>(
+            {(billComments) ? billComments.map((comment) => (
                 <div className='each-comment-div' key={comment.id}>
                     <div className="username-and-comment">
-                    <GetUser userId={comment.user_id} />
-                    <p id="all-comments">{comment.content}</p>
+                        <p id="comment-username">{users[comment.user_id].username}</p>
+                        <p id="all-comments">{comment.content}</p>
                     </div>
                     <div >
-                    {(sessionUser.id == comment.user_id) ? (
-                        <div className='edit-delete-comment-btns'>
-                            <button id="edit-comment-btn" onClick={() => setShowModal(true)}>Edit</button>
-                            {showModal && (
-                                <Modal onClose={() => setShowModal(false)}>
-                                    <EditComment setShowModal={setShowModal} comment={comment} billId={billId} />
-                                </Modal>
-                            )}
-                            <DeleteComment comment={comment} />
-                        </div>
-                    ) : null }
+                        {(sessionUser.id == comment.user_id) ? (
+                            <div className='edit-delete-comment-btns'>
+                                <button id="edit-comment-btn" onClick={() => setShowModal(true)}>Edit</button>
+                                {showModal && (
+                                    <Modal onClose={() => setShowModal(false)}>
+                                        <EditComment setShowModal={setShowModal} comment={comment} billId={billId} />
+                                    </Modal>
+                                )}
+                                <DeleteComment comment={comment} />
+                            </div>
+                        ) : null}
                     </div>
                 </div>
-            )) : null }
+            )) : null}
         </div>
     )
 
