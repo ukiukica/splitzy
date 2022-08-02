@@ -22,10 +22,6 @@ function Comments({ billId }) {
 
     const sessionUser = useSelector(state => state.session.user)
 
-    useEffect(() => {
-        dispatch(viewComments())
-    }, [dispatch])
-
     return (
         <div className='comments-container'>
             {(billComments) ? billComments.map((comment) =>(
