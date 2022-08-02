@@ -1,15 +1,20 @@
 #logout-btn {
-    background-color: rgb(43, 123, 133);
-    color: rgb(247, 243, 231);
+    background-color: transparent;
+    color: #ffffff;
     /* border: 1px solid rgba(247, 243, 231, 0.408); */
     border: none;
     border-radius: 4px;
     font-size: 14px;
     padding: 4px 8px 4px 8px;
     cursor: pointer;
+    margin: 0 5rem;
 }
 
 #logout-btn:hover {
-    background-color: rgb(247, 243, 231);
-    color: rgb(30, 85, 92);
+    /* background-color: rgb(247, 243, 231); */
+    color: #F7F3E7;
 }
+
+i.fa-solid.fa-arrow-right-from-bracket {
+    color: #ffffff;
+  }

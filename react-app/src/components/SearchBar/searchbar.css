@@ -8,21 +8,22 @@
 
 #nav-search {
     display: flex;
-    padding: 3px 5px;
-    background-color: rgb(247, 243, 231);
-    border-radius: 5px;
+    padding: 4px 10px;
+    background-color: #ffffff;
+    border-radius: 2px;
+    border: none;
 }
 
 .username-search-result {
-    background: rgb(247, 243, 231);
+    background-color: #ffffff;
     /* padding: 10px; */
-    padding-left: 5px;
+    padding-left: 10px;
 
 
 }
 
 .username-search-result:hover {
-    background-color: rgb(30, 85, 92);
+    background-color: #28efa8;
     color: rgb(247, 243, 231);
 }
 
