@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
-import { login } from "../../store/session";
+import { login, demouser } from "../../store/session";
 import "./LoginForm.css";
 
 const LoginForm = () => {
@@ -18,6 +18,11 @@ const LoginForm = () => {
       setErrors(data);
     }
   };
+
+  const demoOnClick = async (e) => {
+    e.preventDefault()
+    await dispatch(demouser('demo@aa.io', 'password'));
+  }
 
   const updateEmail = (e) => {
     setEmail(e.target.value);
@@ -39,15 +44,17 @@ const LoginForm = () => {
           src="https://res.cloudinary.com/matchaprince/video/upload/v1656800970/220509_04_London_Student_4k_017_preview_muequc.mp4"
         />
       </video>
+          <h2 id="login-title-header">
+          Going<br/>
+          Splitzies<br/>
+          made easy.</h2>
       <form id="login-form" onSubmit={onLogin}>
         <div>
           {errors.map((error, ind) => (
             <div key={ind}>{error}</div>
           ))}
         </div>
-        <h2 id="login-title-header">Going Splitzies made easy.</h2>
         <div id="login-auth-container">
-          <div>
             <label className="login-label" htmlFor="email">
               Email
             </label>
@@ -55,12 +62,10 @@ const LoginForm = () => {
               name="email"
               type="text"
               className="login-input"
-              placeholder="Email"
+              // placeholder="Email"
               value={email}
               onChange={updateEmail}
             />
-          </div>
-          <div>
             <label className="login-label" htmlFor="password">
               Password
             </label>
@@ -68,15 +73,20 @@ const LoginForm = () => {
               name="password"
               type="password"
               className="login-input"
-              placeholder="Password"
+              // placeholder="Password"
               value={password}
               onChange={updatePassword}
             />
-          </div>
         </div>
-        <button id="login-form-btn" type="submit">
-          Login
+        <div id="login-btns-container">
+        <button id="login-btn" type="submit">
+          Log in
         </button>
+          <button
+          onClick={demoOnClick}
+          id='demo-btn'
+          >Demo</button>
+          </div>
       </form>
     </div>
   );
