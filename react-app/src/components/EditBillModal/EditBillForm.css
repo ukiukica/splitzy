@@ -129,7 +129,7 @@
     height: 25px;
     width: 65px;
     cursor: pointer;
-    position: relative;
+    /* position: relative; */
     bottom: 6px;
     left: 444px;
 }

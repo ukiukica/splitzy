@@ -40,7 +40,7 @@ function UserBills({ sessionUser, bill }) {
             id="delete-bill-btn"
             onClick={() => dispatch(removeBill(bill.id))}
           >
-            Delete
+            <i class="fa-solid fa-x"></i>
           </button>
         </a>
       </>

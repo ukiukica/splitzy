@@ -6,6 +6,7 @@ import { viewBills, removeBill } from "../../store/bills";
 import CreateCommentFormModal from "../CreateCommentModal";
 import UserBills from "../UserBills";
 import Friends from "../Friends";
+import SideBar from "../Sidebar";
 // import { Modal } from "../../context/Modal";
 import "./Bills.css";
 
@@ -23,6 +24,7 @@ function Bills() {
 
   return (
     <div id='main-div'>
+      <SideBar />
       <div className="bills-container">
         <h1 id="bills-heading">Your Bills</h1>
         {/* <div id="bills-side-bar">

@@ -43,14 +43,12 @@ function Friends() {
 
   return (
     <div>
-      <h2 id="friends-label">FRIENDS LIST</h2>
+      <div id="friends-title-sep">FRIENDS</div>
       {friends[0]?.length
         ? friends[0]?.map((friend) => (
-            <ul key={friend}>
               <a className="friend-a-tag" href={`/user-overview/${users.filter((user) => user.username === friend)[0]?.id}`}>
-                <li className="friend-li">{friend}</li>
+                <div className="friend-li"><i class="fa-solid fa-user"></i> {friend}</div>
               </a>
-            </ul>
           ))
         : "You have no friends!"}
     </div>

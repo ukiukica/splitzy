@@ -85,8 +85,8 @@ body {
 }
 
 .nav-search-div {
-    position: fixed;
-    top: 10px;
+    /* position: fixed;
+    top: 10px; */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
