@@ -21,10 +21,6 @@ function Bills() {
 
   const userId = sessionUser.id;
 
-  useEffect(() => {
-    dispatch(viewBills());
-  }, [dispatch]);
-
   return (
     <div id='main-div'>
       <div className="bills-container">
