@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { Redirect, NavLink } from "react-router-dom";
 import { login, demouser } from "../../store/session";
 import "./LoginForm.css";
 
@@ -20,9 +20,9 @@ const LoginForm = () => {
   };
 
   const demoOnClick = async (e) => {
-    e.preventDefault()
-    await dispatch(demouser('demo@aa.io', 'password'));
-  }
+    e.preventDefault();
+    await dispatch(demouser("demo@aa.io", "password"));
+  };
 
   const updateEmail = (e) => {
     setEmail(e.target.value);
@@ -44,10 +44,11 @@ const LoginForm = () => {
           src="https://res.cloudinary.com/matchaprince/video/upload/v1656800970/220509_04_London_Student_4k_017_preview_muequc.mp4"
         />
       </video>
-          <h2 id="login-title-header">
-          Going<br/>
-          Splitzies<br/>
-          made easy.</h2>
+      <div>
+        <h2 className="login-title-header">Going</h2>
+        <h2 id="login-title-splitzy">splitzy</h2>
+        <h2 className="login-title-header">made easy.</h2>
+      </div>
       <form id="login-form" onSubmit={onLogin}>
         <div>
           {errors.map((error, ind) => (
@@ -55,38 +56,46 @@ const LoginForm = () => {
           ))}
         </div>
         <div id="login-auth-container">
-            <label className="login-label" htmlFor="email">
-              Email
-            </label>
-            <input
-              name="email"
-              type="text"
-              className="login-input"
-              // placeholder="Email"
-              value={email}
-              onChange={updateEmail}
-            />
-            <label className="login-label" htmlFor="password">
-              Password
-            </label>
-            <input
-              name="password"
-              type="password"
-              className="login-input"
-              // placeholder="Password"
-              value={password}
-              onChange={updatePassword}
-            />
+          <label className="login-label" htmlFor="email">
+            Email
+          </label>
+          <input
+            name="email"
+            type="text"
+            className="login-input"
+            // placeholder="Email"
+            value={email}
+            onChange={updateEmail}
+          />
+          <label className="login-label" htmlFor="password">
+            Password
+          </label>
+          <input
+            name="password"
+            type="password"
+            className="login-input"
+            // placeholder="Password"
+            value={password}
+            onChange={updatePassword}
+          />
         </div>
         <div id="login-btns-container">
-        <button id="login-btn" type="submit">
-          Log in
-        </button>
-          <button
-          onClick={demoOnClick}
-          id='demo-btn'
-          >Demo</button>
+          <button id="login-btn" type="submit">
+            Log in
+          </button>
+          <div id="or-text-container">
+            <p>———————&nbsp;&nbsp;</p>
+            <p>or</p>
+            <p>&nbsp;&nbsp;———————</p>
           </div>
+          <button onClick={demoOnClick} id="demo-btn">
+            Demo
+          </button>
+        </div>
+        <div id="already-have-acc-text-container">
+          <p id="already-have-acc-text">Not a registered user?</p>
+          <NavLink id="sign-up-link" to="/sign-up">Sign up</NavLink>
+        </div>
       </form>
     </div>
   );

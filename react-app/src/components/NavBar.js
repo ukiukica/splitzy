@@ -21,7 +21,7 @@ function NavBar() {
             className="logged-out-links"
             id="signup-btn"
           >
-            Sign Up
+            Sign up
           </NavLink>
         </div>
         <div>
@@ -32,7 +32,7 @@ function NavBar() {
             className="logged-in-links"
             id="about-us-link"
           >
-            About Us
+            About us
           </NavLink>
         </div>
       </div>
@@ -70,7 +70,7 @@ function NavBar() {
             className="logged-in-links"
             id="about-us-link"
           >
-            About Us
+            About us
           </NavLink>
         </div>
       </div>
@@ -87,7 +87,7 @@ function NavBar() {
         </div>
         {sessionLinks}
         {sessionUser ? <SearchBar /> : <></>}
-        <div>{sessionUser ? <LogoutButton /> : null}</div>
+        {sessionUser ? <LogoutButton /> : <></>}
       </div>
     </nav>
   );
