@@ -21,8 +21,7 @@ div#login-html-body {
 }
 
 #login-form {
-    /* width: 855px; */
-    background: #f7f3e7c2;
+    background: #ffffff59;
     display: flex;
     flex-direction: column;
     justify-content: center;
