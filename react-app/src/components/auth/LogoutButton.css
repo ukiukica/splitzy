@@ -18,3 +18,7 @@
 i.fa-solid.fa-arrow-right-from-bracket {
     color: #ffffff;
   }
+
+i.fa-solid.fa-arrow-right-from-bracket:hover {
+    color: #F7F3E7;
+  }
