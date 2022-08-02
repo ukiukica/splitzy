@@ -3,34 +3,16 @@ import { NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import LogoutButton from "./auth/LogoutButton";
 import SearchBar from "./SearchBar";
-import { demouser } from "../store/session";
-import AboutUs from "./AboutUs";
 import "./NavBar.css";
 
 function NavBar() {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
 
-  const demoOnClick = async (e) => {
-    e.preventDefault()
-    await dispatch(demouser('demo@aa.io', 'password'));
-  }
-
   let sessionLinks;
   if (!sessionUser) {
     sessionLinks = (
       <div className="nav-bar-logged-out-div">
-        <div>
-          <NavLink
-            to="/login"
-            exact={true}
-            activeClassName="active"
-            className="logged-out-links"
-            id="login-btn"
-          >
-            Login
-          </NavLink>
-        </div>
         <div>
           <NavLink
             to="/sign-up"
@@ -52,14 +34,6 @@ function NavBar() {
           >
             About Us
           </NavLink>
-        </div>
-        <div>
-          <button
-          onClick={demoOnClick}
-          activeClassName="active"
-          className="logged-out-links"
-          id='demo-btn'
-          >Demo</button>
         </div>
       </div>
     );
@@ -88,17 +62,6 @@ function NavBar() {
             Bills
           </NavLink>
         </div>
-        {/* <div>
-          <NavLink
-            to="/friends"
-            exact={true}
-            activeClassName="active"
-            className="logged-in-links"
-            id="friends-link"
-          >
-            Friends
-          </NavLink>
-        </div> */}
         <div>
           <NavLink
             to="/about-us"
@@ -110,32 +73,11 @@ function NavBar() {
             About Us
           </NavLink>
         </div>
-        {/* <SearchBar /> */}
       </div>
     );
   }
 
   return (
-    // <nav>
-    //   <ul className="nav-bar">
-    //     <li>
-    //       <NavLink to="/" exact={true} activeClassName="active">
-    //         Home
-    //       </NavLink>
-    //     </li>
-    //     <li>
-    //     {sessionLinks}
-    //     </li>
-    //     <li>
-    //       <NavLink to="/users" exact={true} activeClassName="active">
-    //         Users
-    //       </NavLink>
-    //     </li>
-    //     <li>
-    //       <LogoutButton />
-    //     </li>
-    //   </ul>
-    // </nav>
     <nav>
       <div className="nav-bar">
         <div>
@@ -145,11 +87,6 @@ function NavBar() {
         </div>
         {sessionLinks}
         {sessionUser ? <SearchBar /> : <></>}
-        {/* <div>
-          <NavLink to="/users" exact={true} activeClassName="active">
-            Users
-          </NavLink>
-        </div> */}
         <div>{sessionUser ? <LogoutButton /> : null}</div>
       </div>
     </nav>

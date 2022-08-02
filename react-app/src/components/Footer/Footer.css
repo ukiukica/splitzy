@@ -1,0 +1,29 @@
+.footer-container {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    /* padding: 10px 0px 10px 0px; */
+    height: 215px;
+    background-color: red;
+}
+
+.footer-columns {
+    display: flex;
+    flex-direction: column;
+}
+
+.splitzy-footer-links {
+    display: flex;
+    flex-direction: column;
+}
+
+.tech-footer-links {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-footer-links {
+    display: flex;
+    flex-direction: column;
+}
