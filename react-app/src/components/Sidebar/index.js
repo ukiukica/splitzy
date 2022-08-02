@@ -1,4 +1,4 @@
-import Friends from "../Friends";
+import Friends from "../Friends/Friends";
 import SearchBar from "../SearchBar";
 import "./Sidebar.css";
 

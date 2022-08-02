@@ -30,7 +30,9 @@ i.fa-solid.fa-user {
     color: #666666;
     line-height: 1.8rem;
     padding: 1px 0 1px 8px;
-}
+    display: flex;
+    align-items: center;
+  }
 
 a#all-expenses-side {
     margin-top: 10px;
@@ -57,6 +59,7 @@ div#all-expenses-side:hover {
 
 .friend-li:hover {
     background: #eee;
+    cursor: pointer;
     color: #666;
 }
 

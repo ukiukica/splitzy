@@ -5,7 +5,7 @@ import { viewBills, removeBill } from "../../store/bills";
 // import Comments from '../Comments';
 import CreateCommentFormModal from "../CreateCommentModal";
 import UserBills from "../UserBills";
-import Friends from "../Friends";
+import Friends from "../Friends/Friends";
 import SideBar from "../Sidebar";
 // import { Modal } from "../../context/Modal";
 import "./Bills.css";

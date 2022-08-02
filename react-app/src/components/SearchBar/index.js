@@ -51,14 +51,14 @@ function SearchBar() {
         {query
           ? users
               .filter((user) => {
-                if (user.username.toLowerCase().includes(query.toLowerCase())) {
+                if (user?.username.toLowerCase().includes(query.toLowerCase())) {
                   return user;
                 } else if (
-                  user.first_name.toLowerCase().includes(query.toLowerCase())
+                  user?.first_name.toLowerCase().includes(query.toLowerCase())
                 ) {
                   return user;
                 } else if (
-                  user.last_name.toLowerCase().includes(query.toLowerCase())
+                  user?.last_name.toLowerCase().includes(query.toLowerCase())
                 ) {
                   return user;
                 }
@@ -66,7 +66,7 @@ function SearchBar() {
               .map((user) => (
                 <div className="username-search-result" key={user.id}>
                   {user.id === +sessionUser.id ? <></> :
-                  <a href={`/user-overview/${user.id}`} className="username-result">
+                  <a href={`/user-overview/${user?.id}`} className="username-result">
                     <p className="username-result">{`${user.first_name} ${user.last_name}`}</p>
                   </a>}
                   {/* <p>{user.last_name}</p>
