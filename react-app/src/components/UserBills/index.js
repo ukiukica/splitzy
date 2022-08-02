@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import EditBillFormModal from "../EditBillModal";
 import Comments from "../Comments";
 import CreateCommentFormModal from "../CreateCommentModal";
-import billsReducer, { removeBill } from "../../store/bills";
+import { removeBill, viewBills } from "../../store/bills";
 import "./UserBills.css";
 
 function UserBills({ sessionUser, bill }) {
@@ -15,34 +15,32 @@ function UserBills({ sessionUser, bill }) {
   const formatDate = (dateString) => {
     const options = { year: "numeric", month: "long", day: "numeric" }
     return new Date(dateString).toLocaleDateString(undefined, options)
-}
-  // useEffect(() => {
-  //   async function fetchData() {
-  //     const response = await fetch(`/api/bills/user-bills/${bill.id}`);
-  //     const responseData = await response.json();
-  //     setUserBills(Object.values(responseData));
-  //   }
-  //   fetchData();
-  // }, []);
+  }
 
-  console.log("BILL: ", bill)
+  const onClick = async (e) => {
+    e.preventDefault()
+    await dispatch(removeBill(bill.id))
+    await dispatch(viewBills())
+
+  }
+
+
   return (
     <>
-      <div className="">
-        <p id="">{bill.label}</p>
-        <p id="">${bill.amount}</p>
-        <p id="">{formatDate(bill.created_at)}</p>
+      <div>
+        <p>{formatDate(bill.created_at)}</p>
+        <i className="fa-solid fa-receipt"></i>
+        <p>{bill.label}</p>
+        <p>${bill.amount}</p>
       </div>
       <>
         <EditBillFormModal bill={bill} />
-        <a href="/bills">
-          <button
-            id="delete-bill-btn"
-            onClick={() => dispatch(removeBill(bill.id))}
-          >
-            Delete
-          </button>
-        </a>
+        <button
+          id="delete-bill-btn"
+          onClick={(e) => onClick(e)}
+        >
+          Delete
+        </button>
       </>
       {/* <div className="comments-div" id="comments-div">
                 <div>
