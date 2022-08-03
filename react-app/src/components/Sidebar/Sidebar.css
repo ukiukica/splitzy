@@ -1,8 +1,9 @@
 div#side-bar-cntr {
     /* border: 1px black solid; */
     width: 10%;
-    max-width: 10%;
-}
+    max-width: max-content;
+    min-width: max-content;
+  }
 
 div#friends-title-sep {
     background: #EEEEEE;
