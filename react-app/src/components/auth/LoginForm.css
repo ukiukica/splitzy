@@ -117,13 +117,13 @@ p {
     color: #515151;
 }
 
-#already-have-acc-text-container {
+#not-registered-text-container {
     padding-top: 20px;
     display: flex;
     align-items: center;
 }
 
-#already-have-acc-text {
+#not-registered-text {
     display: flex;
     margin-right: 6px;
 }
@@ -131,5 +131,4 @@ p {
 #sign-up-link {
     display: flex;
     color: white;
-    font-weight: bold;
 }
