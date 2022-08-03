@@ -43,9 +43,9 @@ function UserOverview({ friend, setShowModal }) {
       const response = await fetch(`/api/friends/${sessionUser.id}/add/${id}`);
       return response;
     }
-    // window.location.reload(false);
-    // setShowModal(false)
-    await dispatch(viewUsers())
+    window.location.reload(false);
+    setShowModal(false)
+    // await dispatch(viewUsers())
     fetchData();
   };
 
@@ -56,15 +56,23 @@ function UserOverview({ friend, setShowModal }) {
         );
         return response;
       }
-      // window.location.reload(false);
-      await dispatch(viewUsers())
-      // setShowModal(false)
+      window.location.reload(false);
+      // await dispatch(viewUsers())
+      setShowModal(false)
     fetchData();
   };
 
 
   return (
     <div className="useroverview-container">
+      <div id="user-profile-header-cntr">
+
+        <div id="user-profile-header">User Profile</div>
+
+        </div>
+      <div id="useroverview-details-below">
+
+
       <div id="useroverview-ctnr-one">
 
       <img
@@ -110,6 +118,7 @@ function UserOverview({ friend, setShowModal }) {
       <p className="user-detail-useroverview">
         {user.email}
       </p>
+      </div>
       </div>
 
       {/*~~~~~~~~~~~~~~~~~~ USER'S FRIENDS LIST ~~~~~~~~~~~~~~~~~~*/}

@@ -1,14 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { viewBills, removeBill } from "../../store/bills";
 import { NavLink } from "react-router-dom";
-// import EditBillFormModal from "../EditBillModal";
-// import Comments from '../Comments';
-import CreateCommentFormModal from "../CreateCommentModal";
+import CreateBillModal from "../CreateBillModal";
 import UserBills from "../UserBills";
-import Friends from "../Friends/Friends";
 import SideBar from "../Sidebar";
-// import { Modal } from "../../context/Modal";
 import "./Bills.css";
 
 function Bills() {
@@ -19,7 +14,6 @@ function Bills() {
   });
 
   const sessionUser = useSelector((state) => state.session.user);
-  const [billsWithUsers, setBillsWithUsers] = useState({});
 
   const userId = sessionUser.id;
 
@@ -29,11 +23,7 @@ function Bills() {
       <div className='bills-page'>
         <div className="bills-heading">
           <h1 id="bills-h1">All Expenses</h1>
-          <button id='add-bill-btn'>
-            <NavLink to="/bills/createbill" exact={true} style={{color:'inherit',textDecoration:'inherit'}}>
-              Add an expense
-            </NavLink>
-          </button>
+            <CreateBillModal />
         </div>
         <div>
           {bills?.map((bill) => (

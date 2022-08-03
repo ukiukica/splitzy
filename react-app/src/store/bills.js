@@ -20,7 +20,6 @@ const remove = (billId) => {
 }
 
 export const addBill = (payload) => async (dispatch) => {
-  console.log("INSIDE THE THUNK");
 
   const response = await fetch("/api/bills/createbill", {
     method: "POST",

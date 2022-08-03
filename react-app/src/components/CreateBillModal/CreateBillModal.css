@@ -1,0 +1,8 @@
+#add-an-expense-btn {
+    padding: 10px;
+    background-color: #204660;
+    color:rgb(255, 255, 255);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}

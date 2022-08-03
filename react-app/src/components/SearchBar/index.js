@@ -41,6 +41,7 @@ function SearchBar() {
     setToggleButtons(false);
   };
 
+
   return (
     <div>
       <div className="nav-search-div">
@@ -69,22 +70,10 @@ function SearchBar() {
                   {user.id === +sessionUser.id ? <></> :
 
                   // ~~~~~~~~~~~~~~~~~~~~~~~~ INSERT USER OVERVIEW MODAL HERE ~~~~~~~~~~~~~~~~~~~~~~~~~~
-                  // <a href={`/user-overview/${user?.id}`} className="username-result">
-                    // <p className="username-result">{`${user.first_name} ${user.last_name}`}</p>
                     <p className="username-result"><FriendsModal friend={user.username}/></p>
-
-                    // </a>
                   }
-                  {/* <p>{user.last_name}</p>
-                    <p>{user.username}</p> */}
-                  {/* {(friends.includes(user.username)) ? <p>✔</p> :
-                    <a href="/search">
-                    <button onClick={(e) => addFriend(user.id)}>Add Friend</button>
-                    </a>
-                    } */}
-                    {/* {(friends.includes(user.username)) ?
-                        <p className={toggleButtons ? '' : 'hidden'}>✔</p>
-                    : <button className={toggleButtons ? 'hidden' : ''} onClick={(e) => addFriend(user.id)}>Add Friend</button>} */}
+
+                  {sessionUser.friends.includes(user.username) && <></>}
                 </div>
               ))
           : null}
