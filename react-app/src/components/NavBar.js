@@ -1,6 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+import SignUpModal from "./auth/SignUpModal";
 import LogoutButton from "./auth/LogoutButton";
 import SearchBar from "./SearchBar";
 import "./NavBar.css";
@@ -14,15 +15,14 @@ function NavBar() {
     sessionLinks = (
       <div className="nav-bar-logged-out-div">
         <div>
-          <NavLink
+          <div
             to="/sign-up"
             exact={true}
             activeClassName="active"
             className="logged-out-links"
-            id="signup-btn"
           >
-            Sign up
-          </NavLink>
+          <SignUpModal />
+        </div>
         </div>
         <div>
           <NavLink

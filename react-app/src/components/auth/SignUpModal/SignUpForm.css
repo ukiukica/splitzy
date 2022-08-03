@@ -8,7 +8,7 @@
     flex-direction: column;
     align-items: center;
     align-content: space-between;
-    background-color: rgba(237, 177, 131, 0.231);
+    background-color: #a0a0a0;
     width: 600px;
     border-radius: 5px;
 }
@@ -16,10 +16,9 @@
 .signup-form {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    width: 350px;
     line-height: 1.45;
     margin-bottom: 30px;
+    width: 347px;
 }
 
 .signup-form-labels-inputs-container {
@@ -31,35 +30,34 @@
 .signup-form-labels-inputs-div {
     display: flex;
     flex-direction: column;
+    align-items: stretch;
 }
 
 .signup-form-labels-inputs {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    padding-top: 4px;
-    padding-bottom: 4px;
+    padding: 4px 0;
+    justify-content: flex-end;
 }
 
 #signup-form-heading {
-    background-color: rgb(237, 177, 131);
-    margin-top: 20px;
-    margin-bottom: 20px;
-    width: 600px;
-    text-align: center;
+    padding: 30px
 }
 
 .signup-form-labels {
     display: flex;
     align-items: center;
     font-size: 15px;
+    margin-right: 6px;
 }
 
 .signup-form-inputs {
     display: flex;
     align-items: center;
     width: 60%;
-    padding: 4px
+    padding: 4px;
+    border-radius: 3px;
+    border: none;
 }
 
 .signup-form-errors-div {
@@ -73,26 +71,28 @@
     color: red;
 }
 
-.signup-form-btn-div {
-    /* display: flex;
-    justify-content: center;
-    align-items: center; */
-}
-
 #signup-form-btn {
     display: flex;
     justify-content: center;
     margin-top: 15px;
     color: white;
     font-weight: bold;
-    background-color: #9fd356;
+    background-color: #36d48e;
     width: 100%;
     padding: 5px 10px 5px 10px;
-    border: none;
+    border: 1px solid transparent;
     border-radius: 4px;
     padding: 10px;
+    cursor: pointer;
+    font-size: 16px;
 }
 
 #signup-form-btn:hover {
-    opacity: .7;
+    border: 1px solid white;
+}
+
+#sign-up-modal-link {
+    background-color: transparent;
+    color: white;
+    cursor: pointer;
 }

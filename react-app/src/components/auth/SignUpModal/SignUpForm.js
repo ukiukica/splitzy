@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
-import { signUp } from "../../store/session";
+import { signUp } from "../../../store/session";
 import "./SignUpForm.css";
 
 const SignUpForm = () => {
@@ -90,7 +90,7 @@ const SignUpForm = () => {
   return (
     <div className="signup-form-div">
       <div className="signup-form-inner-div">
-        <h1 id="signup-form-heading">Sign Up for Free</h1>
+        <h1 id="signup-form-heading">Sign up for splitzy</h1>
         <form className="signup-form" onSubmit={onSignUp}>
           <div className="signup-form-labels-inputs-container">
           <div className="signup-form-labels-inputs-div">
@@ -169,6 +169,7 @@ const SignUpForm = () => {
               Sign Up
             </button>
           </div>
+          <p>Already a registered user?</p>
           </div>
         </form>
       </div>
