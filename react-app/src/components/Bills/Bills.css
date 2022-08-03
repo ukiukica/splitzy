@@ -1,3 +1,6 @@
+html {
+    overflow-y: scroll;
+  }
 
 div#bills-side-bar {
     width: 203px;
@@ -34,3 +37,34 @@ div#bills-side-bar {
     display: flex;
     justify-content: center;
   }
+
+.bills-heading {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 550px;
+    padding: 20px 10px;
+    border-bottom: 1px solid rgb(200, 200, 200);
+    background-color: rgb(238 238 238);
+
+}
+
+.bills-page {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgb(200, 200, 200);
+    margin-left: 30px;
+}
+
+#bills-h1 {
+    font-size: 25px;
+}
+
+#add-bill-btn {
+    padding: 10px;
+    background-color: #204660;
+    color:rgb(255, 255, 255);
+    border: none;
+    border-radius: 5px;
+}

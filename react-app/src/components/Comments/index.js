@@ -9,7 +9,7 @@ import './Comments.css'
 import SingleComment from '../SingleComment';
 import CreateCommentForm from '../CreateCommentModal/CreateCommentForm';
 
-function Comments({ billId }) {
+function Comments({ billId, formatDate }) {
     const dispatch = useDispatch()
 
     const users = useSelector((state) => state.users)
@@ -23,36 +23,14 @@ function Comments({ billId }) {
         return comment.bill_id == billId
     })
 
-    // const [showEdit, setShowEdit] = useState(false);
-
-
-    // const onEdit = (e) => {
-    //     e.preventDefault()
-    //     showEdit ? setShowEdit(false) : setShowEdit(true)
-    // }
-
     return (
         <div className='comments-container'>
+            <div className='comments-heading'>
+            <i className="fa-solid fa-comment"></i>
+            <p>NOTES AND COMMENTS</p>
+            </div>
             {billComments?.map((comment) => (
-                <SingleComment comment={comment} billId={billId} key={comment.id} />
-                // <div className='each-comment-div' key={comment.id}>
-                //     <div className="username-and-comment">
-                //         <p id="comment-username">{users[comment.user_id].username}</p>
-                //         <p id="all-comments">{comment.content}</p>
-                //     </div>
-                //     {sessionUser.id == comment.user_id && (
-                //         <>
-                //             <button onClick={(e) => onEdit(e)}>{showEdit ? "Cancel" : "Edit"}</button>
-                //             <DeleteComment comment={comment} />
-                //         </>
-                //     )}
-                //     {showEdit && (
-                //         <>
-                //         <EditComment comment={comment} billId={billId}/>
-                //         </>
-                //     )}
-
-                // </div>
+                <SingleComment comment={comment} billId={billId} formatDate={formatDate} key={comment.id} />
             ))}
             <CreateCommentForm billId={billId} />
         </div >

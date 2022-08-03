@@ -41,7 +41,7 @@ function NavBar() {
     sessionLinks = (
       <div className="nav-bar-session">
         <div>
-          <NavLink
+          {/* <NavLink
             to="/bills/createbill"
             exact={true}
             activeClassName="active"
@@ -49,7 +49,7 @@ function NavBar() {
             id="create-bill-link"
           >
             Create a bill
-          </NavLink>
+          </NavLink> */}
         </div>
         {/* <div>
           <NavLink

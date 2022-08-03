@@ -43,18 +43,6 @@ body {
     align-items: center;
 }
 
-.logged-in-links {
-    display: flex;
-    font-family: Arial, Helvetica, sans-serif;
-    color: #ffffff;
-    font-size: 14px;
-    text-decoration: none;
-}
-
-.logged-in-links:hover {
-    color: #F7F3E7;
-}
-
 .logged-out-links {
     display: flex;
     justify-content: space-between;

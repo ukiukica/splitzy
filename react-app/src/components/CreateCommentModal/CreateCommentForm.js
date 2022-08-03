@@ -45,7 +45,7 @@ function CreateCommentForm({ billId }) {
             <li key={idx}>{error}</li>
           ))}
         </ul>
-          <div className="add-cmt-content-div">
+          {/* <div className="add-cmt-content-div"> */}
           <textarea
             className='comment-textarea'
             name="content"
@@ -55,7 +55,7 @@ function CreateCommentForm({ billId }) {
             onChange={(e) => setContent(e.target.value)}
             required
           />
-          </div>
+          {/* </div> */}
         <div className="add-cmt-submit-cancel-btns-div">
           <button className="add-cmt-submit-btn" disabled={content.length < 1} type="submit">Post</button>
         </div>

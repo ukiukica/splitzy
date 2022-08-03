@@ -7,7 +7,7 @@ import DeleteComment from '../DeleteComment'
 import GetUser from '../GetUser';
 // import './Comments.css'
 
-function SingleComment ({comment, billId}) {
+function SingleComment({ comment, billId, formatDate }) {
     const dispatch = useDispatch()
 
     const users = useSelector((state) => state.users)
@@ -23,10 +23,13 @@ function SingleComment ({comment, billId}) {
 
     return (
         <>
-        <div>
+            <div className='comment'>
+                <div className='comment-top'>
                     <div>
-                        <p>{users[comment.user_id].username}</p>
-                        <p>{comment.content}</p>
+                        <div className='comment-heading'>
+                            <p id="comm-username-p">{users[comment.user_id].username}</p>
+                            <p id="comm-date-p">{formatDate(comment.updated_at)}</p>
+                        </div>
                     </div>
                     {sessionUser.id == comment.user_id && (
                         <>
@@ -34,13 +37,17 @@ function SingleComment ({comment, billId}) {
 
                         </>
                     )}
-                    {showEdit && (
-                        <>
-                        <EditComment comment={comment} billId={billId} setShowEdit={setShowEdit}/>
-                        </>
-                    )}
-
                 </div>
+                {showEdit ?
+                            <div className='comment-bottom'>
+                                <EditComment comment={comment} billId={billId} setShowEdit={setShowEdit} />
+                            </div>
+                            :
+                            <p id="comm-content-p">{comment.content}</p>
+                        }
+
+
+            </div>
         </>
     )
 }

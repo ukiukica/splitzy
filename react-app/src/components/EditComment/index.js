@@ -52,9 +52,9 @@ function EditComment({ comment, billId, setShowEdit }) {
             <li key={idx}>{error}</li>
           ))}
         </ul>
-        <div className="add-cmt-content-div">
+        {/* <div className="add-cmt-content-div"> */}
           <textarea
-            // className='comment-textarea'
+            className='edit-comment-textarea'
             name="content"
             type="textarea"
             placeholder="Type something here..."
@@ -62,7 +62,7 @@ function EditComment({ comment, billId, setShowEdit }) {
             onChange={(e) => setContent(e.target.value)}
             required
           />
-        </div>
+        {/* </div> */}
         <div className="add-cmt-submit-cancel-btns-div">
           <button className="add-cmt-submit-btn" type="submit">Submit</button>
           <DeleteComment comment={comment} />
