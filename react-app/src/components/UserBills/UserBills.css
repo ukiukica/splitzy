@@ -111,3 +111,44 @@ i.fa-solid.fa-x {
 .userBill-name {
     color: #1e555c;
 }
+
+.single-bill-base {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-bottom: 1px solid rgb(200, 200, 200);
+    padding: 10px 10px;
+}
+
+.base-left {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+
+#date-p {
+    width: 60px;
+    text-transform: uppercase;
+    font-size: 15px;
+    text-align: center;
+    margin-right: 15px;
+}
+
+#receipt-icon {
+    color: #132a3a;
+    margin-right: 15px;
+}
+
+#amount-p {
+    align-items: center;
+    display: flex;
+    font: 20px;
+    font-weight: bold;
+    justify-content: flex-start;
+}
+
+#amount-div {
+    display: flex;
+    justify-content: flex-end;
+}

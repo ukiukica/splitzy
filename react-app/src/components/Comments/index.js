@@ -23,36 +23,10 @@ function Comments({ billId }) {
         return comment.bill_id == billId
     })
 
-    // const [showEdit, setShowEdit] = useState(false);
-
-
-    // const onEdit = (e) => {
-    //     e.preventDefault()
-    //     showEdit ? setShowEdit(false) : setShowEdit(true)
-    // }
-
     return (
         <div className='comments-container'>
             {billComments?.map((comment) => (
                 <SingleComment comment={comment} billId={billId} key={comment.id} />
-                // <div className='each-comment-div' key={comment.id}>
-                //     <div className="username-and-comment">
-                //         <p id="comment-username">{users[comment.user_id].username}</p>
-                //         <p id="all-comments">{comment.content}</p>
-                //     </div>
-                //     {sessionUser.id == comment.user_id && (
-                //         <>
-                //             <button onClick={(e) => onEdit(e)}>{showEdit ? "Cancel" : "Edit"}</button>
-                //             <DeleteComment comment={comment} />
-                //         </>
-                //     )}
-                //     {showEdit && (
-                //         <>
-                //         <EditComment comment={comment} billId={billId}/>
-                //         </>
-                //     )}
-
-                // </div>
             ))}
             <CreateCommentForm billId={billId} />
         </div >
