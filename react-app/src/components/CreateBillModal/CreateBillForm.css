@@ -6,17 +6,37 @@
     align-items: center;
 }
 
-div#create-bill-form {
-    width: 600px;
+.create-bill-form {
+    width: 360px;
     height: 350px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: rgba(237, 177, 131, 0.231);
+    background-color: rgb(255, 255, 255);
     margin-top: 30px;
     margin-bottom: 60px;
-    border-radius: 8px;
+    border-radius: 3px;
+
+}
+
+.create-bill-header-div {
+    margin-bottom: 10px;
+    display: flex;
+    background-color: #36d48e;
+    width: 360px;
+    height: 2.5rem;
+    border-top-right-radius: 3px;
+    border-top-left-radius: 3px;
+    position: relative;
+    align-items: center;
+    top: -36px;
+}
+
+#create-bill-header {
+    font-size: 20px;
+    color: white;
+    margin-left: 5px
 }
 
 #create-bill-input-container {
@@ -82,20 +102,6 @@ label.create-bill-labels {
 
 #create-bill-submit:hover {
     opacity: .7;
-}
-
-#create-bill-header {
-    margin-bottom: 10px;
-    display: flex;
-    justify-content: center;
-    background-color: rgb(237, 177, 131);
-    width: 600px;
-    height: 50px;
-    border-top-right-radius: 8px;
-    border-top-left-radius: 8px;
-    position: relative;
-    align-items: center;
-    top: -5px;
 }
 
 .create-bill-errors-div {

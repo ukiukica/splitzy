@@ -59,9 +59,11 @@ function CreateBillForm() {
 
   return (
     <div className="page-body">
-      <div id="create-bill-form">
-        <form onSubmit={handleSubmit}>
-          <h1 id="create-bill-header">Create a Bill</h1>
+
+        <form className="create-bill-form" onSubmit={handleSubmit}>
+        <div className="create-bill-header-div">
+          <h1 id="create-bill-header">Add an expense</h1>
+          </div>
           <div id="create-bill-input-container">
             <label className="create-bill-labels">
               Label
@@ -114,7 +116,6 @@ function CreateBillForm() {
         <a href='/bills' id="create-cancel" className="create-bill-btns">
           Cancel
         </a>
-      </div>
     </div>
   );
 }
