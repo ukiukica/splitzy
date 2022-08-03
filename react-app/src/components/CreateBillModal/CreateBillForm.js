@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
+import CreateBillModal from "./index.js";
 import { addBill } from "../../store/bills.js";
 import { ValidationError } from "../../utils/validationError";
-import "./CreateBill.css";
+import "./CreateBillForm.css";
 
-function CreateBill() {
+function CreateBillForm() {
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -58,9 +59,11 @@ function CreateBill() {
 
   return (
     <div className="page-body">
-      <div id="create-bill-form">
-        <form onSubmit={handleSubmit}>
-          <h1 id="create-bill-header">Create a Bill</h1>
+
+        <form className="create-bill-form" onSubmit={handleSubmit}>
+        <div className="create-bill-header-div">
+          <h1 id="create-bill-header">Add an expense</h1>
+          </div>
           <div id="create-bill-input-container">
             <label className="create-bill-labels">
               Label
@@ -113,9 +116,8 @@ function CreateBill() {
         <a href='/bills' id="create-cancel" className="create-bill-btns">
           Cancel
         </a>
-      </div>
     </div>
   );
 }
 
-export default CreateBill;
+export default CreateBillForm;

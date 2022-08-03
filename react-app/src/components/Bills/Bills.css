@@ -60,11 +60,3 @@ div#bills-side-bar {
 #bills-h1 {
     font-size: 25px;
 }
-
-#add-bill-btn {
-    padding: 10px;
-    background-color: #204660;
-    color:rgb(255, 255, 255);
-    border: none;
-    border-radius: 5px;
-}
