@@ -6,27 +6,52 @@
     align-content: center;
   }
 
+  div#useroverview-ctnr-one {
+    display: flex;
+    flex-direction: row;
+  }
+
   div#user-details-useroverview {
     display: flex;
     flex-direction: column;
+    height: 100%;
+    margin-left: 2rem;
+    position: relative;
+    bottom: 2rem;
+  }
+
+  div#useroverview-ctnr-one {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
   }
 
   img#profile-img-user-overview {
-    width: 20%;
+    width: 8rem;
   }
 
-.unfriend-btn {
-    background: rgb(241, 81, 82);
+  p.user-overview-label {
+    font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+    color: dimgrey;
+  }
+
+  p.user-detail-useroverview {
+    font-size: 18px;
+    font-weight: 600;
+  }
+
+  .unfriend-btn {
+    background: #204660;
     border: none;
     width: 100px;
-    margin-top: 0px;
-    height: 35px;
+    height: 2rem;
     color: white;
     font-weight: 600;
-    margin: 5px 0;
+    margin: 1rem 0;
     cursor: pointer;
     border-radius: 3px;
-}
+  }
 
 .submit-add-friend {
     margin-right: 10px;
