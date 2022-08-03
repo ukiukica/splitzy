@@ -5,7 +5,6 @@ import { signUp } from "../../../store/session";
 import "./SignUpForm.css";
 
 const SignUpForm = ({ setShowModal }) => {
-
   const dispatch = useDispatch();
 
   const user = useSelector((state) => state.session.user);
@@ -17,8 +16,6 @@ const SignUpForm = ({ setShowModal }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
-
-
 
   const onSignUp = async (e) => {
     e.preventDefault();
@@ -95,7 +92,11 @@ const SignUpForm = ({ setShowModal }) => {
   return (
     <div className="signup-form-div">
       <div className="signup-form-inner-div">
-      <p id="x-btn" onClick={() => setShowModal(false)}>x</p>
+        <div className="x-btn-div">
+          <p id="x-btn" onClick={() => setShowModal(false)}>
+            x
+          </p>
+        </div>
         <h1 id="signup-form-heading">Sign up for splitzy</h1>
         <form className="signup-form" onSubmit={onSignUp}>
           <div className="signup-form-labels-inputs-container">
@@ -185,7 +186,10 @@ const SignUpForm = ({ setShowModal }) => {
                 Log in
               </p>
             </div>
-            <p id="terms-text">By signing up, you accept the non-existent splitzy Terms of Service.</p>
+            <p id="terms-text">
+              By signing up, you accept the non-existent splitzy Terms of
+              Service.
+            </p>
           </div>
         </form>
       </div>
