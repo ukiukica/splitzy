@@ -1,0 +1,23 @@
+button.edit-comment-btn {
+    background: transparent;
+    border: none;
+    color: #204660;
+    cursor: pointer;
+  }
+
+  button.edit-comment-btn:hover {
+    opacity: .7;
+  }
+
+  button.delete-comment-btn {
+    background: rgb(241 81 82);
+    border: none;
+    color: white;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+
+  button.delete-comment-btn:hover {
+    cursor: pointer;
+    opacity: .7;
+  }

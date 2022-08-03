@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import { editComment } from "../../store/comments";
+import "./EditComment.css"
 import DeleteComment from "../DeleteComment";
 import '../CreateCommentModal/CreateCommentButton.css'
 

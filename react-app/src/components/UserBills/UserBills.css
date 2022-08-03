@@ -216,3 +216,13 @@ i.fa-solid.fa-x {
 .split-heading > * {
     margin-right: 5px;
 }
+
+.single-bill-base:hover {
+    cursor: pointer;
+    background-color: #EEEEEE;
+}
+
+.single-bill-base:focus {
+    /* cursor: pointer; */
+    background-color: #EEEEEE;
+}

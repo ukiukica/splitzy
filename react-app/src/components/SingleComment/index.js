@@ -33,7 +33,7 @@ function SingleComment({ comment, billId, formatDate }) {
                     </div>
                     {sessionUser.id == comment.user_id && (
                         <>
-                            <button onClick={(e) => onEdit(e)}>{showEdit ? "Cancel" : "Edit"}</button>
+                            <button className="edit-comment-btn" onClick={(e) => onEdit(e)}>{showEdit ? "Cancel" : <i class="fa-solid fa-pen"></i>}</button>
 
                         </>
                     )}
