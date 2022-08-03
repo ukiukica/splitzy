@@ -53,18 +53,18 @@
     border-radius: 3px;
   }
 
-.submit-add-friend {
+  .submit-add-friend {
     margin-right: 10px;
-    background-color: rgb(96 77 79);
+    background-color: #36d48e;
     border: none;
     width: 100px;
-    height: 35px;
+    height: 2rem;
     color: white;
     font-weight: 600;
-    margin: 5px 0;
+    margin: 1rem;
     cursor: pointer;
     border-radius: 3px;
-}
+  }
 
 .friend-name {
     margin-top: 5px;

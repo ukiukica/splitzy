@@ -79,3 +79,8 @@ body {
     position: relative;
     top: 6px;
   }
+
+  a#about-us-link {
+    color: white;
+    text-decoration: none;
+  }

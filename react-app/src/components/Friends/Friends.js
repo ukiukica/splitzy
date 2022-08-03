@@ -8,6 +8,10 @@ function Friends() {
   // const [friends, setFriends] = useState([]);
   const sessionUser = useSelector((state) => state.session.user);
 
+  // fetch friend id
+  const [users, setUsers] = useState([]);
+  const [friends, setFriends] = useState([]);
+
   useEffect(() => {
     async function fetchData() {
       const response = await fetch(`/api/friends/${sessionUser.id}`);
@@ -17,9 +21,6 @@ function Friends() {
     fetchData();
   }, []);
 
-  // fetch friend id
-  const [users, setUsers] = useState([]);
-  const [friends, setFriends] = useState([]);
 
   // fetches all users
   useEffect(() => {

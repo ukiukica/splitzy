@@ -2,9 +2,11 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import { viewUsers } from "../../store/users";
 import "./useroverview.css";
 
-function UserOverview({ friend }) {
+function UserOverview({ friend, setShowModal }) {
+  const dispatch = useDispatch();
   const [friends, setFriends] = useState([]);
   const [user, setUser] = useState([]);
 
@@ -14,6 +16,8 @@ function UserOverview({ friend }) {
 
   const currentUser = usersList.filter((user) => user.username == friend);
 
+  const thisUser = users[sessionUser.id]
+  console.log("THIS USER", thisUser.friends)
 
   useEffect(() => {
     async function fetchData() {
@@ -34,27 +38,29 @@ function UserOverview({ friend }) {
     fetchData();
   }, []);
 
-  const addFriend = (id) => {
+  const addFriend = async (id) => {
     async function fetchData() {
       const response = await fetch(`/api/friends/${sessionUser.id}/add/${id}`);
       return response;
     }
+    // window.location.reload(false);
+    // setShowModal(false)
+    await dispatch(viewUsers())
     fetchData();
   };
 
-  const removeFriend = (id) => {
+  const removeFriend = async (id) => {
     async function fetchData() {
       const response = await fetch(
         `/api/friends/${sessionUser.id}/remove/${id}`
-      );
-      return response;
-    }
+        );
+        return response;
+      }
+      // window.location.reload(false);
+      await dispatch(viewUsers())
+      // setShowModal(false)
     fetchData();
   };
-
-
-
-
 
 
   return (
@@ -66,9 +72,8 @@ function UserOverview({ friend }) {
         src={`https://ui-avatars.com/api/?name=${user?.first_name}&rounded=true&background=random&uppercase=false&size=40`}
         alt="profile"
         />
-        {friends.includes(user.username) ? (
+        {thisUser?.friends?.includes(user.username) ? (
           <>
-            <a href={`/user-overview/${user.id}`}>
               <button
                 onClick={(e) => {
                   removeFriend(user.id);
@@ -77,10 +82,8 @@ function UserOverview({ friend }) {
                 >
                 Unfriend
               </button>
-            </a>
           </>
         ) : (
-          <a href={`/user-overview/${user.id}`}>
             <button
               onClick={(e) => {
                 addFriend(user.id);
@@ -89,7 +92,6 @@ function UserOverview({ friend }) {
               >
               Add Friend
             </button>
-          </a>
         )}
         </div>
       <div id="user-details-useroverview">
