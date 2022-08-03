@@ -2,35 +2,26 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import { viewUsers } from "../../store/users";
 import "./useroverview.css";
 
-function UserOverview({ friend }) {
-  const { userId } = useParams();
-
+function UserOverview({ friend, setShowModal }) {
+  const dispatch = useDispatch();
   const [friends, setFriends] = useState([]);
   const [user, setUser] = useState([]);
 
   const sessionUser = useSelector((state) => state.session.user);
+  const users = useSelector((state) => state.users)
   const usersList = useSelector((state) => Object.values(state.users));
 
-  const friendId = usersList.filter((user) => user.username == friend);
-  console.log("USERSLIST", usersList);
-  console.log("ID", userId);
-  console.log("PARAMS", useParams());
-  console.log("FRIEND ID", friendId);
-  console.log("sessionUser", sessionUser);
-  // const friends = useSelector((state) => {
-  //   return Object.values(state.friends)
-  // })
+  const currentUser = usersList.filter((user) => user.username == friend);
 
-  // useEffect(() => {
-  //   dispatch(viewFriends(sessionUser.id))
-  // }, []);
+  const thisUser = users[sessionUser.id]
+  console.log("THIS USER", thisUser.friends)
 
   useEffect(() => {
     async function fetchData() {
-      const response = await fetch(`/api/users/${friendId[0]?.id}`);
-      // const response = await fetch(`/api/users/${userId}`);
+      const response = await fetch(`/api/users/${currentUser[0]?.id}`);
       const responseData = await response.json();
       console.log("RESPONSE DATA", responseData);
       setUser(responseData);
@@ -47,102 +38,101 @@ function UserOverview({ friend }) {
     fetchData();
   }, []);
 
-  const addFriend = (id) => {
+  const addFriend = async (id) => {
     async function fetchData() {
       const response = await fetch(`/api/friends/${sessionUser.id}/add/${id}`);
       return response;
     }
+    window.location.reload(false);
+    setShowModal(false)
+    // await dispatch(viewUsers())
     fetchData();
   };
 
-  const removeFriend = (id) => {
+  const removeFriend = async (id) => {
     async function fetchData() {
       const response = await fetch(
         `/api/friends/${sessionUser.id}/remove/${id}`
-      );
-      return response;
-    }
+        );
+        return response;
+      }
+      window.location.reload(false);
+      // await dispatch(viewUsers())
+      setShowModal(false)
     fetchData();
   };
 
+
   return (
     <div className="useroverview-container">
-      {/* <p className="friend-name">
-        Username: {user.username}
-        <br/>
-        Full Name: {user.first_name} {user.last_name}
-      </p> */}
+      <div id="user-profile-header-cntr">
+
+        <div id="user-profile-header">User Profile</div>
+
+        </div>
+      <div id="useroverview-details-below">
+
+
+      <div id="useroverview-ctnr-one">
+
       <img
         id="profile-img-user-overview"
         src={`https://ui-avatars.com/api/?name=${user?.first_name}&rounded=true&background=random&uppercase=false&size=40`}
         alt="profile"
-      />
+        />
+        {thisUser?.friends?.includes(user.username) ? (
+          <>
+              <button
+                onClick={(e) => {
+                  removeFriend(user.id);
+                }}
+                className="unfriend-btn"
+                >
+                Unfriend
+              </button>
+          </>
+        ) : (
+            <button
+              onClick={(e) => {
+                addFriend(user.id);
+              }}
+              className="submit-add-friend"
+              >
+              Add Friend
+            </button>
+        )}
+        </div>
       <div id="user-details-useroverview">
 
-      <p>Username: </p>
-      <p>{user.username}</p>
-      <p>
+      <p className="user-overview-label">Username: </p>
+      <p className="user-detail-useroverview">{user.username}</p>
+      <p className="user-overview-label">
         Full Name:
       </p>
-      <p>
+      <p className="user-detail-useroverview">
         {user.first_name} {user.last_name}
       </p>
-      <p>
+      <p className="user-overview-label">
         Email Address:
       </p>
-      <p>
+      <p className="user-detail-useroverview">
         {user.email}
       </p>
       </div>
-
-      {/*~~~~~~~~~~~~~~~~~~ USER'S FRIENDS LIST ~~~~~~~~~~~~~~~~~~*/}
-      <div>
-        <p>Friends: </p>
-        {user?.friends?.map((friend) => (
-          <div>{friend}</div>
-        ))}
       </div>
 
-      {/* ~~~~~~~~~~~~~~~~~~ USER'S MUTUAL LIST ~~~~~~~~~~~~~~~~~~*/}
-      {/* <div>
-          Mutual Friends:
-        </div>
-        {user?.friends?.map((friend) => {
-          let mutuals = sessionUser.friends.filter((mutual) => friend === mutual)
-          {mutuals.length ? mutuals.map((mutualFriend) => (
-            <div>{mutualFriend}</div>
-          )) : <div>You have no mutual friends</div>}
-          console.log("SESSION USER FRIENDS",sessionUser.friends)
-          console.log("FRIEND",friend)
-          console.log("MUTUALS", mutuals)
-        })} */}
+      {/*~~~~~~~~~~~~~~~~~~ USER'S FRIENDS LIST ~~~~~~~~~~~~~~~~~~*/}
 
-      {friends.includes(user.username) ? (
-        <>
-          {/* <p className="friends-label">(Friends)</p> */}
-          <a href={`/user-overview/${user.id}`}>
-            <button
-              onClick={(e) => {
-                removeFriend(user.id);
-              }}
-              className="unfriend-btn"
-            >
-              Unfriend
-            </button>
-          </a>
-        </>
-      ) : (
-        <a href={`/user-overview/${user.id}`}>
-          <button
-            onClick={(e) => {
-              addFriend(user.id);
-            }}
-            className="submit-add-friend"
-          >
-            Add Friend
-          </button>
-        </a>
-      )}
+      {/* <div id="useroverview-friends">
+
+      <div id="friends-section-useroverview">
+        <p>Friends: </p>
+        {user?.friends?.length > 0 ? user?.friends?.map((friend) => (
+          <div>{friend}</div>
+          )) : <div>None</div>}
+      </div>
+
+      </div> */}
     </div>
   );
 }
