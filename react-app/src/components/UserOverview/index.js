@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import './useroverview.css'
 
 function UserOverview({friend}) {
+  const { userId } = useParams();
 
 
   const [friends, setFriends] = useState([]);
@@ -14,6 +15,9 @@ function UserOverview({friend}) {
   const usersList = useSelector((state) => Object.values(state.users))
 
   const friendId = usersList.filter((user) => user.username == friend )
+  console.log("USERSLIST", usersList)
+  console.log("ID", userId)
+  console.log("PARAMS", useParams())
   // const friends = useSelector((state) => {
   //   return Object.values(state.friends)
   // })
@@ -24,8 +28,10 @@ function UserOverview({friend}) {
 
   useEffect(() => {
     async function fetchData() {
-      const response = await fetch(`/api/users/${friendId[0]?.id}`);
+      // const response = await fetch(`/api/users/${friendId[0]?.id}`);
+      const response = await fetch(`/api/users/${userId}`);
       const responseData = await response.json();
+      console.log("RESPONSE DATA", responseData)
       setUser(responseData);
     }
     fetchData();
