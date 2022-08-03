@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
-import Friends from './Friends';
 import UserOverview from '../UserOverview'
 
 function FriendsModal({friend}) {
