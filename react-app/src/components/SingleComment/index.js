@@ -7,7 +7,7 @@ import DeleteComment from '../DeleteComment'
 import GetUser from '../GetUser';
 // import './Comments.css'
 
-function SingleComment ({comment, billId}) {
+function SingleComment({ comment, billId, formatDate }) {
     const dispatch = useDispatch()
 
     const users = useSelector((state) => state.users)
@@ -23,24 +23,25 @@ function SingleComment ({comment, billId}) {
 
     return (
         <>
-        <div>
-                    <div>
-                        <p>{users[comment.user_id].username}</p>
-                        <p>{comment.content}</p>
-                    </div>
-                    {sessionUser.id == comment.user_id && (
-                        <>
-                            <button onClick={(e) => onEdit(e)}>{showEdit ? "Cancel" : "Edit"}</button>
-
-                        </>
-                    )}
-                    {showEdit && (
-                        <>
-                        <EditComment comment={comment} billId={billId} setShowEdit={setShowEdit}/>
-                        </>
-                    )}
-
+            <div className='comment'>
+                <div className='comment-heading'>
+                    <p>{users[comment.user_id].username}</p>
+                    <p>{formatDate(comment.updated_at)}</p>
                 </div>
+                <p>{comment.content}</p>
+                {sessionUser.id == comment.user_id && (
+                    <>
+                        <button onClick={(e) => onEdit(e)}>{showEdit ? "Cancel" : "Edit"}</button>
+
+                    </>
+                )}
+                {showEdit && (
+                    <>
+                        <EditComment comment={comment} billId={billId} setShowEdit={setShowEdit} />
+                    </>
+                )}
+
+            </div>
         </>
     )
 }

@@ -51,6 +51,7 @@ div#bills-side-bar {
     display: flex;
     flex-direction: column;
     border: 1px solid rgb(200, 200, 200);
+    margin-left: 30px;
 }
 
 #bills-h1 {

@@ -1,63 +1,24 @@
-.comments-container {
-    padding: 5px 0px 40px 10px;
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: rgb(245 229 208);
-    color: rgb(58, 46, 57);
-    min-height: 250px;
-    width: 200px;
-}
-
-#notes-comments-heading {
-    font-size: 15px;
-    font-weight: bold;
-    color: rgb(58 45 57);
-    background-color: rgb(237 176 131);
-    padding: 5px 0px 5px 10px;
-    border-top-right-radius: 4px;
-    border-top-left-radius: 4px;
-}
-
-#comment-username {
-    margin-top: 5px;
-    font-weight: bold;
-    font-size: 14px;
-}
-
-.each-comment-div {
-    display:flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-}
-
-/* .each-comment {
-
-} */
-
-/* .username-and-comment {
-
-} */
-
-#all-comments {
-    font-size: 12px;
-}
-
-.edit-delete-comment-btns {
+.comments-heading {
     display: flex;
-    flex-direction: row;
-    cursor: pointer;
+    align-items: center;
+    margin-bottom: 8px;
 }
 
-#edit-comment-btn {
-    background-color: rgba(58, 46, 57, 0.796);
-    color: white;
-    border: transparent;
-    border-radius: 3px;
-    font-size: 11px;
-    padding: 5px 15px;
-    cursor: pointer;
+.comments-heading > * {
+    margin-right: 3px;
 }
 
-#edit-comment-btn:hover {
-    opacity: .7;
+.comment-heading {
+    display: flex;
+}
+
+.comment-heading > * {
+    margin-right: 5px;
+}
+
+.comment {
+    border: 1px solid rgb(200, 200, 200);
+    background-color: white;
+    border-radius: 5px;
+    padding: 7px;
 }

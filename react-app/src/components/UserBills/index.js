@@ -30,41 +30,46 @@ function UserBills({ sessionUser, bill }) {
   return (
     <>
       <div
-      className='single-bill-base'
-      onClick={(e) =>{
-        e.preventDefault()
-        showDetails ? setShowDetails(false) : setShowDetails(true)}}
-        >
-          <div className='base-left'>
-        <p id="date-p">{formatDate(bill.created_at)}</p>
-        <i id='receipt-icon' className="fa-solid fa-receipt fa-3x "></i>
-        <p>{bill.label}</p>
+        className='single-bill-base'
+        onClick={(e) => {
+          e.preventDefault()
+          showDetails ? setShowDetails(false) : setShowDetails(true)
+        }}
+      >
+        <div className='base-left'>
+          <p id="date-p">{formatDate(bill.created_at)}</p>
+          <i id='receipt-icon' className="fa-solid fa-receipt fa-3x"></i>
+          <p>{bill.label}</p>
         </div>
         <div id="amount-div">
-        <p id='amount-p'>${bill.amount.toFixed(2)}</p>
+          <p id='amount-p'>${bill.amount.toFixed(2)}</p>
         </div>
       </div>
       {showDetails && (
-        <div>
-          <div>
-            <i className="fa-solid fa-receipt"></i>
-            <p>{bill.label}</p>
-            <p>${bill.amount}</p>
-            <p>Added on {formatDate(bill.created_at)}</p>
-            <p>Last updated on {formatDate(bill.updated_at)}</p>
+        <div className="single-bill-extended">
+          <div className='extended-top'>
+            <i id='receipt-icon' className="fa-solid fa-receipt fa-6x"></i>
+            <div className='extended-info'>
+              <p>{bill.label}</p>
+              <p>${bill.amount}</p>
+              <p>Added on {formatDate(bill.created_at)}</p>
+              <p>Last updated on {formatDate(bill.updated_at)}</p>
+              <EditBillFormModal bill={bill} />
+            </div>
           </div>
-          <EditBillFormModal bill={bill} />
-          <div>
-            <p>Split between:</p>
-            {bill.assigned_users.map(assigned_user => (
-              <>
-              <img src={`https://ui-avatars.com/api/?name=${assigned_user}&rounded=true&background=random&uppercase=false`} alt='profile'/>
-              <p>{assigned_user}</p>
-              </>
-            ))}
-          </div>
-          <div>
-          <Comments billId={bill.id} />
+          <div className="extended-bottom">
+            <div className="extended-bottom-left">
+              <p>Split between:</p>
+              {bill.assigned_users.map(assigned_user => (
+                <div className="bill-user-list">
+                  <img src={`https://ui-avatars.com/api/?name=${assigned_user}&rounded=true&background=random&uppercase=false&size=40`} alt='profile' />
+                  <p>{assigned_user}</p>
+                </div>
+              ))}
+            </div>
+            <div className="extended-bottom-right">
+              <Comments billId={bill.id} formatDate={formatDate} />
+            </div>
           </div>
         </div>
       )}

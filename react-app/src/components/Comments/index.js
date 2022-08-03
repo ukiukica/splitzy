@@ -9,7 +9,7 @@ import './Comments.css'
 import SingleComment from '../SingleComment';
 import CreateCommentForm from '../CreateCommentModal/CreateCommentForm';
 
-function Comments({ billId }) {
+function Comments({ billId, formatDate }) {
     const dispatch = useDispatch()
 
     const users = useSelector((state) => state.users)
@@ -25,8 +25,12 @@ function Comments({ billId }) {
 
     return (
         <div className='comments-container'>
+            <div className='comments-heading'>
+            <i className="fa-solid fa-comment"></i>
+            <p>NOTES AND COMMENTS</p>
+            </div>
             {billComments?.map((comment) => (
-                <SingleComment comment={comment} billId={billId} key={comment.id} />
+                <SingleComment comment={comment} billId={billId} formatDate={formatDate} key={comment.id} />
             ))}
             <CreateCommentForm billId={billId} />
         </div >

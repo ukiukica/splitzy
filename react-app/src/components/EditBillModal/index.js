@@ -8,7 +8,7 @@ function EditBillFormModal({bill}) {
 
   return (
     <>
-      <button id="edit-bill-btn" onClick={() => setShowModal(true)}>Edit bill</button>
+      <button id="edit-bill-btn" onClick={() => setShowModal(true)}>Edit expense</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <EditBillForm setShowModal={setShowModal} bill={bill}/>
