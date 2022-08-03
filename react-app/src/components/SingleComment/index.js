@@ -24,22 +24,28 @@ function SingleComment({ comment, billId, formatDate }) {
     return (
         <>
             <div className='comment'>
-                <div className='comment-heading'>
-                    <p>{users[comment.user_id].username}</p>
-                    <p>{formatDate(comment.updated_at)}</p>
-                </div>
-                <p>{comment.content}</p>
-                {sessionUser.id == comment.user_id && (
-                    <>
-                        <button onClick={(e) => onEdit(e)}>{showEdit ? "Cancel" : "Edit"}</button>
+                <div className='comment-top'>
+                    <div>
+                        <div className='comment-heading'>
+                            <p id="comm-username-p">{users[comment.user_id].username}</p>
+                            <p id="comm-date-p">{formatDate(comment.updated_at)}</p>
+                        </div>
+                    </div>
+                    {sessionUser.id == comment.user_id && (
+                        <>
+                            <button onClick={(e) => onEdit(e)}>{showEdit ? "Cancel" : "Edit"}</button>
 
-                    </>
-                )}
-                {showEdit && (
-                    <>
-                        <EditComment comment={comment} billId={billId} setShowEdit={setShowEdit} />
-                    </>
-                )}
+                        </>
+                    )}
+                </div>
+                {showEdit ?
+                            <div className='comment-bottom'>
+                                <EditComment comment={comment} billId={billId} setShowEdit={setShowEdit} />
+                            </div>
+                            :
+                            <p id="comm-content-p">{comment.content}</p>
+                        }
+
 
             </div>
         </>

@@ -10,15 +10,44 @@
 
 .comment-heading {
     display: flex;
+    align-items: center;
 }
 
 .comment-heading > * {
-    margin-right: 5px;
+    margin-right: 8px;
+
+
 }
 
 .comment {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
     border: 1px solid rgb(200, 200, 200);
     background-color: white;
     border-radius: 5px;
     padding: 7px;
+    width: 230px;
+    margin-bottom: 8px;
+}
+
+.comment-top {
+    display: flex;
+    justify-content: space-between;
+}
+
+.comment-bottom {
+    margin-top: 6px;
+}
+
+#comm-username-p {
+    font-weight: bold;
+}
+
+#comm-date-p {
+    font-size: 11px;
+}
+
+#comm-content-p {
+    margin-top: 6px;
 }
