@@ -2,9 +2,10 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import { editComment } from "../../store/comments";
+import DeleteComment from "../DeleteComment";
 import '../CreateCommentModal/CreateCommentButton.css'
 
-function EditComment({ setShowModal, comment, billId }) {
+function EditComment({ comment, billId, setShowEdit }) {
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -38,8 +39,8 @@ function EditComment({ setShowModal, comment, billId }) {
 
     if (editedComment) {
       setErrors([]);
-      setShowModal(false);
-      return history.push("/bills");
+      setShowEdit(false)
+
     }
   };
 
@@ -51,10 +52,9 @@ function EditComment({ setShowModal, comment, billId }) {
             <li key={idx}>{error}</li>
           ))}
         </ul>
-        <h1 className="add-cmt-title"> Edit Comment</h1>
         <div className="add-cmt-content-div">
           <textarea
-            className='comment-textarea'
+            // className='comment-textarea'
             name="content"
             type="textarea"
             placeholder="Type something here..."
@@ -65,7 +65,7 @@ function EditComment({ setShowModal, comment, billId }) {
         </div>
         <div className="add-cmt-submit-cancel-btns-div">
           <button className="add-cmt-submit-btn" type="submit">Submit</button>
-          <button className="add-cmt-cancel-btn" onClick={() => setShowModal(false)}>Cancel</button>
+          <DeleteComment comment={comment} />
         </div>
       </form>
     </div>

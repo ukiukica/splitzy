@@ -6,9 +6,14 @@ import EditComment from '../EditComment'
 import DeleteComment from '../DeleteComment'
 import GetUser from '../GetUser';
 import './Comments.css'
+import SingleComment from '../SingleComment';
+import CreateCommentForm from '../CreateCommentModal/CreateCommentForm';
 
 function Comments({ billId }) {
     const dispatch = useDispatch()
+
+    const users = useSelector((state) => state.users)
+    const sessionUser = useSelector(state => state.session.user)
 
     const comments = useSelector((state) => {
         return Object.values(state.comments)
@@ -18,34 +23,39 @@ function Comments({ billId }) {
         return comment.bill_id == billId
     })
 
-    const [showModal, setShowModal] = useState(false);
+    // const [showEdit, setShowEdit] = useState(false);
 
-    const sessionUser = useSelector(state => state.session.user)
+
+    // const onEdit = (e) => {
+    //     e.preventDefault()
+    //     showEdit ? setShowEdit(false) : setShowEdit(true)
+    // }
 
     return (
         <div className='comments-container'>
-            {(billComments) ? billComments.map((comment) =>(
-                <div className='each-comment-div' key={comment.id}>
-                    <div className="username-and-comment">
-                    <GetUser userId={comment.user_id} />
-                    <p id="all-comments">{comment.content}</p>
-                    </div>
-                    <div >
-                    {(sessionUser.id == comment.user_id) ? (
-                        <div className='edit-delete-comment-btns'>
-                            <button id="edit-comment-btn" onClick={() => setShowModal(true)}>Edit</button>
-                            {showModal && (
-                                <Modal onClose={() => setShowModal(false)}>
-                                    <EditComment setShowModal={setShowModal} comment={comment} billId={billId} />
-                                </Modal>
-                            )}
-                            <DeleteComment comment={comment} />
-                        </div>
-                    ) : null }
-                    </div>
-                </div>
-            )) : null }
-        </div>
+            {billComments?.map((comment) => (
+                <SingleComment comment={comment} billId={billId} key={comment.id} />
+                // <div className='each-comment-div' key={comment.id}>
+                //     <div className="username-and-comment">
+                //         <p id="comment-username">{users[comment.user_id].username}</p>
+                //         <p id="all-comments">{comment.content}</p>
+                //     </div>
+                //     {sessionUser.id == comment.user_id && (
+                //         <>
+                //             <button onClick={(e) => onEdit(e)}>{showEdit ? "Cancel" : "Edit"}</button>
+                //             <DeleteComment comment={comment} />
+                //         </>
+                //     )}
+                //     {showEdit && (
+                //         <>
+                //         <EditComment comment={comment} billId={billId}/>
+                //         </>
+                //     )}
+
+                // </div>
+            ))}
+            <CreateCommentForm billId={billId} />
+        </div >
     )
 
 }
