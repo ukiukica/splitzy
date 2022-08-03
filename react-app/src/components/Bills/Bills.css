@@ -1,3 +1,6 @@
+html {
+    overflow-y: scroll;
+  }
 
 div#bills-side-bar {
     width: 203px;

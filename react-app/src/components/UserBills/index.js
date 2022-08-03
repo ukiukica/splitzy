@@ -39,7 +39,7 @@ function UserBills({ sessionUser, bill }) {
         <div className='base-left'>
           <p id="date-p">{formatDate(bill.created_at)}</p>
           <i id='receipt-icon' className="fa-solid fa-receipt fa-3x"></i>
-          <p>{bill.label}</p>
+          <p id="label-p">{bill.label}</p>
         </div>
         <div id="amount-div">
           <p id='amount-p'>${bill.amount.toFixed(2)}</p>
@@ -50,16 +50,19 @@ function UserBills({ sessionUser, bill }) {
           <div className='extended-top'>
             <i id='receipt-icon' className="fa-solid fa-receipt fa-6x"></i>
             <div className='extended-info'>
-              <p>{bill.label}</p>
-              <p>${bill.amount}</p>
-              <p>Added on {formatDate(bill.created_at)}</p>
-              <p>Last updated on {formatDate(bill.updated_at)}</p>
+              <p id="label-p-extended">{bill.label}</p>
+              <p id="amount-p-extended">${bill.amount.toFixed(2)}</p>
+              <p className="dates-p">Added on {formatDate(bill.created_at)}</p>
+              <p className="dates-p">Last updated on {formatDate(bill.updated_at)}</p>
               <EditBillFormModal bill={bill} />
             </div>
           </div>
           <div className="extended-bottom">
             <div className="extended-bottom-left">
-              <p>Split between:</p>
+              <div className="split-heading">
+                <i className="fa-solid fa-arrows-split-up-and-left"></i>
+                <p>SPLIT BETWEEN</p>
+              </div>
               {bill.assigned_users.map(assigned_user => (
                 <div className="bill-user-list">
                   <img src={`https://ui-avatars.com/api/?name=${assigned_user}&rounded=true&background=random&uppercase=false&size=40`} alt='profile' />

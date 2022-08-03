@@ -133,6 +133,7 @@ i.fa-solid.fa-x {
     font-size: 15px;
     text-align: center;
     margin-right: 15px;
+    color:rgb(131, 131, 131)
 }
 
 #receipt-icon {
@@ -143,9 +144,13 @@ i.fa-solid.fa-x {
 #amount-p {
     align-items: center;
     display: flex;
-    font: 20px;
+    font-size: 17px;
     font-weight: bold;
     justify-content: flex-start;
+}
+
+#label-p {
+    font-size: 15px;
 }
 
 #amount-div {
@@ -178,6 +183,22 @@ i.fa-solid.fa-x {
     padding: 15px;
 }
 
+#label-p-extended {
+    font-size: 17px;
+    margin-bottom: 4px;
+}
+
+#amount-p-extended {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+.dates-p {
+    font-size: 12px;
+    margin-bottom: 2px;
+}
+
 .bill-user-list {
     display: flex;
     align-items: center;
@@ -186,4 +207,12 @@ i.fa-solid.fa-x {
 
 .bill-user-list > * {
     margin-right: 10px;
+}
+
+.split-heading {
+    display: flex;
+}
+
+.split-heading > * {
+    margin-right: 5px;
 }
