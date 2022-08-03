@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
+import CreateBillModal from "./index.js";
 import { addBill } from "../../store/bills.js";
 import { ValidationError } from "../../utils/validationError";
-import "./CreateBill.css";
+import "./CreateBillForm.css";
 
-function CreateBill() {
+function CreateBillForm() {
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -118,4 +119,4 @@ function CreateBill() {
   );
 }
 
-export default CreateBill;
+export default CreateBillForm;

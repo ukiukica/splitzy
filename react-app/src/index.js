@@ -6,6 +6,7 @@ import App from "./App";
 import configureStore from "./store";
 import { ModalProvider } from "./context/Modal";
 import { SignUpFormModalProvider } from "./context/SignUpFormModal";
+import { BillModalProvider } from "./context/BillModal";
 
 const store = configureStore();
 
@@ -13,9 +14,11 @@ ReactDOM.render(
   <React.StrictMode>
     <ModalProvider>
       <SignUpFormModalProvider>
-        <Provider store={store}>
-          <App />
-        </Provider>
+        <BillModalProvider>
+          <Provider store={store}>
+            <App />
+          </Provider>
+        </BillModalProvider>
       </SignUpFormModalProvider>
     </ModalProvider>
   </React.StrictMode>,

@@ -7,7 +7,6 @@ import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
 import Bills from "./components/Bills";
-import CreateBill from "./components/CreateBill";
 import SearchBar from "./components/SearchBar";
 import Friends from "./components/Friends";
 import AddFriendBill from "./components/AddFriendBill";
@@ -52,9 +51,6 @@ function App() {
         <Route path="/login" exact={true}>
           <LoginForm />
         </Route>
-        {/* <Route path="/sign-up" exact={true}>
-          <SignUpForm />
-        </Route> */}
         <ProtectedRoute path="/users" exact={true}>
           <UsersList />
         </ProtectedRoute>
@@ -67,13 +63,6 @@ function App() {
         <ProtectedRoute path="/bills" exact={true}>
           <Bills />
         </ProtectedRoute>
-        {/* DELETE AND TURN INTO MODAL ---------->>>>>>>> */}
-        <ProtectedRoute path="/bills/createbill" exact={true}>
-          <CreateBill />
-        </ProtectedRoute>
-        {/* <ProtectedRoute path='/bills/:billId' exact={true}>
-          <EditBillForm />
-        </ProtectedRoute> */}
         <ProtectedRoute path="/friends">
           <Friends />
         </ProtectedRoute>
