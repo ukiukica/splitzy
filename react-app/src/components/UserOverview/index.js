@@ -65,6 +65,14 @@ function UserOverview({ friend, setShowModal }) {
 
   return (
     <div className="useroverview-container">
+      <div id="user-profile-header-cntr">
+
+        <div id="user-profile-header">User Profile</div>
+
+        </div>
+      <div id="useroverview-details-below">
+
+
       <div id="useroverview-ctnr-one">
 
       <img
@@ -110,6 +118,7 @@ function UserOverview({ friend, setShowModal }) {
       <p className="user-detail-useroverview">
         {user.email}
       </p>
+      </div>
       </div>
 
       {/*~~~~~~~~~~~~~~~~~~ USER'S FRIENDS LIST ~~~~~~~~~~~~~~~~~~*/}

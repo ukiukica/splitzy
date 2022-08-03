@@ -34,6 +34,7 @@
   p.user-overview-label {
     font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
     color: dimgrey;
+    margin-top: 1rem;
   }
 
   p.user-detail-useroverview {
@@ -77,4 +78,34 @@
 .friends-label {
     margin-bottom: 3%;
     font-size: 18px;
+}
+
+div#useroverview-details-below {
+  display: flex;
+  flex-direction: row;
+}
+
+.useroverview-container {
+  display: flex;
+  flex-direction: column;
+}
+
+
+div#user-profile-header-cntr {
+  width: 100%;
+  background: #10d48e;
+  height: 2.5rem;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  position: relative;
+  bottom: 3rem;
+  color: white;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+}
+
+div#user-profile-header {
+  color: white;
+  margin-left: 10px;
 }
