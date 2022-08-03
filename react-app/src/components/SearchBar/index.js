@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { NavLink } from 'react-router-dom';
+import FriendsModal from "../Friends";
 import './searchbar.css'
 
 function SearchBar() {
@@ -66,9 +67,14 @@ function SearchBar() {
               .map((user) => (
                 <div className="username-search-result" key={user.id}>
                   {user.id === +sessionUser.id ? <></> :
-                  <a href={`/user-overview/${user?.id}`} className="username-result">
-                    <p className="username-result">{`${user.first_name} ${user.last_name}`}</p>
-                  </a>}
+
+                  // ~~~~~~~~~~~~~~~~~~~~~~~~ INSERT USER OVERVIEW MODAL HERE ~~~~~~~~~~~~~~~~~~~~~~~~~~
+                  // <a href={`/user-overview/${user?.id}`} className="username-result">
+                    // <p className="username-result">{`${user.first_name} ${user.last_name}`}</p>
+                    <p className="username-result"><FriendsModal friend={user.username}/></p>
+
+                    // </a>
+                  }
                   {/* <p>{user.last_name}</p>
                     <p>{user.username}</p> */}
                   {/* {(friends.includes(user.username)) ? <p>✔</p> :
