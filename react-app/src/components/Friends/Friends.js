@@ -33,7 +33,7 @@ function Friends() {
   }, []);
 
   // fetches friends
-  useEffect(() => {
+  useEffect( async () => {
     async function fetchData() {
       const response = await fetch(`/api/friends/${sessionUser.id}`);
       const responseData = await response.json();

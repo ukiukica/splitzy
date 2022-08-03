@@ -43,9 +43,9 @@ function UserOverview({ friend, setShowModal }) {
       const response = await fetch(`/api/friends/${sessionUser.id}/add/${id}`);
       return response;
     }
-    // window.location.reload(false);
-    // setShowModal(false)
-    await dispatch(viewUsers())
+    window.location.reload(false);
+    setShowModal(false)
+    // await dispatch(viewUsers())
     fetchData();
   };
 
@@ -56,9 +56,9 @@ function UserOverview({ friend, setShowModal }) {
         );
         return response;
       }
-      // window.location.reload(false);
-      await dispatch(viewUsers())
-      // setShowModal(false)
+      window.location.reload(false);
+      // await dispatch(viewUsers())
+      setShowModal(false)
     fetchData();
   };
 
