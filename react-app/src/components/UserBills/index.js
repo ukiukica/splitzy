@@ -66,12 +66,14 @@ function UserBills({ sessionUser, bill }) {
 
       <>
         <EditBillFormModal bill={bill} />
+
         <button
           id="delete-bill-btn"
           onClick={(e) => onDelete(e)}
         >
-          Delete
+        <i class="fa-solid fa-x"></i>
         </button>
+
       </>
       {/* <div className="comments-div" id="comments-div">
                 <div>
