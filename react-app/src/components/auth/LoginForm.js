@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Redirect, NavLink } from "react-router-dom";
+import SignUpModal from "./SignUpModal"
 import { login, demouser } from "../../store/session";
 import "./LoginForm.css";
 
@@ -92,9 +93,9 @@ const LoginForm = () => {
             Demo
           </button>
         </div>
-        <div id="already-have-acc-text-container">
-          <p id="already-have-acc-text">Not a registered user?</p>
-          <NavLink id="sign-up-link" to="/sign-up">Sign up</NavLink>
+        <div id="not-registered-text-container">
+          <p id="not-registered-text">Not a registered user?</p>
+          <NavLink id="sign-up-link" to="/sign-up" component={SignUpModal}>Sign up</NavLink>
         </div>
       </form>
     </div>

@@ -1,10 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { Redirect, NavLink } from "react-router-dom";
 import { signUp } from "../../../store/session";
 import "./SignUpForm.css";
 
-const SignUpForm = () => {
+const SignUpForm = ({ setShowModal }) => {
+
+  const dispatch = useDispatch();
+
+  const user = useSelector((state) => state.session.user);
+
   const [errors, setErrors] = useState([]);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -12,8 +17,8 @@ const SignUpForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
-  const user = useSelector((state) => state.session.user);
-  const dispatch = useDispatch();
+
+
 
   const onSignUp = async (e) => {
     e.preventDefault();
@@ -90,86 +95,97 @@ const SignUpForm = () => {
   return (
     <div className="signup-form-div">
       <div className="signup-form-inner-div">
+      <p id="x-btn" onClick={() => setShowModal(false)}>x</p>
         <h1 id="signup-form-heading">Sign up for splitzy</h1>
         <form className="signup-form" onSubmit={onSignUp}>
           <div className="signup-form-labels-inputs-container">
-          <div className="signup-form-labels-inputs-div">
-            <div className="signup-form-labels-inputs">
-              <label className="signup-form-labels">First Name</label>
-              <input
-                className="signup-form-inputs"
-                type="text"
-                name="first_name"
-                onChange={updateFirstName}
-                value={firstName}
-              ></input>
+            <div className="signup-form-labels-inputs-div">
+              <div className="signup-form-labels-inputs">
+                <label className="signup-form-labels">First name</label>
+                <input
+                  className="signup-form-inputs"
+                  type="text"
+                  name="first_name"
+                  onChange={updateFirstName}
+                  value={firstName}
+                ></input>
+              </div>
+              <div className="signup-form-labels-inputs">
+                <label className="signup-form-labels">Last name</label>
+                <input
+                  className="signup-form-inputs"
+                  type="text"
+                  name="last_name"
+                  onChange={updateLastName}
+                  value={lastName}
+                ></input>
+              </div>
+              <div className="signup-form-labels-inputs">
+                <label className="signup-form-labels">Username</label>
+                <input
+                  className="signup-form-inputs"
+                  type="text"
+                  name="username"
+                  onChange={updateUsername}
+                  value={username}
+                ></input>
+              </div>
+              <div className="signup-form-labels-inputs">
+                <label className="signup-form-labels">Email</label>
+                <input
+                  className="signup-form-inputs"
+                  type="text"
+                  name="email"
+                  onChange={updateEmail}
+                  value={email}
+                ></input>
+              </div>
+              <div className="signup-form-labels-inputs">
+                <label className="signup-form-labels">Password</label>
+                <input
+                  className="signup-form-inputs"
+                  type="password"
+                  name="password"
+                  onChange={updatePassword}
+                  value={password}
+                  required={true}
+                ></input>
+              </div>
+              <div className="signup-form-labels-inputs">
+                <label className="signup-form-labels">Confirm password</label>
+                <input
+                  className="signup-form-inputs"
+                  type="password"
+                  name="repeat_password"
+                  onChange={updateRepeatPassword}
+                  value={repeatPassword}
+                  required={true}
+                ></input>
+              </div>
+              <div className="signup-form-errors-div">
+                {errors.map((error, ind) => (
+                  <div className="signup-form-errors-li" key={ind}>
+                    {error}
+                  </div>
+                ))}
+              </div>
             </div>
-            <div className="signup-form-labels-inputs">
-              <label className="signup-form-labels">Last Name</label>
-              <input
-                className="signup-form-inputs"
-                type="text"
-                name="last_name"
-                onChange={updateLastName}
-                value={lastName}
-              ></input>
+            <div id="signup-form-btn-div">
+              <button
+                id="signup-form-btn"
+                disabled={errors.length}
+                type="submit"
+              >
+                Sign up
+              </button>
             </div>
-            <div className="signup-form-labels-inputs">
-              <label className="signup-form-labels">User Name</label>
-              <input
-                className="signup-form-inputs"
-                type="text"
-                name="username"
-                onChange={updateUsername}
-                value={username}
-              ></input>
+            <div id="already-registered-text-container">
+              <p id="already-registered-text">Already a registered user?</p>
+              <p id="login-link" onClick={() => setShowModal(false)}>
+                Log in
+              </p>
             </div>
-            <div className="signup-form-labels-inputs">
-              <label className="signup-form-labels">Email</label>
-              <input
-                className="signup-form-inputs"
-                type="text"
-                name="email"
-                onChange={updateEmail}
-                value={email}
-              ></input>
-            </div>
-            <div className="signup-form-labels-inputs">
-              <label className="signup-form-labels">Password</label>
-              <input
-                className="signup-form-inputs"
-                type="password"
-                name="password"
-                onChange={updatePassword}
-                value={password}
-                required={true}
-              ></input>
-            </div>
-            <div className="signup-form-labels-inputs">
-              <label className="signup-form-labels">Confirm Password</label>
-              <input
-                className="signup-form-inputs"
-                type="password"
-                name="repeat_password"
-                onChange={updateRepeatPassword}
-                value={repeatPassword}
-                required={true}
-              ></input>
-            </div>
-            <div className="signup-form-errors-div">
-              {errors.map((error, ind) => (
-                <div className="signup-form-errors-li" key={ind}>
-                  {error}
-                </div>
-              ))}
-            </div>
-          </div>
-          <div id="signup-form-btn-div">
-            <button id="signup-form-btn" disabled={errors.length} type="submit">
-              Sign Up
-            </button>
-          </div>
-          <p>Already a registered user?</p>
+            <p id="terms-text">By signing up, you accept the non-existent splitzy Terms of Service.</p>
           </div>
         </form>
       </div>
