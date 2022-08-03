@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 import CreateBillModal from "./index.js";
 import { addBill } from "../../store/bills.js";
 import { ValidationError } from "../../utils/validationError";
+import { viewBills } from "../../store/bills.js";
 import "./CreateBillForm.css";
 
 function CreateBillForm() {
@@ -15,6 +16,7 @@ function CreateBillForm() {
   const [label, setLabel] = useState("");
   const [amount, setAmount] = useState(0);
   const [errors, setErrors] = useState([]);
+  const [showErrors, setShowErrors] = useState(false);
 
   useEffect(() => {
     const errors = [];
@@ -23,7 +25,6 @@ function CreateBillForm() {
     } else if (label.length <= 0) {
       errors.push("Please provide a label");
     }
-
     if (amount <= 0) {
       errors.push("Must enter an amount greater than 0");
     }
@@ -34,88 +35,81 @@ function CreateBillForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if (errors.length) {
+      setShowErrors(true);
+      return;
+    }
     const payload = {
       user_id: sessionUser.id,
       label,
       amount,
     };
 
-    // let createdBill = await dispatch(addBill(payload))
-    let createdBill;
-
-    try {
-      createdBill = await dispatch(addBill(payload));
-    } catch (error) {
-      if (error instanceof ValidationError) setErrors(errors.error);
-      else setErrors(error.toString().slice(7));
-    }
-
-    if (createdBill) {
-      setErrors([]);
-      console.log("CREATED BILL: ", createdBill);
-      return history.push(`/add-bill-friends/${createdBill.id}`);
-    }
+    await dispatch(addBill(payload));
+    setErrors([]);
+    await dispatch(viewBills());
+    // CLOSE MODAL HERE
   };
 
   return (
     <div className="page-body">
-
-        <form className="create-bill-form" onSubmit={handleSubmit}>
+      <form className="create-bill-form" onSubmit={handleSubmit}>
         <div className="create-bill-header-div">
           <h1 id="create-bill-header">Add an expense</h1>
+        </div>
+        <div id="create-bill-input-container">
+          <label className="create-bill-labels">
+            Label
+            <input
+              name="label"
+              className="create-bill-input"
+              type="text"
+              value={label}
+              onChange={(e) => setLabel(e.target.value)}
+              placeholder={"Insert label here..."}
+              required
+            />
+          </label>
+          <label className="create-bill-labels">
+            Amount
+            <input
+              name="amount"
+              className="create-bill-input"
+              type="number"
+              min="0.01"
+              max="999999.99"
+              step="0.01"
+              value={amount}
+              onChange={(e) => setAmount(e.target.value)}
+              placeholder={"Insert amount here..."}
+              required
+            />
+          </label>
+        </div>
+        {showErrors && (
+          <div>
+            {errors.map((error, idx) => (
+              <p className="create-bill-errors-li" key={idx}>
+                {error}
+              </p>
+            ))}
           </div>
-          <div id="create-bill-input-container">
-            <label className="create-bill-labels">
-              Label
-              <input
-                name="label"
-                className="create-bill-input"
-                type="text"
-                value={label}
-                onChange={(e) => setLabel(e.target.value)}
-                placeholder={"Insert label here..."}
-                required
-              />
-            </label>
-            <label className="create-bill-labels">
-              Amount
-              <input
-                name="amount"
-                className="create-bill-input"
-                type="number"
-                min="0.01"
-                max="999999.99"
-                step="0.01"
-                value={amount}
-                onChange={(e) => setAmount(e.target.value)}
-                placeholder={"Insert amount here..."}
-                required
-              />
-            </label>
-          </div>
-          <div className="create-bill-errors-div">
-            <ul className="create-bill-errors-ul">
-              {errors.map((error, idx) => (
-                <li className="create-bill-errors-li" key={idx}>{error}</li>
-              ))}
-            </ul>
-          </div>
-          <div className="create-bill-btns-div">
-            <button
-              id="create-bill-submit"
-              className="create-bill-btns"
-              type="submit"
-              disabled={errors.length > 0}
-            >
-              Submit
-            </button>
-            <a href="/bills" className="create-bill-btns">
-            </a>
-          </div>
-        </form>
-        <a href='/bills' id="create-cancel" className="create-bill-btns">
-          Cancel
-        </a>
+        )}
+        <div className="create-bill-btns-div">
+          <button
+            id="create-bill-submit"
+            className="create-bill-btns"
+            type="submit"
+            disabled={errors.length > 0}
+          >
+            Submit
+          </button>
+          <a href="/bills" className="create-bill-btns"></a>
+        </div>
+      </form>
+      <a href="/bills" id="create-cancel" className="create-bill-btns">
+        Cancel
+      </a>
     </div>
   );
 }
