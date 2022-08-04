@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
-import { addBill, updateBill } from "../../store/bills.js";
+import { addBill, updateBill, viewBills } from "../../store/bills.js";
 import { ValidationError } from "../../utils/validationError";
+import Select from 'react-select';
 import "./EditBillForm.css";
 
 function EditBillForm({ setShowModal, bill }) {
@@ -10,35 +11,78 @@ function EditBillForm({ setShowModal, bill }) {
   const history = useHistory();
 
   const sessionUser = useSelector((state) => state.session.user);
+  const users = useSelector((state) => Object.values(state.users));
 
   const id = bill.id;
 
   const [label, setLabel] = useState(bill.label);
   const [amount, setAmount] = useState(bill.amount);
+  const [selectedFriends, setSelectedFriends] = useState(bill.assigned_users);
   const [errors, setErrors] = useState([]);
-  const [users, setUsers] = useState([]);
+  const [showErrors, setShowErrors] = useState(false);
+  // const [users, setUsers] = useState([]);
   const [userBills, setUserBills] = useState([]);
   const userBillsNoSessionUser = userBills[0]?.slice(1);
-  console.log("FRIENDS NO SESSION USER", userBillsNoSessionUser);
 
-  useEffect(() => {
-    async function fetchData() {
-      const response = await fetch("/api/users/");
-      const responseData = await response.json();
-      setUsers(responseData.users);
-    }
-    fetchData();
-  }, []);
+  console.log("ASSIGNED USERS: ", bill.assigned_users)
+  console.log("SELECTED FRIENDS: ", selectedFriends)
+  // useEffect(() => {
+  //   async function fetchData() {
+  //     const response = await fetch("/api/users/");
+  //     const responseData = await response.json();
+  //     setUsers(responseData.users);
+  //   }
+  //   fetchData();
+  // }, []);
 
   // Friends for bill
-  useEffect(() => {
-    async function fetchData() {
-      const response = await fetch(`/api/bills/user-bills/${bill.id}`);
-      const responseData = await response.json();
-      setUserBills(Object.values(responseData));
-    }
-    fetchData();
-  }, []);
+  // useEffect(() => {
+  //   async function fetchData() {
+  //     const response = await fetch(`/api/bills/user-bills/${bill.id}`);
+  //     const responseData = await response.json();
+  //     setUserBills(Object.values(responseData));
+  //   }
+  //   fetchData();
+  // }, []);
+
+  let friendOptions = [];
+
+  sessionUser?.friends?.forEach((friend) => {
+    friendOptions.push({ value: `${friend}`, label: `${friend}` })
+  })
+
+  const handleChange = e => {
+    setSelectedFriends(Array.isArray(e) ? e.map(x => x.value) : []);
+  }
+
+  const removeFriendFromBill = async (friend) => {
+    const userFriend = users.filter((user) => user.username === friend);
+    await fetch(`/api/bills/${bill.id}/remove-bill-friend/${userFriend[0].id}`);
+  }
+
+  const addFriendToBill = async (friend) => {
+    const userFriend = users.filter((user) => user.username === friend);
+    await fetch(`/api/bills/${bill.id}/add-bill-friend/${userFriend[0].id}`);
+  }
+
+  const removeUsers = () => {
+    const newUsers = new Set(selectedFriends)
+    bill.assigned_users.forEach(user => {
+      if (user !== sessionUser.username  && !newUsers.has(user)) {
+        removeFriendFromBill(user)
+      }
+    })
+  }
+
+  const addUsers = () => {
+    const assignedUsers = new Set(bill.assigned_users)
+    selectedFriends.forEach(friend => {
+      if (!assignedUsers.has(friend)) {
+        addFriendToBill(friend)
+      }
+    })
+  }
+
 
   useEffect(() => {
     const errors = [];
@@ -56,23 +100,16 @@ function EditBillForm({ setShowModal, bill }) {
     setErrors(errors);
   }, [label, amount]);
 
-  const removeFriendFromBill = (friend) => {
-    async function fetchData() {
-      const userFriend = users.filter((user) => user.username === friend);
-      //   console.log("USER FRIEND", userFriend[0].id)
-      const response = await fetch(
-        `/api/bills/${bill.id}/remove-bill-friend/${userFriend[0].id}`
-      );
 
-      //   history.push("/bills")
-      window.location.reload(false);
-      return response;
-    }
-    fetchData();
-  };
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (errors.length) {
+      setShowErrors(true);
+      return;
+    }
 
     const payload = {
       user_id: sessionUser.id,
@@ -80,21 +117,14 @@ function EditBillForm({ setShowModal, bill }) {
       amount,
     };
 
-    // let updatedBill = await dispatch(updateBill(payload, id));
-    let updatedBill;
-
-    try {
-      updatedBill = await dispatch(updateBill(payload, id));
-    } catch (error) {
-      if (error instanceof ValidationError) setErrors(errors.error);
-      else setErrors(error.toString().slice(7));
-    }
-
-    if (updatedBill) {
-      setErrors([]);
-      setShowModal(false);
-    }
-  };
+    await dispatch(updateBill(payload, id));
+    setErrors([]);
+    await removeUsers()
+    await addUsers()
+    // logic for assigning users from bill
+    await dispatch(viewBills());
+    setShowModal(false);
+  }
 
   return (
     <div className="bill-modal">
@@ -103,8 +133,20 @@ function EditBillForm({ setShowModal, bill }) {
           <p id="bill-header">Edit expense</p>
         </div>
         <div className="bill-with-users-container">
-          <p id="bill-with-text">With:</p>
-          {userBillsNoSessionUser?.length < 1 ? " None" : <></>}
+          <p id="bill-with-text">With You and:</p>
+          <div>
+            <Select
+              placeholder="Split between..."
+              value={friendOptions.filter(obj => selectedFriends.includes(obj.value))}
+              options={friendOptions}
+              onChange={handleChange}
+              isMulti
+              isClearable
+              name="colors"
+              className="basic-multi-select"
+              classNamePrefix="select" />
+          </div>
+          {/* {userBillsNoSessionUser?.length < 1 ? " None" : <></>}
           <div className="bill-users-ul-div">
             {userBillsNoSessionUser?.map((user) => (
               <ul className="bill-users-ul" key={user}>
@@ -115,54 +157,58 @@ function EditBillForm({ setShowModal, bill }) {
                 >
                   x
                 </button>
-                {/* </a> */}
+                </a>
               </ul>
             ))}
-          </div>
-          </div>
+          </div> */}
+        </div>
         <div className="bill-receipt-inputs-container">
-        <i id='bill-receipt-icon' className="fa-solid fa-receipt fa-5x"></i>
-        <div className="bill-inputs-container">
-          <input
-            name="label"
-            className="bill-input"
-            type="text"
-            value={label}
-            onChange={(e) => setLabel(e.target.value)}
-            required
-          />
-          <input
-            name="amount"
-            className="bill-input"
-            id="bill-amount"
-            type="float"
-            value={amount}
-            onChange={(e) => setAmount(e.target.value)}
-            required
+          <i id='bill-receipt-icon' className="fa-solid fa-receipt fa-5x"></i>
+          <div className="bill-inputs-container">
+            <input
+              name="label"
+              className="bill-input"
+              type="text"
+              value={label}
+              onChange={(e) => setLabel(e.target.value)}
+              required
             />
-            </div>
-            </div>
-          <ul>
+            <input
+              name="amount"
+              className="bill-input"
+              id="bill-amount"
+              type="float"
+              value={amount}
+              onChange={(e) => setAmount(e.target.value)}
+              required
+            />
+          </div>
+        </div>
+        {showErrors && (
+          <div>
             {errors.map((error, idx) => (
-              <li key={idx}>{error}</li>
+              <p className="create-bill-errors-li" key={idx}>
+                {error}
+              </p>
             ))}
-          </ul>
-          <div className="bill-btns-container">
-            <button
-              id="bill-cancel-btn"
-              className="bill-btns"
-              onClick={() => setShowModal(false)}
-              >
-              Cancel
-            </button>
-            <button
-              id="bill-save-btn"
-              className="bill-btns"
-              type="submit"
-              disabled={errors.length > 0}
-            >
-              Save
-            </button>
+          </div>
+        )}
+        <div className="bill-btns-container">
+          <button
+            id="bill-cancel-btn"
+            className="bill-btns"
+            onClick={() => setShowModal(false)}
+          >
+            Cancel
+          </button>
+          <button
+            id="bill-save-btn"
+            className="bill-btns"
+            type="submit"
+            disabled={errors.length > 0}
+          >
+            Save
+          </button>
         </div>
       </form>
     </div>
