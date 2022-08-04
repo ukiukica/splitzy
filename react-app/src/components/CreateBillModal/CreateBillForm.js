@@ -38,6 +38,8 @@ function CreateBillForm({ setShowModal }) {
     }
     if (amount <= 0) {
       errors.push("Must enter an amount greater than zero.");
+    } else if (amount >= 100000) {
+      errors.push("Must enter an amount less than $100,000.00");
     }
 
     setErrors(errors);
@@ -111,7 +113,7 @@ function CreateBillForm({ setShowModal }) {
               id="bill-amount"
               type="float"
               value={amount}
-              pattern="^\d*(\.\d{0,2})?$"
+              // pattern="^\d*(\.\d{0,2})?$"
               onChange={(e) => setAmount(e.target.value)}
               placeholder="Amount"
               required
