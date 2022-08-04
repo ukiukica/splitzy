@@ -37,12 +37,12 @@ function UserBills({ sessionUser, bill }) {
         }}
       >
         <div className='base-left'>
-          <p id="date-p">{formatDate(bill.created_at)}</p>
+          <p id="date-p">{formatDate(bill?.created_at)}</p>
           <i id='receipt-icon' className="fa-solid fa-receipt fa-3x"></i>
-          <p id="label-p">{bill.label}</p>
+          <p id="label-p">{bill?.label}</p>
         </div>
         <div id="amount-div">
-          <p id='amount-p'>${bill.amount.toFixed(2)}</p>
+          <p id='amount-p'>${bill?.amount.toFixed(2)}</p>
         </div>
       </div>
       {showDetails && (
@@ -60,8 +60,18 @@ function UserBills({ sessionUser, bill }) {
           <div className="extended-bottom">
             <div className="extended-bottom-left">
               <div className="split-heading">
-                <i className="fa-solid fa-arrows-split-up-and-left"></i>
-                <p>SPLIT BETWEEN</p>
+
+                {bill.assigned_users.length > 1 ?
+                  <>
+                  <i className="fa-solid fa-arrows-split-up-and-left"></i>
+                  <p>SPLIT BETWEEN</p>
+                  </>
+                  :
+                  <>
+                  <i className="fa-solid fa-file-invoice-dollar"></i>
+                  <p>ASSIGNED TO</p>
+                  </>
+                }
               </div>
               {bill.assigned_users.map(assigned_user => (
                 <div className="bill-user-list">
