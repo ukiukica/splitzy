@@ -5,18 +5,31 @@ import CreateBillModal from "./index.js";
 import { addBill } from "../../store/bills.js";
 import { ValidationError } from "../../utils/validationError";
 import { viewBills } from "../../store/bills.js";
+import Select from 'react-select';
 import "./CreateBillForm.css";
 
-function CreateBillForm() {
+function CreateBillForm({setShowModal}) {
   const dispatch = useDispatch();
   const history = useHistory();
 
   const sessionUser = useSelector((state) => state.session.user);
+  const users = useSelector((state) => Object.values(state.users));
 
   const [label, setLabel] = useState("");
   const [amount, setAmount] = useState(0);
+  const [selectedFriends, setSelectedFriends] = useState([]);
   const [errors, setErrors] = useState([]);
   const [showErrors, setShowErrors] = useState(false);
+
+  let friendOptions = [];
+
+  sessionUser?.friends?.forEach((friend) => {
+    friendOptions.push({ value: `${friend}`, label: `${friend}` })
+  })
+
+  const handleChange = e => {
+    setSelectedFriends(Array.isArray(e) ? e.map(x => x.value) : []);
+  }
 
   useEffect(() => {
     const errors = [];
@@ -48,14 +61,35 @@ function CreateBillForm() {
     await dispatch(addBill(payload));
     setErrors([]);
     await dispatch(viewBills());
-    // CLOSE MODAL HERE
+    if (selectedFriends.length) {
+      selectedFriends.forEach(async (friend) => {
+        const userFriend = users.filter((user) => user.username === friend);
+        await fetch(`/api/bills/add-bill-friends/${userFriend[0].id}`);
+      })
+    }
+    await dispatch(viewBills())
+    setShowModal(false)
   };
+
+  console.log("SELECTED:", selectedFriends)
 
   return (
     <div className="page-body">
       <form className="create-bill-form" onSubmit={handleSubmit}>
         <div className="create-bill-header-div">
           <h1 id="create-bill-header">Add an expense</h1>
+        </div>
+        <div>
+          <Select
+            placeholder="Split between..."
+            value={friendOptions.filter(obj => selectedFriends.includes(obj.value))}
+            options={friendOptions}
+            onChange={handleChange}
+            isMulti
+            isClearable
+            name="colors"
+            className="basic-multi-select"
+            classNamePrefix="select" />
         </div>
         <div id="create-bill-input-container">
           <label className="create-bill-labels">
