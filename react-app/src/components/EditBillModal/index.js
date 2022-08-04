@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Modal } from '../../context/Modal';
+import { BillModal } from '../../context/BillModal';
 import EditBillForm from './EditBillForm';
 import "./EditBillForm.css"
 
@@ -10,9 +10,9 @@ function EditBillFormModal({bill}) {
     <>
       <button id="edit-bill-btn" onClick={() => setShowModal(true)}>Edit expense</button>
       {showModal && (
-        <Modal onClose={() => setShowModal(false)}>
+        <BillModal onClose={() => setShowModal(false)}>
           <EditBillForm setShowModal={setShowModal} bill={bill}/>
-        </Modal>
+        </BillModal>
       )}
     </>
   );

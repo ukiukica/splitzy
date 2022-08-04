@@ -97,55 +97,55 @@ function EditBillForm({ setShowModal, bill }) {
   };
 
   return (
-    <div className="edit-bill-modal">
-      <form className="edit-bill-form" onSubmit={handleSubmit}>
-        <ul>
-          {errors.map((error, idx) => (
-            <li key={idx}>{error}</li>
-          ))}
-        </ul>
-        <h1 id="edit-bill-title">Edit Bill</h1>
-        <div className="edit-bill-labels-inputs-container">
-          <div className="edit-bill-labels-inputs-div">
-            <label id="edit-bill-label">
-              Label
-              <input
-                name="label"
-                className="edit-bill-input"
-                type="text"
-                value={label}
-                onChange={(e) => setLabel(e.target.value)}
-                required
-              />
-            </label>
-            <label id="edit-bill-amount">
-              Amount
-              <input
-                name="amount"
-                className="edit-bill-input"
-                type="float"
-                value={amount}
-                onChange={(e) => setAmount(e.target.value)}
-                required
-              />
-            </label>
-            <label id="edit-bill-users">
-              Associated Users:
-              {userBillsNoSessionUser?.length < 1 ? " None" : <></>}
-              <div>
-                {userBillsNoSessionUser?.map((user) => (
-                  <ul key={user}>
-                    {/* <a href="/bills"> */}
-                    {user}{" "}
-                    <button id="edit-bill-remove-btn" onClick={() => removeFriendFromBill(user)}>
-                      x
-                    </button>
-                    {/* </a> */}
-                  </ul>
-                ))}
-              </div>
-            </label>
+    <div className="bill-modal">
+      <form className="bill-form" onSubmit={handleSubmit}>
+        <div className="bill-header-div">
+          <p id="bill-header">Edit expense</p>
+        </div>
+        <div className="bill-with-users-container">
+          <p id="bill-with-text">With:</p>
+          {userBillsNoSessionUser?.length < 1 ? " None" : <></>}
+          <div className="bill-users-ul-div">
+            {userBillsNoSessionUser?.map((user) => (
+              <ul className="bill-users-ul" key={user}>
+                {user}{" "}
+                <button
+                  id="bill-delete-btn"
+                  onClick={() => removeFriendFromBill(user)}
+                >
+                  x
+                </button>
+                {/* </a> */}
+              </ul>
+            ))}
           </div>
+          </div>
+        <div className="bill-receipt-inputs-container">
+        <i id='bill-receipt-icon' className="fa-solid fa-receipt fa-5x"></i>
+        <div className="bill-inputs-container">
+          <input
+            name="label"
+            className="bill-input"
+            type="text"
+            value={label}
+            onChange={(e) => setLabel(e.target.value)}
+            required
+          />
+          <input
+            name="amount"
+            className="bill-input"
+            type="float"
+            value={amount}
+            onChange={(e) => setAmount(e.target.value)}
+            required
+            />
+            </div>
+            </div>
+          <ul>
+            {errors.map((error, idx) => (
+              <li key={idx}>{error}</li>
+            ))}
+          </ul>
           <div className="edit-bill-submit-cancel-btns">
             <button
               id="edit-bill-submit-btn"
@@ -160,7 +160,6 @@ function EditBillForm({ setShowModal, bill }) {
             >
               Cancel
             </button>
-          </div>
         </div>
       </form>
     </div>
