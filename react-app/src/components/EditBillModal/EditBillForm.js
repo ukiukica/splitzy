@@ -133,7 +133,7 @@ function EditBillForm({ setShowModal, bill }) {
           <p id="bill-header">Edit expense</p>
         </div>
         <div className="bill-with-users-container">
-          <p id="bill-with-text">With You and:</p>
+          <p id="bill-with-text">Between you and:</p>
           <div>
             <Select
               placeholder="Split between..."
@@ -146,7 +146,6 @@ function EditBillForm({ setShowModal, bill }) {
               className="basic-multi-select"
               classNamePrefix="select" />
           </div>
-          {/* {userBillsNoSessionUser?.length < 1 ? " None" : <></>}
           <div className="bill-users-ul-div">
             {userBillsNoSessionUser?.map((user) => (
               <ul className="bill-users-ul" key={user}>

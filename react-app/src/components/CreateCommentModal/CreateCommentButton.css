@@ -31,22 +31,17 @@
     flex-direction: row;
     justify-content: flex-start;
     margin-top: 10px;
-    cursor: pointer;
 }
 
 .add-cmt-submit-btn {
     color: white;
-    background-color: rgb(30, 85, 92);
+    background-color: rgb(32 69 96);
     border: 0px solid transparent;
     border-radius: 3px;
     font-size: 12px;
     margin-right: 3px;
     cursor: pointer;
     padding: 5px 8px;
-}
-
-.add-cmt-submit-btn:hover {
-    opacity: .7;
 }
 
 .add-cmt-cancel-btn {
@@ -75,10 +70,6 @@
     position: relative;
     right: 40px;
     cursor: pointer;
-}
-
-#add-comment-btn:hover {
-    opacity: .7;
 }
 
 .comment-textarea {
