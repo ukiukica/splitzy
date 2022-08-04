@@ -1,12 +1,9 @@
-#delete-comment-btn {
-    color: rgb(241, 81, 82);
-    background-color: transparent;
+#delete-cmt-btn {
+    padding: 5px 10px;
     border: none;
-    font-weight: bold;
-    font-size: 20px;
+    border-radius: 3px;
     cursor: pointer;
-}
-
-#delete-comment-btn:hover {
-    opacity: .7;
+    margin-right: 5px;
+    background-color: rgb(211, 211, 211);
+    font-size: 12px;
 }

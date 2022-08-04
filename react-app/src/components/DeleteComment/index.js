@@ -18,7 +18,7 @@ function DeleteComment({ comment }) {
     }
 
     return (
-        <button onClick={handleDelete}>Delete</button>
+        <button id="delete-cmt-btn" onClick={handleDelete}>Delete</button>
     )
 }
 

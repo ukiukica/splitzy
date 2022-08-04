@@ -103,7 +103,7 @@ function EditBillForm({ setShowModal, bill }) {
           <p id="bill-header">Edit expense</p>
         </div>
         <div className="bill-with-users-container">
-          <p id="bill-with-text">With:</p>
+          <p id="bill-with-text">Between you and:</p>
           {userBillsNoSessionUser?.length < 1 ? " None" : <></>}
           <div className="bill-users-ul-div">
             {userBillsNoSessionUser?.map((user) => (

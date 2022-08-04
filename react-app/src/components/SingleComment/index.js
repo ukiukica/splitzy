@@ -5,7 +5,7 @@ import { Modal } from '../../context/Modal';
 import EditComment from '../EditComment'
 import DeleteComment from '../DeleteComment'
 import GetUser from '../GetUser';
-// import './Comments.css'
+import './SingleComment.css'
 
 function SingleComment({ comment, billId, formatDate }) {
     const dispatch = useDispatch()
@@ -33,7 +33,7 @@ function SingleComment({ comment, billId, formatDate }) {
                     </div>
                     {sessionUser.id == comment.user_id && (
                         <>
-                            <button onClick={(e) => onEdit(e)}>{showEdit ? "Cancel" : "Edit"}</button>
+                            <button id="cancel-edit-cmt-btns" onClick={(e) => onEdit(e)}>{showEdit ? "Cancel" : "Edit"}</button>
 
                         </>
                     )}

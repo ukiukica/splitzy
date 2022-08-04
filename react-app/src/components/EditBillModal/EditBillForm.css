@@ -13,11 +13,12 @@
 .bill-header-div {
     display: flex;
     background-color: #36d48e;
-    width: 360px;
+    width: 100%;
     height: 2.5rem;
     border-top-right-radius: 3px;
     border-top-left-radius: 3px;
     position: relative;
+    justify-content: flex-start;
     align-items: center;
 }
 
@@ -78,7 +79,7 @@
 .bill-with-users-container {
     display: flex;
     align-items: center;
-    margin-top: 10px;
+    margin: 20px;
 }
 
 #bill-with-text {
@@ -86,7 +87,7 @@
     flex-direction: column;
     margin-bottom: 10px;
     justify-content: space-between;
-    margin: 10px;
+    margin: 10px 10px 10px 0;
     font-weight: bold;
     font-size: 14px;
     -webkit-font-smoothing: antialiased;
@@ -105,7 +106,7 @@
 .bill-btns-container {
     display: flex;
     flex-direction: row;
-    margin: 10px 10px;
+    margin: 20px 20px;
     cursor: pointer;
     justify-content: flex-end;
 }
