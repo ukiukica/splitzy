@@ -42,7 +42,8 @@ a#all-expenses-side {
 
 div#all-expenses-side {
     padding: 5px 0;
-  }
+    color: #666666;
+}
 
 div#all-expenses-side:hover {
     background: #eee;
