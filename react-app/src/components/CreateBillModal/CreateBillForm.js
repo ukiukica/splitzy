@@ -32,12 +32,12 @@ function CreateBillForm({ setShowModal }) {
   useEffect(() => {
     const errors = [];
     if (label.length > 100) {
-      errors.push("Label must be less than 100 characters");
+      errors.push("Label must be less than 100 characters.");
     } else if (label.length <= 0) {
-      errors.push("Please provide a label");
+      errors.push("Please provide a label.");
     }
     if (amount <= 0) {
-      errors.push("Must enter an amount greater than 0");
+      errors.push("Must enter an amount greater than zero.");
     }
 
     setErrors(errors);
@@ -80,7 +80,7 @@ function CreateBillForm({ setShowModal }) {
         <div className="bill-with-users-container">
           <p id="bill-with-text">Between you and:</p>
           <Select
-            placeholder="Select a name"
+            placeholder="Select a friend"
             value={friendOptions.filter((obj) =>
               selectedFriends.includes(obj.value)
             )}
@@ -117,11 +117,15 @@ function CreateBillForm({ setShowModal }) {
             />
           </div>
         </div>
-        <ul>
-          {errors.map((error, idx) => (
-            <li key={idx}>{error}</li>
-          ))}
-        </ul>
+        {showErrors && (
+          <div>
+            {errors.map((error, idx) => (
+              <p className="bill-errors-p" key={idx}>
+                {error}
+              </p>
+            ))}
+          </div>
+        )}
         <div className="bill-btns-container">
           <button
             id="bill-cancel-btn"
@@ -134,7 +138,6 @@ function CreateBillForm({ setShowModal }) {
             id="bill-save-btn"
             className="bill-btns"
             type="submit"
-            disabled={errors.length > 0}
           >
             Save
           </button>

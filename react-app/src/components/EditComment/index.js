@@ -18,9 +18,9 @@ function EditComment({ comment, billId, setShowEdit }) {
   useEffect(() => {
     const errors = [];
     if (content.length > 2000) {
-      errors.push("Comment must be less than 2000 characters");
+      errors.push("Comment must be less than 2000 characters.");
     }
-    if (content.length < 1) {
+    if (!content.length) {
       errors.push("Comment must have content.");
     }
     setErrors(errors);
