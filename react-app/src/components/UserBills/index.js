@@ -37,12 +37,12 @@ function UserBills({ sessionUser, bill }) {
         }}
       >
         <div className='base-left'>
-          <p id="date-p">{formatDate(bill.created_at)}</p>
+          <p id="date-p">{formatDate(bill?.created_at)}</p>
           <i id='receipt-icon' className="fa-solid fa-receipt fa-3x"></i>
-          <p id="label-p">{bill.label}</p>
+          <p id="label-p">{bill?.label}</p>
         </div>
         <div id="amount-div">
-          <p id='amount-p'>${bill.amount.toFixed(2)}</p>
+          <p id='amount-p'>${bill?.amount.toFixed(2)}</p>
         </div>
       </div>
       {showDetails && (
