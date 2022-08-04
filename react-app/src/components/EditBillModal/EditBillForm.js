@@ -156,7 +156,6 @@ function EditBillForm({ setShowModal, bill }) {
                 >
                   x
                 </button>
-                </a>
               </ul>
             ))}
           </div>
