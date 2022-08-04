@@ -98,13 +98,13 @@ def get_bill_users():
 
 
 # For removing friends after bill creation
-@bill_routes.route('/remove-bill-friends/<int:id>')
-def remove_friend_from_new_bill(id):
-    bill_made = Bill.query.order_by(Bill.id.desc()).first()
-    friend = User.query.get(id)
-    bill_made.remove_bill_from_user(friend)
-    db.session.commit()
-    return "Friend was removed from bill"
+# @bill_routes.route('/remove-bill-friends/<int:id>')
+# def remove_friend_from_new_bill(id):
+#     bill_made = Bill.query.order_by(Bill.id.desc()).first()
+#     friend = User.query.get(id)
+#     bill_made.remove_bill_from_user(friend)
+#     db.session.commit()
+#     return "Friend was removed from bill"
 
 # For removing friends when editing an existing bill
 @bill_routes.route('/<int:id1>/remove-bill-friend/<int:id2>')
@@ -116,3 +116,12 @@ def remove_bill_friend(id1, id2):
     bill.remove_bill_from_user(friend)
     db.session.commit()
     return "Friend was removed from bill"
+
+# For adding friends when editing an existing bill
+@bill_routes.route('/<int:id1>/add-bill-friend/<int:id2>')
+def add_bill_friend(id1, id2):
+    bill = Bill.query.get(id1)
+    friend = User.query.get(id2)
+    bill.assign_bill_to_user(friend)
+    db.session.commit()
+    return "Friend was added to bill"

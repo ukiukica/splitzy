@@ -9,13 +9,20 @@ import "./Bills.css";
 function Bills() {
   const dispatch = useDispatch();
 
+  const sessionUser = useSelector((state) => state.session.user);
+  const userId = sessionUser.id;
+
   const bills = useSelector((state) => {
     return Object.values(state.bills);
   });
 
-  const sessionUser = useSelector((state) => state.session.user);
+  let usersSet;
 
-  const userId = sessionUser.id;
+  const sessionUserBills = bills.filter(bill => {
+    usersSet = new Set(bill.assigned_users)
+    return usersSet.has(sessionUser.username)
+  })
+
 
   return (
     <div id='main-div'>
@@ -26,10 +33,10 @@ function Bills() {
             <CreateBillModal />
         </div>
         <div>
-          {bills?.map((bill) => (
-            <div key={bill.id}>
-              <UserBills sessionUser={sessionUser} bill={bill} />
-            </div>
+          {sessionUserBills?.map((bill) => (
+              <div key={bill.id}>
+                <UserBills sessionUser={sessionUser} bill={bill} />
+              </div>
           ))}
         </div>
       </div>
