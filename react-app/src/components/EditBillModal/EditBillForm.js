@@ -56,13 +56,13 @@ function EditBillForm({ setShowModal, bill }) {
   };
 
   const removeFriendFromBill = async (friend) => {
-    const userFriend = users.filter((user) => user.username === friend);
-    await fetch(`/api/bills/${bill.id}/remove-bill-friend/${userFriend[0].id}`);
+    const userFriend = users?.filter((user) => user?.username === friend);
+    await fetch(`/api/bills/${bill.id}/remove-bill-friend/${userFriend[0]?.id}`);
   };
 
   const addFriendToBill = async (friend) => {
-    const userFriend = users.filter((user) => user.username === friend);
-    await fetch(`/api/bills/${bill.id}/add-bill-friend/${userFriend[0].id}`);
+    const userFriend = users?.filter((user) => user?.username === friend);
+    await fetch(`/api/bills/${bill.id}/add-bill-friend/${userFriend[0]?.id}`);
   };
 
   const removeUsers = () => {

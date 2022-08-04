@@ -111,6 +111,7 @@ function CreateBillForm({ setShowModal }) {
               id="bill-amount"
               type="float"
               value={amount}
+              pattern="^\d*(\.\d{0,2})?$"
               onChange={(e) => setAmount(e.target.value)}
               placeholder="Amount"
               required
