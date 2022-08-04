@@ -80,6 +80,7 @@ function CreateBillForm({setShowModal}) {
           <h1 id="create-bill-header">Add an expense</h1>
         </div>
         <div>
+        <p id="bill-with-text">With You and:</p>
           <Select
             placeholder="Split between..."
             value={friendOptions.filter(obj => selectedFriends.includes(obj.value))}

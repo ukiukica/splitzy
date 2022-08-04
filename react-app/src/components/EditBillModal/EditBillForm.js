@@ -60,6 +60,11 @@ function EditBillForm({ setShowModal, bill }) {
     await fetch(`/api/bills/${bill.id}/remove-bill-friend/${userFriend[0].id}`);
   }
 
+  const addFriendToBill = async (friend) => {
+    const userFriend = users.filter((user) => user.username === friend);
+    await fetch(`/api/bills/${bill.id}/add-bill-friend/${userFriend[0].id}`);
+  }
+
   const removeUsers = () => {
     const newUsers = new Set(selectedFriends)
     bill.assigned_users.forEach(user => {
@@ -68,6 +73,16 @@ function EditBillForm({ setShowModal, bill }) {
       }
     })
   }
+
+  const addUsers = () => {
+    const assignedUsers = new Set(bill.assigned_users)
+    selectedFriends.forEach(friend => {
+      if (!assignedUsers.has(friend)) {
+        addFriendToBill(friend)
+      }
+    })
+  }
+
 
   useEffect(() => {
     const errors = [];
@@ -105,12 +120,11 @@ function EditBillForm({ setShowModal, bill }) {
     await dispatch(updateBill(payload, id));
     setErrors([]);
     await removeUsers()
+    await addUsers()
     // logic for assigning users from bill
     await dispatch(viewBills());
     setShowModal(false);
   }
-
-
 
   return (
     <div className="bill-modal">
@@ -119,7 +133,7 @@ function EditBillForm({ setShowModal, bill }) {
           <p id="bill-header">Edit expense</p>
         </div>
         <div className="bill-with-users-container">
-          <p id="bill-with-text">With:</p>
+          <p id="bill-with-text">With You and:</p>
           <div>
             <Select
               placeholder="Split between..."
