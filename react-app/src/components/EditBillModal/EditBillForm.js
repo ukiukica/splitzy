@@ -87,13 +87,13 @@ function EditBillForm({ setShowModal, bill }) {
     const errors = [];
 
     if (label.length > 100) {
-      errors.push("Label must be less than 100 characters");
+      errors.push("Label must be less than 100 characters.");
     } else if (label.length <= 0) {
-      errors.push("Please provide a label");
+      errors.push("Please provide a label.");
     }
 
     if (amount <= 0) {
-      errors.push("Must enter an amount greater than 0");
+      errors.push("Must enter an amount greater than zero.");
     }
 
     setErrors(errors);
@@ -132,7 +132,7 @@ function EditBillForm({ setShowModal, bill }) {
           <p id="bill-with-text">Between you and:</p>
           <div>
             <Select
-              placeholder="Split between..."
+              placeholder="Select a friend"
               value={friendOptions.filter((obj) =>
                 selectedFriends.includes(obj.value)
               )}
@@ -186,7 +186,7 @@ function EditBillForm({ setShowModal, bill }) {
         {showErrors && (
           <div>
             {errors.map((error, idx) => (
-              <p className="create-bill-errors-li" key={idx}>
+              <p className="bill-errors-p" key={idx}>
                 {error}
               </p>
             ))}
@@ -211,7 +211,6 @@ function EditBillForm({ setShowModal, bill }) {
             id="bill-save-btn"
             className="bill-btns"
             type="submit"
-            disabled={errors.length > 0}
           >
             Save
           </button>
