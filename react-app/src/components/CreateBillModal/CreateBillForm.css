@@ -132,17 +132,6 @@
     cursor: pointer;
 }
 
-#bill-delete-btn {
-    color: rgb(169, 169, 169);
-    background-color: white;
-    border: transparent;
-    border-radius: 3px;
-    margin-right: 3px;
-    font-size: 13px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
 /* .create-bill-errors-div {
     display: flex;
     justify-content: center;
