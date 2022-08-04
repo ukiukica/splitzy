@@ -10,8 +10,8 @@ import './SingleComment.css'
 function SingleComment({ comment, billId, formatDate }) {
     const dispatch = useDispatch()
 
-    const users = useSelector((state) => state.users)
-    const sessionUser = useSelector(state => state.session.user)
+    const users = useSelector((state) => state?.users)
+    const sessionUser = useSelector(state => state?.session.user)
 
     const [showEdit, setShowEdit] = useState(false);
 
@@ -27,11 +27,11 @@ function SingleComment({ comment, billId, formatDate }) {
                 <div className='comment-top'>
                     <div>
                         <div className='comment-heading'>
-                            <p id="comm-username-p">{users[comment.user_id].username}</p>
-                            <p id="comm-date-p">{formatDate(comment.updated_at)}</p>
+                            <p id="comm-username-p">{users[comment?.user_id]?.username}</p>
+                            <p id="comm-date-p">{formatDate(comment?.updated_at)}</p>
                         </div>
                     </div>
-                    {sessionUser.id == comment.user_id && (
+                    {sessionUser?.id == comment.user_id && (
                         <>
                             <button id="cancel-edit-cmt-btns" onClick={(e) => onEdit(e)}>{showEdit ? "Cancel" : "Edit"}</button>
 
@@ -43,7 +43,7 @@ function SingleComment({ comment, billId, formatDate }) {
                                 <EditComment comment={comment} billId={billId} setShowEdit={setShowEdit} />
                             </div>
                             :
-                            <p id="comm-content-p">{comment.content}</p>
+                            <p id="comm-content-p">{comment?.content}</p>
                         }
 
 
