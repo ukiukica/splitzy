@@ -3,26 +3,23 @@ import { NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import SignUpModal from "./auth/SignUpModal";
 import LogoutButton from "./auth/LogoutButton";
-import SearchBar from "./SearchBar";
 import "./NavBar.css";
 
 function NavBar() {
-  const dispatch = useDispatch();
+  
   const sessionUser = useSelector((state) => state.session.user);
 
   let sessionLinks;
   if (!sessionUser) {
     sessionLinks = (
       <div className="nav-bar-logged-out-div">
-        <div>
-          <div
-            to="/sign-up"
-            exact={true}
-            activeClassName="active"
-            className="logged-out-links"
-          >
+        <div
+          to="/sign-up"
+          exact={true}
+          activeClassName="active"
+          className="logged-out-links"
+        >
           <SignUpModal />
-        </div>
         </div>
         <div>
           <NavLink
@@ -41,28 +38,6 @@ function NavBar() {
     sessionLinks = (
       <div className="nav-bar-session">
         <div>
-          {/* <NavLink
-            to="/bills/createbill"
-            exact={true}
-            activeClassName="active"
-            className="logged-in-links"
-            id="create-bill-link"
-          >
-            Create a bill
-          </NavLink> */}
-        </div>
-        {/* <div>
-          <NavLink
-            to="/bills"
-            exact={true}
-            activeClassName="active"
-            className="logged-in-links"
-            id="bills-link"
-          >
-            Bills
-          </NavLink>
-        </div> */}
-        <div>
           <NavLink
             to="/about-us"
             exact={true}
@@ -72,6 +47,7 @@ function NavBar() {
           >
             About us
           </NavLink>
+          <LogoutButton />
         </div>
       </div>
     );
@@ -79,16 +55,10 @@ function NavBar() {
 
   return (
     <nav>
-      <div className="nav-bar">
-        <div>
-          <NavLink to="/" exact={true} id="home-link" activeClassName="active">
-            splitzy
-          </NavLink>
-        </div>
-        {sessionLinks}
-        {/* {sessionUser ? <SearchBar /> : <></>} */}
-        {sessionUser ? <LogoutButton /> : <></>}
-      </div>
+      <NavLink to="/" exact={true} id="home-link" activeClassName="active">
+        splitzy
+      </NavLink>
+      {sessionLinks}
     </nav>
   );
 }
