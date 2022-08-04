@@ -78,6 +78,9 @@ function CreateBillForm({ setShowModal }) {
       <form className="bill-form" onSubmit={handleSubmit}>
         <div className="bill-header-div">
           <p id="bill-header">Add an expense</p>
+          <p className="bill-header" id="bill-x-btn" onClick={() => setShowModal(false)}>
+            x
+          </p>
         </div>
         <div className="bill-with-users-container">
           <p id="bill-with-text">Between you and:</p>
@@ -130,13 +133,6 @@ function CreateBillForm({ setShowModal }) {
           </div>
         )}
         <div className="bill-btns-container">
-          <button
-            id="bill-cancel-btn"
-            className="bill-btns"
-            onClick={() => setShowModal(false)}
-          >
-            Cancel
-          </button>
           <button
             id="bill-save-btn"
             className="bill-btns"
