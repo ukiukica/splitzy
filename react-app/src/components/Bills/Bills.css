@@ -60,3 +60,14 @@ div#bills-side-bar {
 #bills-h1 {
     font-size: 25px;
 }
+
+.errors-p {
+    font-size: 11px;
+    color: #b10a0a;
+}
+
+.bill-errors-p {
+    font-size: 11px;
+    color: #b10a0a;
+    text-align: center;
+}

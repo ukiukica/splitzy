@@ -10,11 +10,15 @@ function CreateCommentForm({ billId }) {
 
   const [content, setContent] = useState("");
   const [errors, setErrors] = useState([]);
+  const [showErrors, setShowErrors] = useState(false);
 
   useEffect(() => {
     const errors = [];
     if (content.length > 2000) {
-      errors.push("Comment must be less than 2000 characters");
+      errors.push("Comment must be less than 2000 characters.");
+    }
+    if (!content.length) {
+      errors.push("Content is required.")
     }
 
     setErrors(errors);
@@ -23,28 +27,26 @@ function CreateCommentForm({ billId }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if (errors.length) {
+      setShowErrors(true);
+      return;
+    }
+
     const payload = {
       user_id: sessionUser.id,
       bill_id: billId,
       content,
     };
-    let createdComment = await dispatch(addComment(payload));
-    console.log("createdComment:", createdComment);
-    if (createdComment) {
-      setErrors([]);
-      setContent("");
-      await dispatch(viewComments())
-    }
+    await dispatch(addComment(payload));
+    setErrors([]);
+    setContent("");
+    await dispatch(viewComments())
+
   };
 
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <ul>
-          {errors.map((error, idx) => (
-            <li key={idx}>{error}</li>
-          ))}
-        </ul>
           {/* <div className="add-cmt-content-div"> */}
           <textarea
             className='comment-textarea'
@@ -56,8 +58,17 @@ function CreateCommentForm({ billId }) {
             required
           />
           {/* </div> */}
+          {showErrors && (
+          <div>
+            {errors.map((error, idx) => (
+              <p className="errors-p" key={idx}>
+                {error}
+              </p>
+            ))}
+          </div>
+        )}
         <div className="add-cmt-submit-cancel-btns-div">
-          <button className="add-cmt-submit-btn" disabled={content.length < 1} type="submit">Post</button>
+          <button className="add-cmt-submit-btn" type="submit">Post</button>
         </div>
       </form>
     </div>
