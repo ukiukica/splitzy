@@ -134,6 +134,7 @@ function EditBillForm({ setShowModal, bill }) {
           <input
             name="amount"
             className="bill-input"
+            id="bill-amount"
             type="float"
             value={amount}
             onChange={(e) => setAmount(e.target.value)}
@@ -146,19 +147,21 @@ function EditBillForm({ setShowModal, bill }) {
               <li key={idx}>{error}</li>
             ))}
           </ul>
-          <div className="edit-bill-submit-cancel-btns">
+          <div className="bill-btns-container">
             <button
-              id="edit-bill-submit-btn"
+              id="bill-cancel-btn"
+              className="bill-btns"
+              onClick={() => setShowModal(false)}
+              >
+              Cancel
+            </button>
+            <button
+              id="bill-save-btn"
+              className="bill-btns"
               type="submit"
               disabled={errors.length > 0}
             >
-              Submit
-            </button>
-            <button
-              id="edit-bill-cancel-btn"
-              onClick={() => setShowModal(false)}
-            >
-              Cancel
+              Save
             </button>
         </div>
       </form>

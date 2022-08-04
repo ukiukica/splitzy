@@ -19,9 +19,6 @@
 }
 
 #bill-modal-content {
-  border-radius: 3px;
-  height: 450px;
-  width: 700px;
   z-index: 10;
 }
 
