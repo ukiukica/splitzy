@@ -60,8 +60,18 @@ function UserBills({ sessionUser, bill }) {
           <div className="extended-bottom">
             <div className="extended-bottom-left">
               <div className="split-heading">
-                <i className="fa-solid fa-arrows-split-up-and-left"></i>
-                <p>SPLIT BETWEEN</p>
+
+                {bill.assigned_users.length > 1 ?
+                  <>
+                  <i className="fa-solid fa-arrows-split-up-and-left"></i>
+                  <p>SPLIT BETWEEN</p>
+                  </>
+                  :
+                  <>
+                  <i className="fa-solid fa-file-invoice-dollar"></i>
+                  <p>ASSIGNED TO</p>
+                  </>
+                }
               </div>
               {bill.assigned_users.map(assigned_user => (
                 <div className="bill-user-list">
