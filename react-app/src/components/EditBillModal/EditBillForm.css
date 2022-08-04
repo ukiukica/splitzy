@@ -127,19 +127,16 @@
     color: white;
     background-color: #204660;
     border: transparent;
-    margin-right: 3px;
     font-size: 13px;
     cursor: pointer;
 }
 
 #bill-delete-btn {
-    color: rgb(169, 169, 169);
-    background-color: white;
+    color: white;
+    background-color: #79403d;
     border: transparent;
-    border-radius: 3px;
-    margin-right: 3px;
+    margin-right: 5px;
     font-size: 13px;
-    font-weight: bold;
     cursor: pointer;
 }
 

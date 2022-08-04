@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { updateBill, viewBills } from "../../store/bills.js";
+import { removeBill, updateBill, viewBills } from "../../store/bills.js";
 import { ValidationError } from "../../utils/validationError";
-import Select from 'react-select';
+import Select from "react-select";
 import "./EditBillForm.css";
 
 function EditBillForm({ setShowModal, bill }) {
@@ -24,8 +24,8 @@ function EditBillForm({ setShowModal, bill }) {
   const [userBills, setUserBills] = useState([]);
   const userBillsNoSessionUser = userBills[0]?.slice(1);
 
-  console.log("ASSIGNED USERS: ", bill.assigned_users)
-  console.log("SELECTED FRIENDS: ", selectedFriends)
+  console.log("ASSIGNED USERS: ", bill.assigned_users);
+  console.log("SELECTED FRIENDS: ", selectedFriends);
   // useEffect(() => {
   //   async function fetchData() {
   //     const response = await fetch("/api/users/");
@@ -48,41 +48,40 @@ function EditBillForm({ setShowModal, bill }) {
   let friendOptions = [];
 
   sessionUser?.friends?.forEach((friend) => {
-    friendOptions.push({ value: `${friend}`, label: `${friend}` })
-  })
+    friendOptions.push({ value: `${friend}`, label: `${friend}` });
+  });
 
-  const handleChange = e => {
-    setSelectedFriends(Array.isArray(e) ? e.map(x => x.value) : []);
-  }
+  const handleChange = (e) => {
+    setSelectedFriends(Array.isArray(e) ? e.map((x) => x.value) : []);
+  };
 
   const removeFriendFromBill = async (friend) => {
     const userFriend = users.filter((user) => user.username === friend);
     await fetch(`/api/bills/${bill.id}/remove-bill-friend/${userFriend[0].id}`);
-  }
+  };
 
   const addFriendToBill = async (friend) => {
     const userFriend = users.filter((user) => user.username === friend);
     await fetch(`/api/bills/${bill.id}/add-bill-friend/${userFriend[0].id}`);
-  }
+  };
 
   const removeUsers = () => {
-    const newUsers = new Set(selectedFriends)
-    bill.assigned_users.forEach(user => {
-      if (user !== sessionUser.username  && !newUsers.has(user)) {
-        removeFriendFromBill(user)
+    const newUsers = new Set(selectedFriends);
+    bill.assigned_users.forEach((user) => {
+      if (user !== sessionUser.username && !newUsers.has(user)) {
+        removeFriendFromBill(user);
       }
-    })
-  }
+    });
+  };
 
   const addUsers = () => {
-    const assignedUsers = new Set(bill.assigned_users)
-    selectedFriends.forEach(friend => {
+    const assignedUsers = new Set(bill.assigned_users);
+    selectedFriends.forEach((friend) => {
       if (!assignedUsers.has(friend)) {
-        addFriendToBill(friend)
+        addFriendToBill(friend);
       }
-    })
-  }
-
+    });
+  };
 
   useEffect(() => {
     const errors = [];
@@ -100,9 +99,6 @@ function EditBillForm({ setShowModal, bill }) {
     setErrors(errors);
   }, [label, amount]);
 
-
-
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -119,12 +115,12 @@ function EditBillForm({ setShowModal, bill }) {
 
     await dispatch(updateBill(payload, id));
     setErrors([]);
-    await removeUsers()
-    await addUsers()
+    await removeUsers();
+    await addUsers();
     // logic for assigning users from bill
     await dispatch(viewBills());
     setShowModal(false);
-  }
+  };
 
   return (
     <div className="bill-modal">
@@ -137,14 +133,17 @@ function EditBillForm({ setShowModal, bill }) {
           <div>
             <Select
               placeholder="Split between..."
-              value={friendOptions.filter(obj => selectedFriends.includes(obj.value))}
+              value={friendOptions.filter((obj) =>
+                selectedFriends.includes(obj.value)
+              )}
               options={friendOptions}
               onChange={handleChange}
               isMulti
               isClearable
               name="colors"
               className="basic-multi-select"
-              classNamePrefix="select" />
+              classNamePrefix="select"
+            />
           </div>
           <div className="bill-users-ul-div">
             {userBillsNoSessionUser?.map((user) => (
@@ -194,6 +193,13 @@ function EditBillForm({ setShowModal, bill }) {
           </div>
         )}
         <div className="bill-btns-container">
+          <button
+            id="bill-delete-btn"
+            className="bill-btns"
+            onClick={() => dispatch(removeBill(bill.id))}
+          >
+            Delete
+          </button>
           <button
             id="bill-cancel-btn"
             className="bill-btns"
