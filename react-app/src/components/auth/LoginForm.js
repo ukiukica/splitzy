@@ -16,6 +16,7 @@ const LoginForm = () => {
     e.preventDefault();
     const data = await dispatch(login(email, password));
     if (data) {
+      console.log("DATA", data)
       setErrors(data);
     }
   };
@@ -53,7 +54,8 @@ const LoginForm = () => {
       <form id="login-form" onSubmit={onLogin}>
         <div>
           {errors.map((error, ind) => (
-            <div key={ind}>{error}</div>
+            <div key={ind}>{error.split(":")[1]}</div>
+
           ))}
         </div>
         <div id="login-auth-container">
@@ -65,6 +67,7 @@ const LoginForm = () => {
             type="text"
             className="login-input"
             // placeholder="Email"
+            required
             value={email}
             onChange={updateEmail}
           />
@@ -75,6 +78,7 @@ const LoginForm = () => {
             name="password"
             type="password"
             className="login-input"
+            required
             // placeholder="Password"
             value={password}
             onChange={updatePassword}
