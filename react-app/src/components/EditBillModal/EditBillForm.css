@@ -78,6 +78,7 @@
 .bill-with-users-container {
     display: flex;
     align-items: center;
+    margin-top: 10px;
 }
 
 #bill-with-text {
@@ -154,8 +155,4 @@
     cursor: pointer;
     bottom: 6px;
     left: 444px;
-}
-
-#edit-bill-btn:hover {
-    opacity: .7;
 }

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory, useParams } from "react-router-dom";
-import { addBill, updateBill } from "../../store/bills.js";
+import { useHistory } from "react-router-dom";
+import { updateBill } from "../../store/bills.js";
 import { ValidationError } from "../../utils/validationError";
 import "./EditBillForm.css";
 
@@ -119,50 +119,52 @@ function EditBillForm({ setShowModal, bill }) {
               </ul>
             ))}
           </div>
-          </div>
+        </div>
         <div className="bill-receipt-inputs-container">
-        <i id='bill-receipt-icon' className="fa-solid fa-receipt fa-5x"></i>
-        <div className="bill-inputs-container">
-          <input
-            name="label"
-            className="bill-input"
-            type="text"
-            value={label}
-            onChange={(e) => setLabel(e.target.value)}
-            required
-          />
-          <input
-            name="amount"
-            className="bill-input"
-            id="bill-amount"
-            type="float"
-            value={amount}
-            onChange={(e) => setAmount(e.target.value)}
-            required
+          <i id="bill-receipt-icon" className="fa-solid fa-receipt fa-5x"></i>
+          <div className="bill-inputs-container">
+            <input
+              name="label"
+              className="bill-input"
+              type="text"
+              value={label}
+              onChange={(e) => setLabel(e.target.value)}
+              placeholder="Label"
+              required
             />
-            </div>
-            </div>
-          <ul>
-            {errors.map((error, idx) => (
-              <li key={idx}>{error}</li>
-            ))}
-          </ul>
-          <div className="bill-btns-container">
-            <button
-              id="bill-cancel-btn"
-              className="bill-btns"
-              onClick={() => setShowModal(false)}
-              >
-              Cancel
-            </button>
-            <button
-              id="bill-save-btn"
-              className="bill-btns"
-              type="submit"
-              disabled={errors.length > 0}
-            >
-              Save
-            </button>
+            <input
+              name="amount"
+              className="bill-input"
+              id="bill-amount"
+              type="float"
+              value={amount}
+              onChange={(e) => setAmount(e.target.value)}
+              placeholder="Amount"
+              required
+            />
+          </div>
+        </div>
+        <ul>
+          {errors.map((error, idx) => (
+            <li key={idx}>{error}</li>
+          ))}
+        </ul>
+        <div className="bill-btns-container">
+          <button
+            id="bill-cancel-btn"
+            className="bill-btns"
+            onClick={() => setShowModal(false)}
+          >
+            Cancel
+          </button>
+          <button
+            id="bill-save-btn"
+            className="bill-btns"
+            type="submit"
+            disabled={errors.length > 0}
+          >
+            Save
+          </button>
         </div>
       </form>
     </div>
