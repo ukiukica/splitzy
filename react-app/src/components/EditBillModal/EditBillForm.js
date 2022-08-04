@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory, useParams } from "react-router-dom";
-import { addBill, updateBill, viewBills } from "../../store/bills.js";
+import { useHistory } from "react-router-dom";
+import { updateBill, viewBills } from "../../store/bills.js";
 import { ValidationError } from "../../utils/validationError";
 import Select from 'react-select';
 import "./EditBillForm.css";
@@ -160,10 +160,10 @@ function EditBillForm({ setShowModal, bill }) {
                 </a>
               </ul>
             ))}
-          </div> */}
+          </div>
         </div>
         <div className="bill-receipt-inputs-container">
-          <i id='bill-receipt-icon' className="fa-solid fa-receipt fa-5x"></i>
+          <i id="bill-receipt-icon" className="fa-solid fa-receipt fa-5x"></i>
           <div className="bill-inputs-container">
             <input
               name="label"
@@ -171,6 +171,7 @@ function EditBillForm({ setShowModal, bill }) {
               type="text"
               value={label}
               onChange={(e) => setLabel(e.target.value)}
+              placeholder="Label"
               required
             />
             <input
@@ -180,6 +181,7 @@ function EditBillForm({ setShowModal, bill }) {
               type="float"
               value={amount}
               onChange={(e) => setAmount(e.target.value)}
+              placeholder="Amount"
               required
             />
           </div>

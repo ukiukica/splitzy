@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import CreateBillModal from "./index.js";
 import { addBill } from "../../store/bills.js";
-import { ValidationError } from "../../utils/validationError";
 import { viewBills } from "../../store/bills.js";
-import Select from 'react-select';
+import Select from "react-select";
 import "./CreateBillForm.css";
 
-function CreateBillForm({setShowModal}) {
+function CreateBillForm({ setShowModal }) {
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -16,7 +14,7 @@ function CreateBillForm({setShowModal}) {
   const users = useSelector((state) => Object.values(state.users));
 
   const [label, setLabel] = useState("");
-  const [amount, setAmount] = useState(0);
+  const [amount, setAmount] = useState("");
   const [selectedFriends, setSelectedFriends] = useState([]);
   const [errors, setErrors] = useState([]);
   const [showErrors, setShowErrors] = useState(false);
@@ -24,12 +22,12 @@ function CreateBillForm({setShowModal}) {
   let friendOptions = [];
 
   sessionUser?.friends?.forEach((friend) => {
-    friendOptions.push({ value: `${friend}`, label: `${friend}` })
-  })
+    friendOptions.push({ value: `${friend}`, label: `${friend}` });
+  });
 
-  const handleChange = e => {
-    setSelectedFriends(Array.isArray(e) ? e.map(x => x.value) : []);
-  }
+  const handleChange = (e) => {
+    setSelectedFriends(Array.isArray(e) ? e.map((x) => x.value) : []);
+  };
 
   useEffect(() => {
     const errors = [];
@@ -65,86 +63,83 @@ function CreateBillForm({setShowModal}) {
       selectedFriends.forEach(async (friend) => {
         const userFriend = users.filter((user) => user.username === friend);
         await fetch(`/api/bills/add-bill-friends/${userFriend[0].id}`);
-      })
+      });
     }
-    await dispatch(viewBills())
-    setShowModal(false)
+    await dispatch(viewBills());
+    setShowModal(false);
   };
 
-  console.log("SELECTED:", selectedFriends)
+  console.log("SELECTED:", selectedFriends);
 
   return (
-    <div className="page-body">
-      <form className="create-bill-form" onSubmit={handleSubmit}>
-        <div className="create-bill-header-div">
-          <h1 id="create-bill-header">Add an expense</h1>
+    <div className="bill-modal">
+      <form className="bill-form" onSubmit={handleSubmit}>
+        <div className="bill-header-div">
+          <p id="bill-header">Add an expense</p>
         </div>
-        <div>
-        <p id="bill-with-text">With You and:</p>
+        <div className="bill-with-users-container">
+          <p id="bill-with-text">With you and:</p>
           <Select
-            placeholder="Split between..."
-            value={friendOptions.filter(obj => selectedFriends.includes(obj.value))}
+            placeholder="Select a name"
+            value={friendOptions.filter((obj) =>
+              selectedFriends.includes(obj.value)
+            )}
             options={friendOptions}
             onChange={handleChange}
             isMulti
             isClearable
             name="colors"
             className="basic-multi-select"
-            classNamePrefix="select" />
+            classNamePrefix="select"
+          />
         </div>
-        <div id="create-bill-input-container">
-          <label className="create-bill-labels">
-            Label
+        <div className="bill-receipt-inputs-container">
+          <i id="bill-receipt-icon" className="fa-solid fa-receipt fa-5x"></i>
+          <div className="bill-inputs-container">
             <input
               name="label"
-              className="create-bill-input"
+              className="bill-input"
               type="text"
               value={label}
               onChange={(e) => setLabel(e.target.value)}
-              placeholder={"Insert label here..."}
+              placeholder="Label"
               required
             />
-          </label>
-          <label className="create-bill-labels">
-            Amount
             <input
               name="amount"
-              className="create-bill-input"
-              type="number"
-              min="0.01"
-              max="999999.99"
-              step="0.01"
+              className="bill-input"
+              id="bill-amount"
+              type="float"
               value={amount}
               onChange={(e) => setAmount(e.target.value)}
-              placeholder={"Insert amount here..."}
+              placeholder="Amount"
               required
             />
-          </label>
-        </div>
-        {showErrors && (
-          <div>
-            {errors.map((error, idx) => (
-              <p className="create-bill-errors-li" key={idx}>
-                {error}
-              </p>
-            ))}
           </div>
-        )}
-        <div className="create-bill-btns-div">
+        </div>
+        <ul>
+          {errors.map((error, idx) => (
+            <li key={idx}>{error}</li>
+          ))}
+        </ul>
+        <div className="bill-btns-container">
           <button
-            id="create-bill-submit"
-            className="create-bill-btns"
+            id="bill-cancel-btn"
+            className="bill-btns"
+            onClick={() => setShowModal(false)}
+          >
+            Cancel
+          </button>
+          <button
+            id="bill-save-btn"
+            className="bill-btns"
             type="submit"
             disabled={errors.length > 0}
           >
-            Submit
+            Save
           </button>
-          <a href="/bills" className="create-bill-btns"></a>
         </div>
       </form>
-      <a href="/bills" id="create-cancel" className="create-bill-btns">
-        Cancel
-      </a>
     </div>
   );
 }

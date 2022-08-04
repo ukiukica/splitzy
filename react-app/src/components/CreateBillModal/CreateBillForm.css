@@ -1,27 +1,16 @@
-.page-body {
-    margin: 0 25px;
+.bill-modal {
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
 }
 
-.create-bill-form {
-    width: 360px;
-    height: 350px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+.bill-form {
     background-color: rgb(255, 255, 255);
-    margin-top: 30px;
-    margin-bottom: 60px;
     border-radius: 3px;
-
 }
 
-.create-bill-header-div {
-    margin-bottom: 10px;
+.bill-header-div {
     display: flex;
     background-color: #36d48e;
     width: 360px;
@@ -30,81 +19,130 @@
     border-top-left-radius: 3px;
     position: relative;
     align-items: center;
-    top: -36px;
 }
 
-#create-bill-header {
+#bill-header {
     font-size: 20px;
     color: white;
     margin-left: 10px;
 }
 
-#create-bill-input-container {
+.bill-receipt-inputs-container {
     display: flex;
-    flex-direction: column;
     align-items: center;
+    padding: 10px 40px;
 }
 
-input.create-bill-input {
-    width: 300px;
+#bill-receipt-icon {
+    display: flex;
+    align-items: center;
+    color: #132a3a;
+}
+
+.bill-inputs-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    margin-left: 15px;
+    /* align-items: center; */
+
+}
+
+.bill-input {
+    /* width: 300px; */
     height: 30px;
     border: none;
     margin: 5px 0;
     padding-left: 5px;
     display: flex;
     color: gray;
+    border-bottom: 1px dashed;
+    outline: none;
 }
 
-label.create-bill-labels {
+/* #bill-amount {
+} */
+
+#edit-bill-amount {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    justify-content: space-between;
     margin-top: 5px;
     font-weight: 600;
     font-size: 18px;
     -webkit-font-smoothing: antialiased;
 }
 
-.create-bill-btns-div {
+.bill-with-users-container {
     display: flex;
-    flex-direction: row;
-    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
 }
 
-.create-bill-btns {
-    height: 35px;
-    color: white;
-    font-weight: 600;
-    margin: 5px 0;
+#bill-with-text {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    justify-content: space-between;
+    margin: 10px;
+    font-weight: bold;
+    font-size: 14px;
+    -webkit-font-smoothing: antialiased;
+}
+
+.bill-users-ul-div {
+    display: flex;
+    flex-direction: row;
+}
+
+.bill-users-ul {
+    display: flex;
+    padding: 0;
+}
+
+.bill-btns-container {
+    display: flex;
+    flex-direction: row;
+    margin: 10px 10px;
     cursor: pointer;
+    justify-content: flex-end;
+}
+
+.bill-btns {
+    padding: 5px 10px;
+    border: none;
     border-radius: 3px;
 }
 
-#create-cancel {
-    background: rgb(241, 81, 82);
-    border: none;
-    text-decoration: none;
-    width: 100px;
-    display: flex;
-    justify-content: center;
-    position: relative;
-    align-items: center;
-    right: 5px;
+#bill-cancel-btn {
+    cursor: pointer;
+    margin-right: 5px;
+    background-color: rgb(211, 211, 211);
 }
 
-#create-cancel:hover {
-    opacity: .7;
+#bill-save-btn {
+    color: white;
+    background-color: #204660;
+    border: transparent;
+    margin-right: 3px;
+    font-size: 13px;
+    cursor: pointer;
 }
 
-#create-bill-submit {
-    margin-right: 10px;
-    background-color: rgb(96 77 79);
-    border: none;
-    width: 100px;
+#bill-delete-btn {
+    color: rgb(169, 169, 169);
+    background-color: white;
+    border: transparent;
+    border-radius: 3px;
+    margin-right: 3px;
+    font-size: 13px;
+    font-weight: bold;
+    cursor: pointer;
 }
 
-#create-bill-submit:hover {
-    opacity: .7;
-}
-
-.create-bill-errors-div {
+/* .create-bill-errors-div {
     display: flex;
     justify-content: center;
 }
@@ -119,4 +157,4 @@ label.create-bill-labels {
 
 .create-bill-errors-li {
     color: rgb(241, 81, 82);
-}
+} */
