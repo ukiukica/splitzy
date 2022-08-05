@@ -36,11 +36,17 @@ function CreateBillForm({ setShowModal }) {
     } else if (label.length <= 0) {
       errors.push("Please provide a label.");
     }
+
+    // if (typeof amount !== "bigint") {
+    //   errors.push("Amount must be a number.")
+    // }
+
     if (amount <= 0) {
       errors.push("Must enter an amount greater than zero.");
     } else if (amount >= 100000) {
       errors.push("Must enter an amount less than $100,000.00");
     }
+
 
     setErrors(errors);
   }, [label, amount]);
