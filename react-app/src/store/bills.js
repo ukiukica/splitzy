@@ -41,6 +41,7 @@ export const viewBills = () => async (dispatch) => {
 
   if (response.ok) {
     const bills = await response.json();
+    console.log(bills)
     dispatch(view(bills));
   }
 };

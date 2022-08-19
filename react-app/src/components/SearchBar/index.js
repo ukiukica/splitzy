@@ -10,6 +10,7 @@ function SearchBar() {
   const [friends, setFriends] = useState([]);
   const [toggleButtons, setToggleButtons] = useState(false);
 
+  // console.log("TOGGLE BUTTONS", friends);
 
   const sessionUser = useSelector((state) => state.session.user);
 

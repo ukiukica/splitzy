@@ -10,6 +10,7 @@ const view = (users) => ({
 
     if (response.ok) {
       const users = await response.json();
+      console.log("USERS: ", users)
       dispatch(view(users));
     }
   };
