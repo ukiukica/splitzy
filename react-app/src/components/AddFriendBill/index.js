@@ -20,7 +20,6 @@ function AddFriendBill() {
   const sessionUser = useSelector((state) => state.session.user);
 
   let friend = [];
-  // console.log("FRIEND", friend)
 
   const bills = useSelector((state) => {
     return Object.values(state.bills);
@@ -39,7 +38,6 @@ function AddFriendBill() {
     fetchData();
   }, []);
 
-  // console.log("USERS", users);
 
   useEffect(() => {
     async function fetchData() {
@@ -59,11 +57,9 @@ function AddFriendBill() {
     fetchData();
   }, []);
 
-  //   console.log(friends)
   const addFriendToBill = (friend) => {
     async function fetchData() {
       const userFriend = users.filter((user) => user.username === friend);
-      console.log(userFriend[0].id, "USERFIREND");
       const response = await fetch(
         `/api/bills/add-bill-friends/${userFriend[0].id}`
       );
@@ -76,7 +72,6 @@ function AddFriendBill() {
   const removeFriendFromBill = (friend) => {
     async function fetchData() {
       const userFriend = users.filter((user) => user.username === friend);
-      console.log("USER FRIEND", userFriend[0].id);
       const response = await fetch(
         `/api/bills/remove-bill-friends/${userFriend[0].id}`
       );
@@ -115,7 +110,6 @@ function AddFriendBill() {
                             await addFriendToBill(friend);
                             // setFriendIsAdded(true)
                             window.location.reload(false);
-                            // console.log("FRIEND IS ADDED", friendIsAdded)
                           }}
                         >
                           +

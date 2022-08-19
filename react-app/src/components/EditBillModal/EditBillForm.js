@@ -24,8 +24,6 @@ function EditBillForm({ setShowModal, bill }) {
   const [userBills, setUserBills] = useState([]);
   const userBillsNoSessionUser = userBills[0]?.slice(1);
 
-  console.log("ASSIGNED USERS: ", bill.assigned_users);
-  console.log("SELECTED FRIENDS: ", selectedFriends);
   // useEffect(() => {
   //   async function fetchData() {
   //     const response = await fetch("/api/users/");

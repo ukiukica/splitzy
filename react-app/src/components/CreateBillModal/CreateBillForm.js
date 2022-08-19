@@ -77,7 +77,6 @@ function CreateBillForm({ setShowModal }) {
     setShowModal(false);
   };
 
-  console.log("SELECTED:", selectedFriends);
 
   return (
     <div className="bill-modal">
