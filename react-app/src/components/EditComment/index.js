@@ -14,7 +14,6 @@ function EditComment({ comment, billId, setShowEdit }) {
   const [content, setContent] = useState(comment.content);
   const [errors, setErrors] = useState([]);
 
-  console.log("CONTENT --->", content);
   useEffect(() => {
     const errors = [];
     if (content.length > 2000) {
