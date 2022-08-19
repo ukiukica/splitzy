@@ -36,9 +36,17 @@ function CreateBillForm({ setShowModal }) {
     } else if (label.length <= 0) {
       errors.push("Please provide a label.");
     }
+
+    // if (typeof amount !== "bigint") {
+    //   errors.push("Amount must be a number.")
+    // }
+
     if (amount <= 0) {
       errors.push("Must enter an amount greater than zero.");
+    } else if (amount >= 100000) {
+      errors.push("Must enter an amount less than $100,000.00");
     }
+
 
     setErrors(errors);
   }, [label, amount]);
@@ -75,6 +83,9 @@ function CreateBillForm({ setShowModal }) {
       <form className="bill-form" onSubmit={handleSubmit}>
         <div className="bill-header-div">
           <p id="bill-header">Add an expense</p>
+          <p className="bill-header" id="bill-x-btn" onClick={() => setShowModal(false)}>
+            x
+          </p>
         </div>
         <div className="bill-with-users-container">
           <p id="bill-with-text">Between you and:</p>
@@ -110,6 +121,7 @@ function CreateBillForm({ setShowModal }) {
               id="bill-amount"
               type="float"
               value={amount}
+              // pattern="^\d*(\.\d{0,2})?$"
               onChange={(e) => setAmount(e.target.value)}
               placeholder="Amount"
               required
@@ -126,13 +138,6 @@ function CreateBillForm({ setShowModal }) {
           </div>
         )}
         <div className="bill-btns-container">
-          <button
-            id="bill-cancel-btn"
-            className="bill-btns"
-            onClick={() => setShowModal(false)}
-          >
-            Cancel
-          </button>
           <button
             id="bill-save-btn"
             className="bill-btns"

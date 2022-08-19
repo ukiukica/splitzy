@@ -54,13 +54,13 @@ function EditBillForm({ setShowModal, bill }) {
   };
 
   const removeFriendFromBill = async (friend) => {
-    const userFriend = users.filter((user) => user.username === friend);
-    await fetch(`/api/bills/${bill.id}/remove-bill-friend/${userFriend[0].id}`);
+    const userFriend = users?.filter((user) => user?.username === friend);
+    await fetch(`/api/bills/${bill.id}/remove-bill-friend/${userFriend[0]?.id}`);
   };
 
   const addFriendToBill = async (friend) => {
-    const userFriend = users.filter((user) => user.username === friend);
-    await fetch(`/api/bills/${bill.id}/add-bill-friend/${userFriend[0].id}`);
+    const userFriend = users?.filter((user) => user?.username === friend);
+    await fetch(`/api/bills/${bill.id}/add-bill-friend/${userFriend[0]?.id}`);
   };
 
   const removeUsers = () => {
@@ -124,7 +124,10 @@ function EditBillForm({ setShowModal, bill }) {
     <div className="bill-modal">
       <form className="bill-form" onSubmit={handleSubmit}>
         <div className="bill-header-div">
-          <p id="bill-header">Edit expense</p>
+          <p className="bill-header">Edit expense</p>
+          <p className="bill-header" id="bill-x-btn" onClick={() => setShowModal(false)}>
+            x
+          </p>
         </div>
         <div className="bill-with-users-container">
           <p id="bill-with-text">Between you and:</p>
@@ -197,13 +200,6 @@ function EditBillForm({ setShowModal, bill }) {
             onClick={() => dispatch(removeBill(bill.id))}
           >
             Delete
-          </button>
-          <button
-            id="bill-cancel-btn"
-            className="bill-btns"
-            onClick={() => setShowModal(false)}
-          >
-            Cancel
           </button>
           <button
             id="bill-save-btn"
