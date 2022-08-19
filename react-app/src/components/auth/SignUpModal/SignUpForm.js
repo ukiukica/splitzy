@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Redirect, NavLink } from "react-router-dom";
+import { Redirect, NavLink, useHistory } from "react-router-dom";
 import { signUp } from "../../../store/session";
 import "./SignUpForm.css";
 
 const SignUpForm = ({ setShowModal }) => {
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const user = useSelector((state) => state.session.user);
 
@@ -182,7 +183,10 @@ const SignUpForm = ({ setShowModal }) => {
             </div>
             <div id="already-registered-text-container">
               <p id="already-registered-text">Already a registered user?</p>
-              <p id="login-link" onClick={() => setShowModal(false)}>
+              <p id="login-link" onClick={() => {
+                setShowModal(false);
+                history.push("/login")
+                }}>
                 Log in
               </p>
             </div>
