@@ -8,6 +8,7 @@ function FriendsModal({friend}) {
   return (
     <>
       <div className="friend-a-tag friend-li" onClick={() => setShowModal(true)}><i class="fa-solid fa-user"></i>&nbsp;&nbsp;{friend}</div>
+      {console.log("FRIEND", friend)}
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <UserOverview setShowModal={setShowModal} friend={friend}/>
