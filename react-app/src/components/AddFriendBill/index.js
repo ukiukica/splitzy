@@ -7,24 +7,12 @@ import "./AddFriendBill.css";
 
 function AddFriendBill() {
   const dispatch = useDispatch();
-  const history = useHistory();
   const { billId } = useParams();
-
-  let friendAdded;
 
   const [friends, setFriends] = useState([]);
   const [users, setUsers] = useState([]);
   const [userBills, setUserBills] = useState([]);
-  // const [addedFriends, setAddedFriends] = useState([]);
-  const [friendIsAdded, setFriendIsAdded] = useState(false);
   const sessionUser = useSelector((state) => state.session.user);
-
-  let friend = [];
-  // console.log("FRIEND", friend)
-
-  const bills = useSelector((state) => {
-    return Object.values(state.bills);
-  });
 
   useEffect(() => {
     dispatch(viewBills());
@@ -38,8 +26,6 @@ function AddFriendBill() {
     }
     fetchData();
   }, []);
-
-  // console.log("USERS", users);
 
   useEffect(() => {
     async function fetchData() {
@@ -59,15 +45,12 @@ function AddFriendBill() {
     fetchData();
   }, []);
 
-  //   console.log(friends)
   const addFriendToBill = (friend) => {
     async function fetchData() {
       const userFriend = users.filter((user) => user.username === friend);
-      console.log(userFriend[0].id, "USERFIREND");
       const response = await fetch(
         `/api/bills/add-bill-friends/${userFriend[0].id}`
       );
-      // history.push("/bills");
       return response;
     }
     fetchData();
@@ -76,12 +59,10 @@ function AddFriendBill() {
   const removeFriendFromBill = (friend) => {
     async function fetchData() {
       const userFriend = users.filter((user) => user.username === friend);
-      console.log("USER FRIEND", userFriend[0].id);
       const response = await fetch(
         `/api/bills/remove-bill-friends/${userFriend[0].id}`
       );
 
-      //   history.push("/bills")
       window.location.reload(false);
       return response;
     }
@@ -111,11 +92,8 @@ function AddFriendBill() {
                         <button
                           className="new-bill-friends-btn-add"
                           onClick={async (e) => {
-                            // e.preventDefault()
                             await addFriendToBill(friend);
-                            // setFriendIsAdded(true)
                             window.location.reload(false);
-                            // console.log("FRIEND IS ADDED", friendIsAdded)
                           }}
                         >
                           +

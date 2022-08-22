@@ -41,7 +41,6 @@ export const viewBills = () => async (dispatch) => {
 
   if (response.ok) {
     const bills = await response.json();
-    console.log(bills)
     dispatch(view(bills));
   }
 };
@@ -87,7 +86,6 @@ const billsReducer = (state = {}, action) => {
       return { ...normalizedBills };
     case REMOVE_BILL:
       const deleteState = { ...state }
-      // delete deleteState[action.id]
       return deleteState;
     default:
       return state;

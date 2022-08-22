@@ -6,10 +6,6 @@ import { viewUsers } from "../../store/users";
 import "./useroverview.css";
 
 function UserOverview({ friend, setShowModal }) {
-  const dispatch = useDispatch();
-  // const [friends, setFriends] = useState([]);
-  // const [user, setUser] = useState([]);
-  // const [isLoaded, setIsLoaded] = useState(false);
 
   const sessionUser = useSelector((state) => state.session.user);
   const users = useSelector((state) => state.users);
@@ -20,27 +16,6 @@ function UserOverview({ friend, setShowModal }) {
   // when you click on a friend
   const currentUser = usersList.filter((user) => user.username == friend)[0];
 
-
-
-  // useEffect(() => {
-  //   async function fetchData() {
-  //     const response = await fetch(`/api/users/${currentUser[0]?.id}`);
-  //     const responseData = await response.json();
-  //     setUser(responseData);
-  //     setIsLoaded(true);
-  //   }
-  //   fetchData();
-  // }, []);
-
-  // useEffect(() => {
-  //   async function fetchData() {
-  //     const response = await fetch(`/api/friends/${sessionUser.id}`);
-  //     const responseData = await response.json();
-  //     setFriends(Object.values(responseData)[0]);
-  //   }
-  //   fetchData();
-  // }, []);
-
   const addFriend = async (id) => {
     async function fetchData() {
       const response = await fetch(`/api/friends/${sessionUser.id}/add/${id}`);
@@ -48,7 +23,6 @@ function UserOverview({ friend, setShowModal }) {
     }
     window.location.reload(false);
     setShowModal(false);
-    // await dispatch(viewUsers())
     fetchData();
   };
 
@@ -60,7 +34,6 @@ function UserOverview({ friend, setShowModal }) {
       return response;
     }
     window.location.reload(false);
-    // await dispatch(viewUsers())
     setShowModal(false);
     fetchData();
   };
@@ -112,19 +85,6 @@ function UserOverview({ friend, setShowModal }) {
               <p className="user-detail-useroverview">{currentUser.email}</p>
             </div>
           </div>
-
-          {/*~~~~~~~~~~~~~~~~~~ USER'S FRIENDS LIST ~~~~~~~~~~~~~~~~~~*/}
-
-          {/* <div id="useroverview-friends">
-
-      <div id="friends-section-useroverview">
-        <p>Friends: </p>
-        {user?.friends?.length > 0 ? user?.friends?.map((friend) => (
-          <div>{friend}</div>
-          )) : <div>None</div>}
-      </div>
-
-      </div> */}
         </>
       ) : (
         <h1>...Loading</h1>
