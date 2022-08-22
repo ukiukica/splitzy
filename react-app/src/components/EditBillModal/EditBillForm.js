@@ -20,30 +20,8 @@ function EditBillForm({ setShowModal, bill }) {
   const [selectedFriends, setSelectedFriends] = useState(bill.assigned_users);
   const [errors, setErrors] = useState([]);
   const [showErrors, setShowErrors] = useState(false);
-  // const [users, setUsers] = useState([]);
   const [userBills, setUserBills] = useState([]);
   const userBillsNoSessionUser = userBills[0]?.slice(1);
-
-  console.log("ASSIGNED USERS: ", bill.assigned_users);
-  console.log("SELECTED FRIENDS: ", selectedFriends);
-  // useEffect(() => {
-  //   async function fetchData() {
-  //     const response = await fetch("/api/users/");
-  //     const responseData = await response.json();
-  //     setUsers(responseData.users);
-  //   }
-  //   fetchData();
-  // }, []);
-
-  // Friends for bill
-  // useEffect(() => {
-  //   async function fetchData() {
-  //     const response = await fetch(`/api/bills/user-bills/${bill.id}`);
-  //     const responseData = await response.json();
-  //     setUserBills(Object.values(responseData));
-  //   }
-  //   fetchData();
-  // }, []);
 
   let friendOptions = [];
 

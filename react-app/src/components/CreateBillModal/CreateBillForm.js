@@ -8,7 +8,6 @@ import "./CreateBillForm.css";
 
 function CreateBillForm({ setShowModal }) {
   const dispatch = useDispatch();
-  const history = useHistory();
 
   const sessionUser = useSelector((state) => state.session.user);
   const users = useSelector((state) => Object.values(state.users));
@@ -36,10 +35,6 @@ function CreateBillForm({ setShowModal }) {
     } else if (label.length <= 0) {
       errors.push("Please provide a label.");
     }
-
-    // if (typeof amount !== "bigint") {
-    //   errors.push("Amount must be a number.")
-    // }
 
     if (amount <= 0) {
       errors.push("Must enter an amount greater than zero.");
@@ -76,8 +71,6 @@ function CreateBillForm({ setShowModal }) {
     await dispatch(viewBills());
     setShowModal(false);
   };
-
-  console.log("SELECTED:", selectedFriends);
 
   return (
     <div className="bill-modal">
@@ -122,7 +115,6 @@ function CreateBillForm({ setShowModal }) {
               id="bill-amount"
               type="float"
               value={amount}
-              // pattern="^\d*(\.\d{0,2})?$"
               onChange={(e) => setAmount(e.target.value)}
               placeholder="Amount"
               required

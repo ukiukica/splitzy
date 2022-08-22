@@ -7,14 +7,12 @@ import '../CreateCommentModal/CreateCommentButton.css'
 
 function EditComment({ comment, billId, setShowEdit }) {
   const dispatch = useDispatch();
-  const history = useHistory();
 
   const sessionUser = useSelector((state) => state.session.user);
 
   const [content, setContent] = useState(comment.content);
   const [errors, setErrors] = useState([]);
 
-  console.log("CONTENT --->", content);
   useEffect(() => {
     const errors = [];
     if (content.length > 2000) {
@@ -52,7 +50,6 @@ function EditComment({ comment, billId, setShowEdit }) {
             <li key={idx}>{error}</li>
           ))}
         </ul>
-        {/* <div className="add-cmt-content-div"> */}
           <textarea
             className='edit-comment-textarea'
             name="content"
@@ -62,7 +59,6 @@ function EditComment({ comment, billId, setShowEdit }) {
             onChange={(e) => setContent(e.target.value)}
             required
           />
-        {/* </div> */}
         <div className="add-cmt-submit-cancel-btns-div">
           <button className="add-cmt-submit-btn" type="submit">Submit</button>
           <DeleteComment comment={comment} />
