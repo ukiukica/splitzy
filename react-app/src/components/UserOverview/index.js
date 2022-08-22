@@ -18,7 +18,6 @@ function UserOverview({ friend, setShowModal }) {
   const currentUser = usersList.filter((user) => user.username == friend);
 
   const thisUser = users[sessionUser.id];
-  console.log("THIS USER", thisUser.friends);
 
   useEffect(() => {
     async function fetchData() {
