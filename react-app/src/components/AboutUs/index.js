@@ -104,7 +104,7 @@ function AboutUs() {
             <div>
               <img
                 className="creator-photos"
-                src="https://media-exp1.licdn.com/dms/image/C5603AQF9DV-JW5Jz3g/profile-displayphoto-shrink_800_800/0/1593757146453?e=1662595200&v=beta&t=MraukcTJA2L3A9iPwnImIOSSFC3pU5kvfsxFwzlFlo8"
+                src="https://res.cloudinary.com/matchaprince/image/upload/v1663809009/1593757146453_mnj85e.jpg"
               />
               <h3 className="creator-names">Danny</h3>
               <p className="creator-titles">Full-stack Software Engineer</p>
