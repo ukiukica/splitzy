@@ -39,11 +39,12 @@ const LoginForm = () => {
 
   return (
     <div id="login-html-body">
-      <video id="video-header" autoPlay playsInline loop>
+      <video id="video-header" autoPlay playsInline muted loop>
         <source
           type="video/mp4"
           src="https://res.cloudinary.com/matchaprince/video/upload/v1656800970/220509_04_London_Student_4k_017_preview_muequc.mp4"
         />
+        Your browser does not support HTML5 video.
       </video>
       <div>
         <h2 className="login-title-header">Going</h2>
