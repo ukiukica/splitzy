@@ -1,9 +1,7 @@
 <h1 align="center">splitzy</h1>
 
-<p align="center">splitzy - an original application based off Splitwise - is a full stack application that provides users the ability to search and add other users as friends and bill them for their dues. Users also have the ability to make notes or add comments to existing bills. To make use of these features, users are required to sign up for an account.</p>
-
-
-**Live Link**: https://splitzy-app.herokuapp.com/login
+<p align="center">splitzy - an original application based off Splitwise - is a full stack application that provides users the ability to search and add other users as friends and bill them for their dues. Users also have the ability to make notes or add comments to existing bills. To make use of these features, users are required to sign up for an account.
+<br><br><b>LIVE LINK: https://splitzy-app.herokuapp.com/login</b></p>
 <br>
 
 ## Technologies Used
@@ -67,35 +65,29 @@ We plan to refactor our code to create a dynamic single page application that wi
 
 <br>
 
-## Demo Screens!
+## Demo Screens
 
 ### Splash
-![Screen Shot 2022-07-04 at 10 04 11 PM](https://user-images.githubusercontent.com/96567728/177253486-65efe242-000c-49c9-8d55-17b986db0f38.png)
+![ezgif com-gif-maker (20)](https://user-images.githubusercontent.com/93879557/206110206-ff1ea873-fce6-42f2-9bc9-76445995d51b.gif)
+
+### Add an expense
+![ezgif com-gif-maker (22)](https://user-images.githubusercontent.com/93879557/206111425-52056f86-6164-4b2d-864f-3c0fc2fa0e68.gif)
+
+### Edit existing expense
+![ezgif com-gif-maker (23)](https://user-images.githubusercontent.com/93879557/206112592-9ec2ab56-0f79-487d-a1d3-d1fbc6b62042.gif)
+
+### Add and edit comment
+![ezgif com-gif-maker (24)](https://user-images.githubusercontent.com/93879557/206113627-42700abe-3cdb-487d-b948-24013ee82759.gif)
+
+### Search and add users as friends or unfriend
+![ezgif com-gif-maker (26)](https://user-images.githubusercontent.com/93879557/206115239-08ed82cb-eb06-4575-9c27-1574d73a44ed.gif)
+
+### About page
+![ezgif com-gif-maker](https://user-images.githubusercontent.com/93879557/206116191-230a4eca-8bc8-4e7c-adba-1f72afad1c61.png)
 
 
-### Bills Page
-![Screen Shot 2022-07-04 at 10 05 54 PM](https://user-images.githubusercontent.com/96567728/177253407-12d25dd0-8df0-403b-be05-7aa78ecc050c.png)
 
-### Edit Existing Bill
-![Screen Shot 2022-07-04 at 10 07 39 PM](https://user-images.githubusercontent.com/96567728/177253596-7ad619d4-52c8-4501-a66f-2dbc3b775ed8.png)
-
-### Edit Existing Comment
-![Screen Shot 2022-07-04 at 10 08 33 PM](https://user-images.githubusercontent.com/96567728/177253658-dcfbd00e-dc79-41a6-b448-99447d8db020.png)
-
-### Create a New Bill
-![Screen Shot 2022-07-04 at 10 08 33 PM](https://user-images.githubusercontent.com/96567728/177253693-39a5e3bd-04ab-4a50-b8a0-b84fa87d8f96.png)
-
-### Adding Existing Friends to the New Bill
-![Screen Shot 2022-07-04 at 10 10 15 PM](https://user-images.githubusercontent.com/96567728/177253821-55226821-0d1b-4fba-8baf-11f363bce3de.png)
-
-### Searching Users List to Add as a Friend
-![Screen Shot 2022-07-04 at 10 11 09 PM](https://user-images.githubusercontent.com/96567728/177253895-1fb1ad29-8586-4669-8707-727b29476453.png)
-
-### About Us
-![Screen Shot 2022-07-04 at 10 12 26 PM](https://user-images.githubusercontent.com/96567728/177254014-84eb8114-7508-4e6f-b30d-5774e57d1cc4.png)
-
-
-### Contact Us!
+## Contact Us
 * Uki:  <a href="https://www.linkedin.com/in/ukipavlovic/">Linkedin</a> | <a href="https://github.com/ukiukica/">Github</a> 
 * Olivia:  <a href="https://www.linkedin.com/in/olivia-bir-74b16b7b/">Linkedin</a> | <a href="https://github.com/oliviabir">Github</a>
 * Danny: <a href="https://www.linkedin.com/in/dannytoan/">Linkedin</a> | <a href="https://github.com/dannytoan">Github</a>
